@@ -25,7 +25,7 @@ namespace Paymetheus.ViewModels
         {
             try
             {
-                await App.Current.WalletRpcClient.NextAccountAsync(Passphrase, AccountName);
+                await App.Current.Synchronizer.WalletRpcClient.NextAccountAsync(Passphrase, AccountName);
                 HideDialog();
             }
             catch (Exception ex)

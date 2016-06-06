@@ -33,7 +33,7 @@ namespace Paymetheus.ViewModels
             try
             {
                 _rename.Executable = false;
-                await App.Current.WalletRpcClient.RenameAccountAsync(_account, NewAccountName);
+                await App.Current.Synchronizer.WalletRpcClient.RenameAccountAsync(_account, NewAccountName);
                 HideDialog();
             }
             catch (Exception ex)

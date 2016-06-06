@@ -142,6 +142,7 @@
             <TextBlock HorizontalAlignment="Left" Margin="68.407,39,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding SyncedBlockHeight, StringFormat='{}{0:#,0}', FallbackValue='0'}" VerticalAlignment="Top" FontSize="8" Foreground="#FF2ED8A3" Width="71.407" Height="8.867"/>
             <TextBlock HorizontalAlignment="Right" Margin="0,39,19,0" Grid.Row="2" TextWrapping="Wrap" Text="1 min ago" VerticalAlignment="Top" FontSize="8" Foreground="#FF69D5F7" Height="9" Width="34" TextAlignment="Right"/>
         </Grid>
-        <Frame Name="ContentHolder" Content="Frame" Grid.Column="1" Source="{Binding SelectedView, FallbackValue=/Paymetheus;component/Overview.xaml}" NavigationUIVisibility="Hidden" />
+        <!--<Frame Name="ContentHolder" Content="Frame" Grid.Column="1" Source="{Binding SelectedView, FallbackValue=/Paymetheus;component/Overview.xaml}" NavigationUIVisibility="Hidden" />-->
+        <Frame Name="ContentHolder" Content="Frame" Grid.Column="1" Source="{Binding SelectedView}" NavigationUIVisibility="Hidden" />
     </Grid>
 </UserControl>

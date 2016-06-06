@@ -151,6 +151,7 @@
     <Compile Include="Accounts.xaml.cs">
       <DependentUpon>Accounts.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Framework\Messenger.cs" />
     <Compile Include="Framework\ShellViewModelBase.cs" />
     <Compile Include="Framework\SingletonViewModelLocator.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
@@ -210,6 +211,8 @@
     </Compile>
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\RecentAccountViewModel.cs" />
+    <Compile Include="ViewModels\StartupWizardFinishedMessage.cs" />
+    <Compile Include="ViewModels\SynchronizerViewModel.cs" />
     <Compile Include="ViewModels\TransactionViewModel.cs" />
     <Compile Include="ConsensusServerConnectionOptionsView.xaml.cs">
       <DependentUpon>ConsensusServerConnectionOptionsView.xaml</DependentUpon>

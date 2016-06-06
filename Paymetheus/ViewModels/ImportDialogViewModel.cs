@@ -32,7 +32,7 @@ namespace Paymetheus.ViewModels
             try
             {
                 _import.Executable = false;
-                await App.Current.WalletRpcClient.ImportPrivateKeyAsync(_account, PrivateKeyWif, Rescan, Passphrase);
+                await App.Current.Synchronizer.WalletRpcClient.ImportPrivateKeyAsync(_account, PrivateKeyWif, Rescan, Passphrase);
                 HideDialog();
             }
             catch (Exception ex)

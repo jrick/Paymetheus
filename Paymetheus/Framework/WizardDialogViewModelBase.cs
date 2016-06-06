@@ -6,13 +6,11 @@ namespace Paymetheus.Framework
 {
     public class WizardDialogViewModelBase : ViewModelBase
     {
-        public WizardDialogViewModelBase(ShellViewModelBase shell, WizardViewModelBase wizard) : base()
+        public WizardDialogViewModelBase(WizardViewModelBase wizard) : base()
         {
-            _shell = shell;
             _wizard = wizard;
         }
 
-        protected ShellViewModelBase _shell;
         protected WizardViewModelBase _wizard;
     }
 }

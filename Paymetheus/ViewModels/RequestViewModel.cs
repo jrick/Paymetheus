@@ -33,7 +33,7 @@ namespace Paymetheus.ViewModels
             {
                 _generateAddressCommand.Executable = false;
                 var account = new Account(0); // TODO: use selected account
-                var address = await App.Current.WalletRpcClient.NextExternalAddressAsync(account);
+                var address = await App.Current.Synchronizer.WalletRpcClient.NextExternalAddressAsync(account);
                 GeneratedAddress = address;
             }
             catch (Exception ex)

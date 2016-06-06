@@ -18,23 +18,18 @@ namespace Paymetheus.ViewModels
         public StartupWizard(ShellViewModelBase shell) : base()
         {
             CurrentDialog = new ConsensusServerRpcConnectionDialog(this);
-            Shell = shell;
         }
 
-        public ShellViewModelBase Shell { get; }
-
-        public event EventHandler WalletOpened;
-
-        public void InvokeWalletOpened()
+        public void OnFinished()
         {
             App.Current.MarkWalletLoaded();
-            WalletOpened?.Invoke(this, new EventArgs());
+            Messenger.MessageSingleton<SynchronizerViewModel>(new StartupWizardFinishedMessage());
         }
     }
 
     class ConnectionWizardDialog : WizardDialogViewModelBase
     {
-        public ConnectionWizardDialog(StartupWizard wizard) : base(wizard.Shell, wizard)
+        public ConnectionWizardDialog(StartupWizard wizard) : base(wizard)
         {
             Wizard = wizard;
         }
@@ -95,7 +90,7 @@ namespace Paymetheus.ViewModels
                     ConsensusServerRpcUsername, ConsensusServerRpcPassword, ConsensusServerCertificateFile);
                 try
                 {
-                    await App.Current.WalletRpcClient.StartConsensusRpc(rpcOptions);
+                    await App.Current.Synchronizer.WalletRpcClient.StartConsensusRpc(rpcOptions);
                 }
                 catch (Exception ex) when (ErrorHandling.IsTransient(ex) || ErrorHandling.IsClientError(ex))
                 {
@@ -104,7 +99,7 @@ namespace Paymetheus.ViewModels
                     return;
                 }
 
-                var walletExists = await App.Current.WalletRpcClient.WalletExistsAsync();
+                var walletExists = await App.Current.Synchronizer.WalletRpcClient.WalletExistsAsync();
                 if (!walletExists)
                 {
                     _wizard.CurrentDialog = new CreateOrImportSeedDialog(Wizard);
@@ -302,10 +297,10 @@ namespace Paymetheus.ViewModels
                     }
                 }
 
-                await App.Current.WalletRpcClient.CreateWallet(publicPassphrase, PrivatePassphrase, _seed);
+                await App.Current.Synchronizer.WalletRpcClient.CreateWallet(publicPassphrase, PrivatePassphrase, _seed);
 
                 ValueArray.Zero(_seed);
-                Wizard.InvokeWalletOpened();
+                Wizard.OnFinished();
             }
             finally
             {
@@ -329,8 +324,8 @@ namespace Paymetheus.ViewModels
             try
             {
                 OpenWalletCommand.Executable = false;
-                await App.Current.WalletRpcClient.OpenWallet(PublicPassphrase);
-                Wizard.InvokeWalletOpened();
+                await App.Current.Synchronizer.WalletRpcClient.OpenWallet(PublicPassphrase);
+                Wizard.OnFinished();
             }
             catch (Exception ex) when (ErrorHandling.IsClientError(ex))
             {
