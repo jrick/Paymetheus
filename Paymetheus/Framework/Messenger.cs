@@ -9,18 +9,20 @@ namespace Paymetheus.Framework
 {
     public static class Messenger
     {
-        static Dictionary<Type, MessageHandler> instances = new Dictionary<Type, MessageHandler>();
+        public delegate void MessageHandler(IViewModelMessage message);
 
-        public delegate void MessageHandler(ViewModelMessageBase message);
+        static Dictionary<Type, MessageHandler> Instances = new Dictionary<Type, MessageHandler>();
 
         public static void RegisterSingleton<T>(MessageHandler handler) where T : ViewModelBase
         {
-            instances[typeof(T)] = handler;
+            Instances[typeof(T)] = handler;
         }
 
-        public static void MessageSingleton<T>(ViewModelMessageBase message) where T : ViewModelBase
+        public static void MessageSingleton<T>(IViewModelMessage message) where T : ViewModelBase
         {
-            instances[typeof(T)](message);
+            Instances[typeof(T)](message);
         }
     }
+
+    public interface IViewModelMessage { }
 }

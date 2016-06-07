@@ -22,7 +22,7 @@ namespace Paymetheus.Framework
             set { _visibleDialogContent = value; RaisePropertyChanged(); }
         }
 
-        protected virtual bool OnRoutedMessage(ViewModelBase sender, ViewModelMessageBase message)
+        protected virtual bool OnRoutedMessage(ViewModelBase sender, IViewModelMessage message)
         {
             var openDialog = message as OpenDialogMessage;
             if (openDialog != null)

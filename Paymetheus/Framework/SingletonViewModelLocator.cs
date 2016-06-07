@@ -30,6 +30,11 @@ namespace Paymetheus.Framework
             ViewModels[typeof(TView).Name] = viewModel;
         }
 
+        public static void RegisterInstance(string name, ViewModelBase viewModel)
+        {
+            ViewModels[name] = viewModel;
+        }
+
         public static ViewModelBase Resolve(string viewTypeName)
         {
             if (ViewModels.ContainsKey(viewTypeName))

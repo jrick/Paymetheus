@@ -231,7 +231,6 @@
       <DependentUpon>TransactionUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Framework\ViewModelBase.cs" />
-    <Compile Include="Framework\ViewModelMessage.cs" />
     <Compile Include="Framework\WizardDialogViewModelBase.cs" />
     <Compile Include="Framework\WizardViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />

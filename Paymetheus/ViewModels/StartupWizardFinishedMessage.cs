@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Paymetheus.ViewModels
 {
-    class StartupWizardFinishedMessage : ViewModelMessageBase
+    class StartupWizardFinishedMessage : IViewModelMessage
     {
     }
 }

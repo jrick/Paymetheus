@@ -7,6 +7,7 @@ namespace Paymetheus.ViewModels
 {
     public class ViewModelLocator
     {
+        public static object SynchronizerViewModel => SingletonViewModelLocator.Resolve("Synchronizer");
         public static object ShellViewModel => SingletonViewModelLocator.Resolve("ShellView");
         public static object OverviewViewModel => SingletonViewModelLocator.Resolve("Overview");
         public static object RequestViewModel => SingletonViewModelLocator.Resolve("Request");

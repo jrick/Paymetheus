@@ -69,7 +69,7 @@ namespace Paymetheus.ViewModels
 
         public ObservableCollection<AccountViewModel> Accounts { get; } = new ObservableCollection<AccountViewModel>();
 
-        private async void OnMessageReceived(ViewModelMessageBase message)
+        private async void OnMessageReceived(IViewModelMessage message)
         {
             var startupWizardFinishedMessage = message as StartupWizardFinishedMessage;
             if (startupWizardFinishedMessage != null)

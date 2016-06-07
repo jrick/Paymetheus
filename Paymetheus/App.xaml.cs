@@ -80,10 +80,11 @@ namespace Paymetheus
             {
                 return await SynchronizerViewModel.Startup(activeNetwork, appDataDir);
             });
-            syncTask.Wait();
+            var synchronizer = syncTask.Result;
 
+            SingletonViewModelLocator.RegisterInstance("Synchronizer", synchronizer);
             ActiveNetwork = activeNetwork;
-            Synchronizer = syncTask.Result;
+            Synchronizer = synchronizer;
             Current.Exit += Application_Exit;
         }
 

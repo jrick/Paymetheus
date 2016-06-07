@@ -21,4 +21,16 @@ namespace Paymetheus.Framework
             throw new NotImplementedException();
         }
     }
+
+    sealed class OpenDialogMessage : IViewModelMessage
+    {
+        public OpenDialogMessage(DialogViewModelBase dialog)
+        {
+            Dialog = dialog;
+        }
+
+        public DialogViewModelBase Dialog { get; }
+    }
+
+    sealed class HideDialogMessage : IViewModelMessage { }
 }
