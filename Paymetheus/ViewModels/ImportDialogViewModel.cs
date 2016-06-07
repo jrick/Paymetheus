@@ -11,7 +11,7 @@ namespace Paymetheus.ViewModels
 {
     class ImportDialogViewModel : DialogViewModelBase
     {
-        public ImportDialogViewModel(Account account) : base()
+        public ImportDialogViewModel(ShellViewModel shell, Account account) : base(shell)
         {
             _account = account;
             _import = new DelegateCommand(ImportAction);

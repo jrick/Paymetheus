@@ -11,7 +11,7 @@ namespace Paymetheus.ViewModels
 {
     sealed class CreateAccountDialogViewModel : DialogViewModelBase
     {
-        public CreateAccountDialogViewModel() : base()
+        public CreateAccountDialogViewModel(ShellViewModel shell) : base(shell)
         {
             Execute = new DelegateCommand(ExecuteAction);
         }

@@ -22,23 +22,19 @@ namespace Paymetheus.Framework
             set { _visibleDialogContent = value; RaisePropertyChanged(); }
         }
 
-        protected virtual bool OnRoutedMessage(ViewModelBase sender, IViewModelMessage message)
+        public void ShowDialog(DialogViewModelBase dialog)
         {
-            var openDialog = message as OpenDialogMessage;
-            if (openDialog != null)
+            if (VisibleDialogContent != null)
             {
-                VisibleDialogContent = openDialog.Dialog;
-                return true;
+                return;
             }
 
-            var hideDialog = message as HideDialogMessage;
-            if (hideDialog != null && sender == VisibleDialogContent)
-            {
-                VisibleDialogContent = null;
-                return true;
-            }
+            VisibleDialogContent = dialog;
+        }
 
-            return false;
+        public void HideDialog()
+        {
+            VisibleDialogContent = null;
         }
     }
 }

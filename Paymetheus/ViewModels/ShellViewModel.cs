@@ -51,7 +51,7 @@ namespace Paymetheus.ViewModels
 
         private void CreateAccount()
         {
-            VisibleDialogContent = new CreateAccountDialogViewModel();
+            VisibleDialogContent = new CreateAccountDialogViewModel(this);
         }
     }
 }
