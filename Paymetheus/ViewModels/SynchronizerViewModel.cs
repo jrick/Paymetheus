@@ -82,7 +82,7 @@ namespace Paymetheus.ViewModels
         {
             try
             {
-                var syncingWallet = await WalletRpcClient.Synchronize(_wallet_ChangesProcessed);
+                var syncingWallet = await WalletRpcClient.Synchronize(OnWalletChangesProcessed);
                 Wallet = syncingWallet.Item1;
                 OnSyncedWallet();
 
@@ -109,7 +109,7 @@ namespace Paymetheus.ViewModels
             {
                 var wallet = Wallet;
                 if (wallet != null)
-                    wallet.ChangesProcessed -= _wallet_ChangesProcessed;
+                    wallet.ChangesProcessed -= OnWalletChangesProcessed;
                 var shell = (ShellViewModel)ViewModelLocator.ShellViewModel;
                 shell.StartupWizardVisible = true;
             }
@@ -150,7 +150,7 @@ namespace Paymetheus.ViewModels
             });
         }
 
-        private void _wallet_ChangesProcessed(object sender, Wallet.ChangesProcessedEventArgs e)
+        private void OnWalletChangesProcessed(object sender, Wallet.ChangesProcessedEventArgs e)
         {
             // TODO: The OverviewViewModel should probably connect to this event.  This could be
             // done after the wallet is synced.
@@ -182,18 +182,6 @@ namespace Paymetheus.ViewModels
                     }
                 });
             }
-
-#if false
-            if (VisibleContent is AccountViewModel)
-            {
-                var accountViewModel = (AccountViewModel)VisibleContent;
-                AccountProperties accountProperties;
-                if (e.ModifiedAccountProperties.TryGetValue(accountViewModel.Account, out accountProperties))
-                {
-                    accountViewModel.UpdateAccountProperties(1, accountProperties);
-                }
-            }
-#endif
         }
 
         private void OnSyncedWallet()
@@ -219,20 +207,6 @@ namespace Paymetheus.ViewModels
         private void NotifyRecalculatedBalances()
         {
             RaisePropertyChanged(nameof(TotalBalance));
-
-#if false
-            // If account visible, calculate spendable balance
-            if (_visibleContent is AccountViewModel)
-            {
-                var accountViewModel = (AccountViewModel)_visibleContent;
-                var accountProperties = _wallet.LookupAccountProperties(accountViewModel.Account);
-                accountViewModel.UpdateAccountProperties(1, accountProperties); // TODO: don't hardcode confs
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    accountViewModel.PopulateTransactionHistory();
-                });
-            }
-#endif
         }
     }
 }
