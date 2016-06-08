@@ -48,7 +48,9 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock x:Name="textBlock" HorizontalAlignment="Stretch" Margin="12,14.794,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF0C1E3E" FontSize="19.333" Grid.RowSpan="1" Height="25.713" Grid.Column="1" Width="Auto"><Run Text="Primary a"/><Run Text="c"/><Run Text="count"/></TextBlock>
+                                <TextBlock x:Name="textBlock" HorizontalAlignment="Stretch" Margin="12,14.794,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF0C1E3E" FontSize="19.333" Grid.RowSpan="1" Height="25.713" Grid.Column="1" Width="Auto">
+                                    <Run Text="{Binding Path=AccountProperties.AccountName, FallbackValue='Account name'}"/>
+                                </TextBlock>
                                 <TextBlock x:Name="textBlock1" HorizontalAlignment="Right" Margin="0,18.564,61.626,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF0C1E3E" TextAlignment="Right" FontSize="10.667" Grid.Column="3" FontWeight="Bold" Height="25.714" Grid.Row="0"><Run FontSize="19.333" Text="10"/><Run FontWeight="Normal" FontSize="8.667" Text=".00"/></TextBlock>
                                 <TextBlock x:Name="textBlock2" HorizontalAlignment="Right" Margin="0,30.126,40,0" TextWrapping="Wrap" Text="DCR" VerticalAlignment="Top" Foreground="#FF0C1E3E" TextAlignment="Left" FontSize="8.667" Grid.Column="3" FontWeight="Normal" Grid.Row="0"/>
                                 <TextBlock x:Name="textBlock3" HorizontalAlignment="Stretch" Margin="76,0,0,21.001" TextWrapping="Wrap" Text="Mar 14 2016 14:48" VerticalAlignment="Bottom" Foreground="#FF132F4B" TextAlignment="Left" FontSize="8.667" Grid.Column="1" Height="10.854" Grid.ColumnSpan="1" Grid.Row="0"/>
@@ -209,7 +211,11 @@
         </Grid.ColumnDefinitions>
         <TextBlock HorizontalAlignment="Left" Margin="40,59.904,0,0" TextWrapping="Wrap" Text="Accounts" VerticalAlignment="Top" Foreground="#FF0C1E3E" FontSize="19.333" Grid.RowSpan="3" Height="25.713"/>
         <Rectangle Fill="#FFA9B4BF" Height="1" VerticalAlignment="Top" Margin="40,0,70,0" Grid.Row="3"/>
-        <ListBox HorizontalContentAlignment="Stretch" x:Name="lstRecentActivity" Margin="40,0,0,0" Grid.Row="4" HorizontalAlignment="Stretch" BorderBrush="{x:Null}" ItemContainerStyle="{DynamicResource ListBoxItemStyle}"/>
+        <ListBox x:Name="lstAccounts" Grid.Row="4"
+                 ItemsSource="{Binding Source={StaticResource ViewModelLocator}, Path=SynchronizerViewModel.Accounts}"
+                 ItemContainerStyle="{DynamicResource ListBoxItemStyle}"
+                 HorizontalContentAlignment="Stretch" Margin="40,0,0,0" HorizontalAlignment="Stretch"
+                 BorderBrush="{x:Null}"/>
         <Rectangle Fill="#FFA9B4BF" Height="1" VerticalAlignment="Top" Margin="40,0,0,0" Grid.Row="4"/>
         <TextBlock Margin="40,20" TextWrapping="Wrap" Text="Brief how to..." Foreground="#FF0C1E3E" Grid.Row="2"/>
         <Button Content="ADD A NEW ACCOUNT" Command="{Binding CreateAccountCommand}"  HorizontalAlignment="Right" Height="35.5" Margin="0,59.904,40,0" VerticalAlignment="Top" Style="{DynamicResource ButtonBlue}" Foreground="#FF132F4B" Grid.RowSpan="3"/>
