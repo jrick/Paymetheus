@@ -232,6 +232,6 @@
                  BorderBrush="{x:Null}"/>
         <Rectangle Fill="#FFA9B4BF" Height="1" VerticalAlignment="Top" Margin="40,0,0,0" Grid.Row="4"/>
         <TextBlock Margin="40,20" TextWrapping="Wrap" Text="Brief how to..." Foreground="#FF0C1E3E" Grid.Row="2"/>
-        <Button Content="ADD A NEW ACCOUNT" Command="{Binding CreateAccountCommand}"  HorizontalAlignment="Right" Height="35.5" Margin="0,59.904,40,0" VerticalAlignment="Top" Style="{DynamicResource ButtonBlue}" Foreground="#FF132F4B" Grid.RowSpan="3"/>
+        <Button Content="ADD A NEW ACCOUNT" Command="{Binding ShellViewModel.CreateAccountCommand, Source={StaticResource ViewModelLocator}}"  HorizontalAlignment="Right" Height="35.5" Margin="0,59.904,40,0" VerticalAlignment="Top" Style="{DynamicResource ButtonBlue}" Foreground="#FF132F4B" Grid.RowSpan="3"/>
     </Grid>
 </Page>
