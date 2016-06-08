@@ -49,5 +49,13 @@ namespace Paymetheus.ViewModels
             var shell = (ShellViewModel)ViewModelLocator.ShellViewModel;
             shell.ShowDialog(new RenameAccountDialogViewModel(shell, Account, AccountProperties.AccountName));
         }
+
+        public ICommand OpenImportKeyDialogCommand { get; }
+
+        private void OpenImportKeyDialogAction()
+        {
+            var shell = (ShellViewModel)ViewModelLocator.ShellViewModel;
+            shell.ShowDialog(new ImportDialogViewModel(shell, Account));
+        }
     }
 }

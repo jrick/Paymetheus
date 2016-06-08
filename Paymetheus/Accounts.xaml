@@ -120,7 +120,7 @@
                                     </Button.Template>
                                 </Button>
 
-                                <Button Content="Button" HorizontalAlignment="Right" Height="26" Margin="0,0,120.004,0" Grid.Row="5" VerticalAlignment="Top" Width="26" Grid.Column="1">
+                                <Button Command="{Binding OpenImportKeyDialogCommand}" HorizontalAlignment="Right" Height="26" Margin="0,0,120.004,0" Grid.Row="5" VerticalAlignment="Top" Width="26" Grid.Column="1">
                                     <Button.Template>
                                         <ControlTemplate>
                                             <Border HorizontalAlignment="Center" VerticalAlignment="Center" >
