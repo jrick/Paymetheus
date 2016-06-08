@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Paymetheus.ViewModels
 {
@@ -19,6 +20,8 @@ namespace Paymetheus.ViewModels
             Account = account;
             _accountProperties = properties;
             _balances = balances;
+
+            OpenRenameAccountDialogCommand = new DelegateCommand(OpenRenameAccountDialogAction);
         }
 
         public Account Account { get; }
@@ -37,6 +40,14 @@ namespace Paymetheus.ViewModels
         {
             get { return _balances; }
             internal set { _balances = value; RaisePropertyChanged(); }
+        }
+
+        public ICommand OpenRenameAccountDialogCommand { get; }
+
+        private void OpenRenameAccountDialogAction()
+        {
+            var shell = (ShellViewModel)ViewModelLocator.ShellViewModel;
+            shell.ShowDialog(new RenameAccountDialogViewModel(shell, Account, AccountProperties.AccountName));
         }
     }
 }
