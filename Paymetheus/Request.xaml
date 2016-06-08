@@ -161,15 +161,15 @@
             <TextBlock HorizontalAlignment="Left" Margin="40,18.244,0,0" TextWrapping="Wrap" Text="Request" Foreground="#FF5A6E81" FontSize="19.333" Width="159.49" Height="25.713" VerticalAlignment="Top"/>
             <TextBlock HorizontalAlignment="Left" Margin="40,26.904,0,0.096" TextWrapping="Wrap" Foreground="#FF828C9D" FontSize="16" Grid.Row="3" Width="122.78"><Run Text="Recen"/><Run Text="t"/><Run Text=" activity"/></TextBlock>
             <Grid Margin="0,0,0,0.096" Grid.Row="3" Width="300">
-                <ComboBox Margin="39.5,4.244,0,0" VerticalAlignment="Top" Style="{DynamicResource ComboBoxStyleWithCurrency}" Height="23.356" Foreground="#FF2970FF" ItemContainerStyle="{DynamicResource ComboBoxItemStyle}">
+                <ComboBox ItemsSource="{Binding Source={StaticResource ViewModelLocator}, Path=SynchronizerViewModel.AccountNames}"
+                          Margin="39.5,4.244,0,0" VerticalAlignment="Top" Height="23.356" Foreground="#FF2970FF"
+                          Style="{DynamicResource ComboBoxStyleWithCurrency}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle}">
                     <ComboBox.Background>
                         <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                             <GradientStop Color="#FFF0F0F0" Offset="0"/>
                             <GradientStop Color="White" Offset="1"/>
                         </LinearGradientBrush>
                     </ComboBox.Background>
-                    <ComboBoxItem Content="Primary Account" IsSelected="True"/>
-                    <ComboBoxItem Content="Second Account"/>
                 </ComboBox>
                 <Image Margin="0,0,269.334,2" Source="Images/pm - icons - accounts.png" Stretch="Fill" Width="25" Height="25.6"/>
             </Grid>

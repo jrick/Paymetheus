@@ -6,6 +6,7 @@ using Paymetheus.Decred.Wallet;
 using Paymetheus.Framework;
 using Paymetheus.Rpc;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
@@ -68,6 +69,8 @@ namespace Paymetheus.ViewModels
         }
 
         public ObservableCollection<AccountViewModel> Accounts { get; } = new ObservableCollection<AccountViewModel>();
+
+        public IEnumerable<string> AccountNames => Accounts.Select(a => a.AccountProperties.AccountName);
 
         private async void OnMessageReceived(IViewModelMessage message)
         {
@@ -186,6 +189,11 @@ namespace Paymetheus.ViewModels
 
         private void OnSyncedWallet()
         {
+            var accountBalances = Wallet.CalculateBalances(1); // TODO: configurable confirmations
+            var accountViewModels = Wallet.EnumerateAccounts()
+                .Zip(accountBalances, (a, bals) => new AccountViewModel(a.Item1, a.Item2, bals))
+                .ToList();
+
             var txSet = Wallet.RecentTransactions;
             var recentTx = txSet.UnminedTransactions
                 .Select(x => new TransactionViewModel(Wallet, x.Value, BlockIdentity.Unmined))
@@ -193,20 +201,20 @@ namespace Paymetheus.ViewModels
                 .Take(10);
             var overviewViewModel = (OverviewViewModel)SingletonViewModelLocator.Resolve("Overview");
             overviewViewModel.AccountsCount = Wallet.EnumerateAccounts().Count();
+
             App.Current.Dispatcher.Invoke(() =>
             {
+                foreach (var vm in accountViewModels)
+                    Accounts.Add(vm);
                 foreach (var tx in recentTx)
                     overviewViewModel.RecentTransactions.Add(tx);
             });
             SyncedBlockHeight = Wallet.ChainTip.Height;
-            NotifyRecalculatedBalances();
+            RaisePropertyChanged(nameof(TotalBalance));
+            RaisePropertyChanged(nameof(AccountNames));
+
             var shell = (ShellViewModel)ViewModelLocator.ShellViewModel;
             shell.StartupWizardVisible = false;
-        }
-
-        private void NotifyRecalculatedBalances()
-        {
-            RaisePropertyChanged(nameof(TotalBalance));
         }
     }
 }

@@ -4,7 +4,6 @@
 using Paymetheus.Decred.Wallet;
 using Paymetheus.Framework;
 using System;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 
