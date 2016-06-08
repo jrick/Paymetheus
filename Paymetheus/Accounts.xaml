@@ -40,7 +40,8 @@
                             </Grid.RowDefinitions>
                             <Grid Margin="14,0,0,0" VerticalAlignment="Top">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="41*"/>
+                                    <RowDefinition Height="38*"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="8"/>
@@ -48,12 +49,15 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock x:Name="textBlock" HorizontalAlignment="Stretch" Margin="12,14.794,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF0C1E3E" FontSize="19.333" Grid.RowSpan="1" Height="25.713" Grid.Column="1" Width="Auto">
+                                <TextBlock x:Name="textBlock" HorizontalAlignment="Stretch" Margin="12,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF0C1E3E" FontSize="19.333" Grid.RowSpan="1" Height="26" Grid.Column="1" Width="Auto">
                                     <Run Text="{Binding Path=AccountProperties.AccountName, FallbackValue='Account name'}"/>
                                 </TextBlock>
-                                <TextBlock x:Name="textBlock1" HorizontalAlignment="Right" Margin="0,18.564,61.626,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF0C1E3E" TextAlignment="Right" FontSize="10.667" Grid.Column="3" FontWeight="Bold" Height="25.714" Grid.Row="0"><Run FontSize="19.333" Text="10"/><Run FontWeight="Normal" FontSize="8.667" Text=".00"/></TextBlock>
-                                <TextBlock x:Name="textBlock2" HorizontalAlignment="Right" Margin="0,30.126,40,0" TextWrapping="Wrap" Text="DCR" VerticalAlignment="Top" Foreground="#FF0C1E3E" TextAlignment="Left" FontSize="8.667" Grid.Column="3" FontWeight="Normal" Grid.Row="0"/>
-                                <TextBlock x:Name="textBlock3" HorizontalAlignment="Stretch" Margin="76,0,0,21.001" TextWrapping="Wrap" Text="Mar 14 2016 14:48" VerticalAlignment="Bottom" Foreground="#FF132F4B" TextAlignment="Left" FontSize="8.667" Grid.Column="1" Height="10.854" Grid.ColumnSpan="1" Grid.Row="0"/>
+                                <local:AmountLabel x:Name="totalAmount"
+                                                   Value="{Binding Balances.TotalBalance}"
+                                                   Grid.Row="0" Grid.Column="4"
+                                                   VerticalAlignment="Bottom"
+                                                   HorizontalContentAlignment="Right" Grid.ColumnSpan="2" Margin="0,0,39,0"
+                                                   ForegroundWhole="#FF0C1E3E" ForegroundDecimal="#FF0C1E3E" FontSizeWhole="19.333" FontSizeDecimal="8.667" FontWeightWhole="Bold"/>
                                 <Path x:Name="path" Data="M20.03125,11.625 L9.75,28.875 30.25,28.875 z" Fill="#FF2970FF" HorizontalAlignment="Left" Height="7" Stretch="Fill" VerticalAlignment="Top" Width="10" RenderTransformOrigin="0.5,0.5" Margin="-1.25,26.377,0,0" Grid.ColumnSpan="2" Grid.Row="0">
                                     <Path.RenderTransform>
                                         <TransformGroup>
@@ -64,10 +68,10 @@
                                         </TransformGroup>
                                     </Path.RenderTransform>
                                 </Path>
-                                <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="12,46.296,0,20.85" TextWrapping="Wrap" Text="Last transaction:" VerticalAlignment="Stretch" Foreground="#FF919EAB" TextAlignment="Left" FontSize="8.667" Grid.Column="1" Height="Auto" Grid.ColumnSpan="1" Width="69" Grid.Row="0"/>
-                                <TextBlock x:Name="textBlock5" HorizontalAlignment="Stretch" Margin="0,47.442,121.844,0" TextWrapping="Wrap" Text="Spendable" VerticalAlignment="Top" Foreground="#FF919EAB" TextAlignment="Left" FontSize="8.667" Grid.Column="3" Height="10.854" Grid.ColumnSpan="1" Grid.Row="0"/>
-                                <TextBlock x:Name="textBlock6" HorizontalAlignment="Right" Margin="0,47.442,60,0" TextWrapping="Wrap" Text="1,144.33254" VerticalAlignment="Top" Foreground="#FF919EAB" TextAlignment="Left" FontSize="8.667" Grid.Column="3" Height="10.854" Grid.ColumnSpan="1" Grid.Row="0"/>
-                                <TextBlock x:Name="textBlock7" HorizontalAlignment="Right" Margin="0,47.442,40,0" TextWrapping="Wrap" Text="DCR" VerticalAlignment="Top" Foreground="#FF919EAB" TextAlignment="Left" FontSize="8" Grid.Column="3" Height="10.854" Grid.ColumnSpan="1" Grid.Row="0"/>
+                                <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="12,5,0,21" TextWrapping="Wrap" Text="Last transaction:" VerticalAlignment="Stretch" Foreground="#FF919EAB" TextAlignment="Left" FontSize="8.667" Grid.Column="1" Height="Auto" Grid.ColumnSpan="1" Width="69" Grid.Row="1"/>
+                                <TextBlock x:Name="textBlock5" HorizontalAlignment="Stretch" Margin="0,6,121,0" TextWrapping="Wrap" Text="Spendable" VerticalAlignment="Top" Foreground="#FF919EAB" TextAlignment="Left" FontSize="8.667" Grid.Column="3" Height="11" Grid.ColumnSpan="1" Grid.Row="1"/>
+                                <TextBlock x:Name="textBlock6" HorizontalAlignment="Right" Margin="0,6,60,0" TextWrapping="Wrap" Text="1,144.33254" VerticalAlignment="Top" Foreground="#FF919EAB" TextAlignment="Left" FontSize="8.667" Grid.Column="3" Height="11" Grid.ColumnSpan="1" Grid.Row="1"/>
+                                <TextBlock x:Name="textBlock7" HorizontalAlignment="Right" Margin="0,6,39,0" TextWrapping="Wrap" Text="DCR" VerticalAlignment="Top" Foreground="#FF919EAB" TextAlignment="Left" FontSize="8" Grid.Column="3" Height="11" Grid.ColumnSpan="1" Grid.Row="1"/>
                             </Grid>
                             <Grid x:Name="grid" Margin="14,0.331,0,0" Grid.Row="1" Height="161" Visibility="Collapsed">
                                 <Grid.ColumnDefinitions>
@@ -183,9 +187,7 @@
                                 </Setter>
                                 <Setter Property="Fill" TargetName="path" Value="#FFA9B4BF"/>
                                 <Setter Property="Foreground" TargetName="textBlock" Value="#FFA9B4BF"/>
-                                <Setter Property="Visibility" TargetName="textBlock1" Value="Collapsed"/>
-                                <Setter Property="Visibility" TargetName="textBlock2" Value="Collapsed"/>
-                                <Setter Property="Visibility" TargetName="textBlock3" Value="Collapsed"/>
+                                <Setter Property="Visibility" TargetName="totalAmount" Value="Collapsed"/>
                                 <Setter Property="Visibility" TargetName="textBlock4" Value="Collapsed"/>
                                 <Setter Property="Visibility" TargetName="textBlock5" Value="Collapsed"/>
                                 <Setter Property="Visibility" TargetName="textBlock6" Value="Collapsed"/>

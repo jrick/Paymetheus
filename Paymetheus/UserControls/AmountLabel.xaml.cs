@@ -130,8 +130,8 @@ namespace Paymetheus
         {
             var control = (AmountLabel)d;
             var brush = (Brush)e.NewValue;
-            control.TickerRun.Foreground = brush;
             control.WholePartRun.Foreground = brush;
+            control.TickerRun.Foreground = brush;
         }
 
         private static void OnForegroundDecimalChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
