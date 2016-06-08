@@ -164,13 +164,9 @@
             <Grid Margin="0,0,0,0.096" Grid.Row="3" Width="300">
                 <ComboBox ItemsSource="{Binding Source={StaticResource ViewModelLocator}, Path=SynchronizerViewModel.Accounts}"
                           SelectedItem="{Binding Source={StaticResource ViewModelLocator}, Path=SynchronizerViewModel.SelectedAccount}"
+                          ItemTemplate="{StaticResource ComboBoxAccountDataTemplate}"
                           Margin="39.5,4.244,0,0" VerticalAlignment="Top" Height="23.356" Foreground="#FF2970FF"
                           Style="{DynamicResource ComboBoxStyleWithCurrency}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle}">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding ., Converter={StaticResource accountToNameConverter}}"/>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
                     <ComboBox.Background>
                         <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                             <GradientStop Color="#FFF0F0F0" Offset="0"/>

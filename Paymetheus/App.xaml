@@ -716,5 +716,9 @@
             </Setter>
         </Style>
 
+        <DataTemplate x:Key="ComboBoxAccountDataTemplate">
+            <TextBlock Text="{Binding ., Converter={StaticResource accountToNameConverter}}"/>
+        </DataTemplate>
+
     </Application.Resources>
 </Application>
