@@ -22,6 +22,8 @@ namespace Paymetheus.ViewModels
             _balances = balances;
 
             OpenRenameAccountDialogCommand = new DelegateCommand(OpenRenameAccountDialogAction);
+            OpenImportKeyDialogCommand = new DelegateCommand(OpenImportKeyDialogAction);
+            HideAccountCommand = new DelegateCommand(HideAccountAction);
         }
 
         public Account Account { get; }
@@ -56,6 +58,13 @@ namespace Paymetheus.ViewModels
         {
             var shell = (ShellViewModel)ViewModelLocator.ShellViewModel;
             shell.ShowDialog(new ImportDialogViewModel(shell, Account));
+        }
+
+        public ICommand HideAccountCommand { get; }
+
+        private void HideAccountAction()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -130,7 +130,7 @@
                                     </Button.Template>
                                 </Button>
 
-                                <Button Content="Button" HorizontalAlignment="Right" Height="26" Margin="0,0,40,0" Grid.Row="5" VerticalAlignment="Top" Width="26" Grid.Column="1">
+                                <Button Command="{Binding HideAccountCommand}" HorizontalAlignment="Right" Height="26" Margin="0,0,40,0" Grid.Row="5" VerticalAlignment="Top" Width="26" Grid.Column="1">
                                     <Button.Template>
                                         <ControlTemplate>
                                             <Border HorizontalAlignment="Center" VerticalAlignment="Center" >
