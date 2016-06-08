@@ -70,8 +70,12 @@
                                 </Path>
                                 <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="12,5,0,21" TextWrapping="Wrap" Text="Last transaction:" VerticalAlignment="Stretch" Foreground="#FF919EAB" TextAlignment="Left" FontSize="8.667" Grid.Column="1" Height="Auto" Grid.ColumnSpan="1" Width="69" Grid.Row="1"/>
                                 <TextBlock x:Name="textBlock5" HorizontalAlignment="Stretch" Margin="0,6,121,0" TextWrapping="Wrap" Text="Spendable" VerticalAlignment="Top" Foreground="#FF919EAB" TextAlignment="Left" FontSize="8.667" Grid.Column="3" Height="11" Grid.ColumnSpan="1" Grid.Row="1"/>
-                                <TextBlock x:Name="textBlock6" HorizontalAlignment="Right" Margin="0,6,60,0" TextWrapping="Wrap" Text="1,144.33254" VerticalAlignment="Top" Foreground="#FF919EAB" TextAlignment="Left" FontSize="8.667" Grid.Column="3" Height="11" Grid.ColumnSpan="1" Grid.Row="1"/>
-                                <TextBlock x:Name="textBlock7" HorizontalAlignment="Right" Margin="0,6,39,0" TextWrapping="Wrap" Text="DCR" VerticalAlignment="Top" Foreground="#FF919EAB" TextAlignment="Left" FontSize="8" Grid.Column="3" Height="11" Grid.ColumnSpan="1" Grid.Row="1"/>
+                                <local:AmountLabel x:Name="spendableBalance"
+                                                   Value="{Binding Balances.SpendableBalance}"
+                                                   Grid.Row="1" Grid.Column="4"
+                                                   VerticalAlignment="Top"
+                                                   HorizontalContentAlignment="Right" Margin="0,6,39,0"
+                                                   ForegroundWhole="#FF919EAB" ForegroundDecimal="#FF919EAB" FontSizeWhole="8.667" FontSizeDecimal="8.667" FontWeightWhole="Bold"/>
                             </Grid>
                             <Grid x:Name="grid" Margin="14,0.331,0,0" Grid.Row="1" Height="161" Visibility="Collapsed">
                                 <Grid.ColumnDefinitions>
@@ -88,9 +92,11 @@
                                 </Grid.RowDefinitions>
                                 <TextBlock HorizontalAlignment="Stretch" Margin="21,0,0,0" TextWrapping="Wrap" Text="Properties" VerticalAlignment="Top" Foreground="#FF0C1E3E" TextAlignment="Left" FontSize="19.333" Grid.Column="0" Grid.RowSpan="2" Height="25.713" Grid.ColumnSpan="2"/>
                                 <TextBlock HorizontalAlignment="Stretch" Margin="14.5,0,0.833,0" TextWrapping="Wrap" Text="Account number" VerticalAlignment="Top" Foreground="#FF132F4B" TextAlignment="Right" FontSize="8.667" Grid.Column="0" Height="10.854" Grid.ColumnSpan="1" Grid.Row="2" Width="90"/>
-                                <TextBlock HorizontalAlignment="Stretch" Margin="9.167,0,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Foreground="#FF132F4B" TextAlignment="Left" FontSize="8.667" Grid.Column="1" Height="10.854" Grid.ColumnSpan="1" Grid.Row="2" FontWeight="Bold"/>
+                                <TextBlock HorizontalAlignment="Stretch" Margin="9.167,0,0,0" TextWrapping="Wrap" Text="{Binding AccountNumber, Mode=OneWay}" VerticalAlignment="Top" Foreground="#FF132F4B" TextAlignment="Left" FontSize="8.667" Grid.Column="1" Height="10.854" Grid.ColumnSpan="1" Grid.Row="2" FontWeight="Bold"/>
                                 <TextBlock HorizontalAlignment="Stretch" Margin="14.5,20.001,0.833,0" TextWrapping="Wrap" Text="HD path" VerticalAlignment="Top" Foreground="#FF132F4B" TextAlignment="Right" FontSize="8.667" Grid.Column="0" Height="10.854" Grid.ColumnSpan="1" Grid.Row="2" Width="90"/>
-                                <TextBlock HorizontalAlignment="Stretch" Margin="9.167,20.001,0,0" TextWrapping="Wrap" Text="m / 44' / 11' / 0'" VerticalAlignment="Top" Foreground="#FF132F4B" TextAlignment="Left" FontSize="8.667" Grid.Column="1" Height="10.854" Grid.ColumnSpan="1" Grid.Row="2" FontWeight="Bold"/>
+                                <TextBlock HorizontalAlignment="Stretch" Margin="9.167,20.001,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF132F4B" TextAlignment="Left" FontSize="8.667" Grid.Column="1" Height="10.854" Grid.ColumnSpan="1" Grid.Row="2" FontWeight="Bold">
+                                    <Run Text="m/44'/"/><Run Text="{Binding AccountNumber, Mode=OneWay}"/><Run Text="'"/>
+                                </TextBlock>
                                 <TextBlock HorizontalAlignment="Stretch" Margin="14.5,40.002,0.833,0" TextWrapping="Wrap" Text="Keys" VerticalAlignment="Top" Foreground="#FF132F4B" TextAlignment="Right" FontSize="8.667" Grid.Column="0" Height="10.854" Grid.ColumnSpan="1" Grid.Row="2" Width="90" Grid.RowSpan="2"/>
                                 <TextBlock HorizontalAlignment="Stretch" Margin="9.167,40.002,0,0" TextWrapping="Wrap" Text="15 external, 10 internal, 0 imported" VerticalAlignment="Top" Foreground="#FF132F4B" TextAlignment="Left" FontSize="8.667" Grid.Column="1" Height="10.854" Grid.ColumnSpan="1" Grid.Row="2" FontWeight="Bold" Grid.RowSpan="2"/>
                                 <Rectangle Fill="#FFA9B4BF" Height="1" VerticalAlignment="Top" Margin="0" Grid.Row="4" Grid.ColumnSpan="2"/>
@@ -190,8 +196,7 @@
                                 <Setter Property="Visibility" TargetName="totalAmount" Value="Collapsed"/>
                                 <Setter Property="Visibility" TargetName="textBlock4" Value="Collapsed"/>
                                 <Setter Property="Visibility" TargetName="textBlock5" Value="Collapsed"/>
-                                <Setter Property="Visibility" TargetName="textBlock6" Value="Collapsed"/>
-                                <Setter Property="Visibility" TargetName="textBlock7" Value="Collapsed"/>
+                                <Setter Property="Visibility" TargetName="spendableBalance" Value="Collapsed"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

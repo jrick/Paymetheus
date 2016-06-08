@@ -16,12 +16,14 @@ namespace Paymetheus.ViewModels
     {
         public AccountViewModel(Account account, AccountProperties properties, Balances balances) : base()
         {
-            AccountNumber = account;
+            Account = account;
             _accountProperties = properties;
             _balances = balances;
         }
 
-        public Account AccountNumber { get; }
+        public Account Account { get; }
+
+        public uint AccountNumber => Account.AccountNumber;
 
         private AccountProperties _accountProperties;
         public AccountProperties AccountProperties

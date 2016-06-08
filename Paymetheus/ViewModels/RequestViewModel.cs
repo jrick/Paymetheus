@@ -31,7 +31,7 @@ namespace Paymetheus.ViewModels
             {
                 _generateAddressCommand.Executable = false;
                 var synchronizer = App.Current.Synchronizer;
-                var account = synchronizer.SelectedAccount.AccountNumber;
+                var account = synchronizer.SelectedAccount.Account;
                 var address = await synchronizer.WalletRpcClient.NextExternalAddressAsync(account);
                 GeneratedAddress = address;
             }
