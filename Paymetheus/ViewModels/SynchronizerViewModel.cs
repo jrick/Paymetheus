@@ -70,6 +70,13 @@ namespace Paymetheus.ViewModels
 
         public ObservableCollection<AccountViewModel> Accounts { get; } = new ObservableCollection<AccountViewModel>();
 
+        private AccountViewModel _selectedAccount;
+        public AccountViewModel SelectedAccount
+        {
+            get { return _selectedAccount; }
+            set { _selectedAccount = value; RaisePropertyChanged(); }
+        }
+
         public IEnumerable<string> AccountNames => Accounts.Select(a => a.AccountProperties.AccountName);
 
         private async void OnMessageReceived(IViewModelMessage message)
@@ -200,7 +207,6 @@ namespace Paymetheus.ViewModels
                 .Concat(txSet.MinedTransactions.ReverseList().SelectMany(b => b.Transactions.Select(tx => new TransactionViewModel(Wallet, tx, b.Identity))))
                 .Take(10);
             var overviewViewModel = (OverviewViewModel)SingletonViewModelLocator.Resolve("Overview");
-            overviewViewModel.AccountsCount = Wallet.EnumerateAccounts().Count();
 
             App.Current.Dispatcher.Invoke(() =>
             {
@@ -210,8 +216,10 @@ namespace Paymetheus.ViewModels
                     overviewViewModel.RecentTransactions.Add(tx);
             });
             SyncedBlockHeight = Wallet.ChainTip.Height;
+            SelectedAccount = accountViewModels[0];
             RaisePropertyChanged(nameof(TotalBalance));
             RaisePropertyChanged(nameof(AccountNames));
+            overviewViewModel.AccountsCount = accountViewModels.Count();
 
             var shell = (ShellViewModel)ViewModelLocator.ShellViewModel;
             shell.StartupWizardVisible = false;

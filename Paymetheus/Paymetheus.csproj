@@ -154,6 +154,8 @@
     <Compile Include="Framework\Messenger.cs" />
     <Compile Include="Framework\ShellViewModelBase.cs" />
     <Compile Include="Framework\SingletonViewModelLocator.cs" />
+    <Compile Include="Framework\ValueConverters\OneWayConverter.cs" />
+    <Compile Include="AccountToNameConverter.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="AssemblyResources.cs" />
     <Compile Include="Framework\AttachableProperties.cs" />
