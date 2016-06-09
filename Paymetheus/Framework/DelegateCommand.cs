@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace Paymetheus.Framework
 {
-    class DelegateCommandBase
+    public class DelegateCommandBase
     {
         public bool Executable { get; set; } = true;
 
@@ -20,7 +20,7 @@ namespace Paymetheus.Framework
         }
     }
 
-    class DelegateCommand : DelegateCommandBase, ICommand
+    public class DelegateCommand : DelegateCommandBase, ICommand
     {
         public DelegateCommand(Action execute)
         {
@@ -32,7 +32,7 @@ namespace Paymetheus.Framework
         public void Execute(object parameter) => _execute();
     }
 
-    class DelegateCommand<T> : DelegateCommandBase, ICommand
+    public class DelegateCommand<T> : DelegateCommandBase, ICommand
     {
         public DelegateCommand(Action<T> execute)
         {
