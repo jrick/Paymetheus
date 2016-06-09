@@ -367,6 +367,7 @@
                 <TextBlock Height="16.834" TextWrapping="Wrap" Text="Estimated fee:" VerticalAlignment="Top" Foreground="#FF8392A1" TextAlignment="Right" HorizontalAlignment="Right" Margin="0,0,1.997,0" Grid.Column="1"/>
                 <TextBlock Height="17.538" Margin="0,23.668,1.885,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF8392A1" TextAlignment="Right" HorizontalAlignment="Right" Grid.Column="1"><Run Text="Estimeated remainging bal"/><Run Text="a"/><Run Text="nce:"/></TextBlock>
             </Grid>
+            <!--
             <Grid x:Name="formTransaction" Grid.RowSpan="4">
                 <Rectangle Fill="#FF132F4B" Opacity="0.5"/>
                 <Grid Margin="0" Width="340" Height="215">
@@ -380,6 +381,7 @@
                     <Button Content="Cancel" Height="36" Margin="173,142,84,0" Style="{DynamicResource ButtonWhite}" Foreground="#FF132F4B" VerticalAlignment="Top"/>
                 </Grid>
             </Grid>
+            -->
         </Grid>
     </ScrollViewer>
 </Page>
