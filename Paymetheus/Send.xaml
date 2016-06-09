@@ -301,7 +301,7 @@
                         <RotateTransform Angle="-0.045"/>
                         <TranslateTransform/>
                     </TransformGroup>
-                </TextBlock.RenderTransform><Run Text="Decred addresses always begin with letted "/><Run FontWeight="Bold" Text="D"/><Run Text=" cotain 26-35 alphanumeric characters "/><Run FontWeight="Bold" Text="e.g. "/><Run Foreground="#FF828C9D" Text="DxxxXXXXXXXXXXXXXXXXXDXXx0XXx0X"/></TextBlock>
+                </TextBlock.RenderTransform><Run Text="Decred addresses always begin with letter "/><Run FontWeight="Bold" Text="D"/><Run Text=" contain 26-35 alphanumeric characters "/><Run FontWeight="Bold" Text="e.g. "/><Run Foreground="#FF828C9D" Text="DxxxXXXXXXXXXXXXXXXXXDXXx0XXx0X"/></TextBlock>
             <Grid Margin="91,18,60.17,0" Grid.Row="2" VerticalAlignment="Top" Height="68">
                 <TextBlock x:Name="lblCode" Height="66" Margin="26,12.059,0,0" TextWrapping="Wrap" Text="TsVmeFSracV2bpTQJs" VerticalAlignment="Top" Foreground="#FF132F4B" FontSize="32" TextAlignment="Center" Visibility="Collapsed"/>
             </Grid>
@@ -365,7 +365,7 @@
                 <TextBlock Height="16.834" TextWrapping="Wrap" Text="DCR" VerticalAlignment="Top" Foreground="#FF0C1E3E" TextAlignment="Right" HorizontalAlignment="Right" Grid.Column="3"/>
                 <TextBlock Height="15" Margin="0,23.668,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF0C1E3E" TextAlignment="Right" HorizontalAlignment="Right" Grid.Column="3"><Run Text="DC"/><Run Text="R"/></TextBlock>
                 <TextBlock Height="16.834" TextWrapping="Wrap" Text="Estimated fee:" VerticalAlignment="Top" Foreground="#FF8392A1" TextAlignment="Right" HorizontalAlignment="Right" Margin="0,0,1.997,0" Grid.Column="1"/>
-                <TextBlock Height="17.538" Margin="0,23.668,1.885,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF8392A1" TextAlignment="Right" HorizontalAlignment="Right" Grid.Column="1"><Run Text="Estimeated remainging bal"/><Run Text="a"/><Run Text="nce:"/></TextBlock>
+                <TextBlock Height="17.538" Margin="0,23.668,1.885,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF8392A1" TextAlignment="Right" HorizontalAlignment="Right" Grid.Column="1"><Run Text="Estimated remaining balance:"/></TextBlock>
             </Grid>
             <!--
             <Grid x:Name="formTransaction" Grid.RowSpan="4">
