@@ -11,7 +11,7 @@
                    TextWrapping="Wrap" Foreground="#FF0C1E3E" FontSize="16" Height="21.713" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <TextBlock Text="Enter your private private passpharase to sign the transaction."
                    TextWrapping="Wrap" Foreground="#FF0C1E3E" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="11.333"/>
-        <PasswordBox  x:Name="password" HorizontalAlignment="Left" Height="45.673" Margin="0,30,0,20" VerticalAlignment="Top" Width="310" Background="Transparent" BorderBrush="{x:Null}" FontSize="14" Foreground="#FF848484" Padding="5,12,5,0" SelectionBrush="{x:Null}"/>
+        <PasswordBox x:Name="PassphraseBox" HorizontalAlignment="Stretch" Height="40" Margin="0,30,0,20" VerticalAlignment="Top" Background="Transparent" BorderBrush="{x:Null}" FontSize="14" Foreground="#FF848484" Padding="5,12,5,0" SelectionBrush="{x:Null}"/>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="SIGN" Height="36" Style="{DynamicResource ButtonBlue}" Foreground="#FF132F4B" VerticalAlignment="Top" Margin="0 0 10 0"/>
             <Button Content="Cancel" Height="36" Style="{DynamicResource ButtonWhite}" Foreground="#FF132F4B" VerticalAlignment="Top"/>
