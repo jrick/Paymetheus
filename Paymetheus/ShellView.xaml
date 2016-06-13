@@ -144,5 +144,46 @@
         </Grid>
         <!--<Frame Name="ContentHolder" Content="Frame" Grid.Column="1" Source="{Binding SelectedView, FallbackValue=/Paymetheus;component/Overview.xaml}" NavigationUIVisibility="Hidden" />-->
         <Frame Name="ContentHolder" Content="Frame" Grid.Column="1" Source="{Binding SelectedView}" NavigationUIVisibility="Hidden" />
+
+        <UserControl Grid.ColumnSpan="2" Panel.ZIndex="1000" KeyboardNavigation.TabNavigation="Cycle" KeyboardNavigation.ControlTabNavigation="Cycle">
+            <UserControl.Style>
+                <Style TargetType="UserControl">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding VisibleDialogContent}" Value="{x:Null}">
+                            <Setter Property="Visibility" Value="Hidden"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </UserControl.Style>
+            <UserControl.Background>
+                <SolidColorBrush Color="#FF132F4B" Opacity="0.5"/>
+            </UserControl.Background>
+            <Border CornerRadius="10,10,10,10" Background="#FFE9EDF1" Width="340" Height="215">
+                <UserControl VerticalAlignment="Center">
+                    <UserControl.Background>
+                        <SolidColorBrush Color="#FFE9EDF1"/>
+                    </UserControl.Background>
+                    <ContentControl Content="{Binding VisibleDialogContent}" KeyboardNavigation.IsTabStop="False" Margin="0 6"/>
+                </UserControl>                
+            </Border>
+        </UserControl>
+
+        <!--
+        <Grid x:Name="dialog" DataContext="{Binding CurrentDialog}">
+            <Rectangle Fill="#FF132F4B" Opacity="0.5"/>
+            <Grid Margin="0" Width="340" Height="215">
+                <Rectangle Fill="#FFE9EDF1" HorizontalAlignment="Left" Height="215" Margin="0,0,-17,0" VerticalAlignment="Top" Width="340" RadiusX="10" RadiusY="10"/>
+                <TextBlock Text="{Binding DialogHeader, FallbackValue=Header}"
+                           Margin="18.166,14.833,0,0" TextWrapping="Wrap" Foreground="#FF0C1E3E" FontSize="16" Height="21.713" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <TextBlock Text="{Binding D, FallbackValue=Extra text}"
+                           Margin="18.166,44.833,-3.443,0" TextWrapping="Wrap" Foreground="#FF0C1E3E" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="11.333"/>
+                <Rectangle Fill="#FFF4F4F5" Margin="16.443,79.233,13.557,90.767" RadiusY="5" RadiusX="5"/>
+
+                <PasswordBox  x:Name="password" HorizontalAlignment="Left" Height="45.673" Margin="16.443,78.56,0,0" VerticalAlignment="Top" Width="310" Background="Transparent" BorderBrush="{x:Null}" FontSize="14" Foreground="#FF848484" Padding="5,12,5,0" SelectionBrush="{x:Null}"/>
+                <Button Content="SIGN" Height="36" Margin="90,142,180,0" Style="{DynamicResource ButtonBlue}" Foreground="#FF132F4B" VerticalAlignment="Top"/>
+                <Button Content="Cancel" Height="36" Margin="173,142,84,0" Style="{DynamicResource ButtonWhite}" Foreground="#FF132F4B" VerticalAlignment="Top"/>
+            </Grid>
+        </Grid>
+        -->
     </Grid>
 </UserControl>

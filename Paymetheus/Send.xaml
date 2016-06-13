@@ -328,8 +328,6 @@
                                 <GradientStop Color="White" Offset="1"/>
                             </LinearGradientBrush>
                         </ComboBox.Background>
-                        <ComboBoxItem Content="Primary Account" IsSelected="True"/>
-                        <ComboBoxItem Content="Second Account"/>
                     </ComboBox>
                     <Image Margin="8.334,14.713,11.666,42.272" Source="Images/pm - icons - accounts.png" Stretch="Fill" Grid.Column="1"/>
                     <TextBlock Margin="15,48.335,0,0" TextWrapping="Wrap" Foreground="#FF0C1E3E" FontSize="16" Height="18.939" VerticalAlignment="Top" Text="To:" TextAlignment="Right"/>
@@ -367,21 +365,6 @@
                 <TextBlock Height="16.834" TextWrapping="Wrap" Text="Estimated fee:" VerticalAlignment="Top" Foreground="#FF8392A1" TextAlignment="Right" HorizontalAlignment="Right" Margin="0,0,1.997,0" Grid.Column="1"/>
                 <TextBlock Height="17.538" Margin="0,23.668,1.885,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF8392A1" TextAlignment="Right" HorizontalAlignment="Right" Grid.Column="1"><Run Text="Estimated remaining balance:"/></TextBlock>
             </Grid>
-            <!--
-            <Grid x:Name="formTransaction" Grid.RowSpan="4">
-                <Rectangle Fill="#FF132F4B" Opacity="0.5"/>
-                <Grid Margin="0" Width="340" Height="215">
-                    <Rectangle Fill="#FFE9EDF1" HorizontalAlignment="Left" Height="215" Margin="0,0,-17,0" VerticalAlignment="Top" Width="340" RadiusX="10" RadiusY="10"/>
-                    <TextBlock Margin="18.166,14.833,0,0" TextWrapping="Wrap" Foreground="#FF0C1E3E" FontSize="16" Height="21.713" VerticalAlignment="Top" Text="Sign transaction" HorizontalAlignment="Left"/>
-                    <TextBlock Margin="18.166,44.833,-3.443,0" TextWrapping="Wrap" Foreground="#FF0C1E3E" VerticalAlignment="Top" Text="Enter your private private passpharase to sign the transaction." HorizontalAlignment="Left" FontSize="11.333"/>
-                    <Rectangle Fill="#FFF4F4F5" Margin="16.443,79.233,13.557,90.767" RadiusY="5" RadiusX="5"/>
-
-                    <PasswordBox  x:Name="password" HorizontalAlignment="Left" Height="45.673" Margin="16.443,78.56,0,0" VerticalAlignment="Top" Width="310" Background="Transparent" BorderBrush="{x:Null}" FontSize="14" Foreground="#FF848484" Padding="5,12,5,0" SelectionBrush="{x:Null}"/>
-                    <Button Content="SIGN" Height="36" Margin="90,142,180,0" Style="{DynamicResource ButtonBlue}" Foreground="#FF132F4B" VerticalAlignment="Top"/>
-                    <Button Content="Cancel" Height="36" Margin="173,142,84,0" Style="{DynamicResource ButtonWhite}" Foreground="#FF132F4B" VerticalAlignment="Top"/>
-                </Grid>
-            </Grid>
-            -->
         </Grid>
     </ScrollViewer>
 </Page>
