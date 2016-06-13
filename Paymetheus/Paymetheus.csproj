@@ -156,6 +156,9 @@
     <Compile Include="Framework\SingletonViewModelLocator.cs" />
     <Compile Include="Framework\ValueConverters\OneWayConverter.cs" />
     <Compile Include="AccountToNameConverter.cs" />
+    <Compile Include="SignTransactionDialog.xaml.cs">
+      <DependentUpon>SignTransactionDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="AssemblyResources.cs" />
     <Compile Include="Framework\AttachableProperties.cs" />
@@ -309,6 +312,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ConsensusServerConnectionOptionsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SignTransactionDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

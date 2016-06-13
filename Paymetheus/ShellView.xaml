@@ -159,11 +159,11 @@
                 <SolidColorBrush Color="#FF132F4B" Opacity="0.5"/>
             </UserControl.Background>
             <Border CornerRadius="10,10,10,10" Background="#FFE9EDF1" Width="340" Height="215">
-                <UserControl VerticalAlignment="Center">
+                <UserControl VerticalAlignment="Center" Padding="20">
                     <UserControl.Background>
                         <SolidColorBrush Color="#FFE9EDF1"/>
                     </UserControl.Background>
-                    <ContentControl Content="{Binding VisibleDialogContent}" KeyboardNavigation.IsTabStop="False" Margin="0 6"/>
+                    <ContentControl Content="{Binding VisibleDialogContent}" KeyboardNavigation.IsTabStop="False"/>
                 </UserControl>                
             </Border>
         </UserControl>
