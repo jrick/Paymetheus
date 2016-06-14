@@ -293,15 +293,8 @@
             </Grid.ColumnDefinitions>
             <TextBlock HorizontalAlignment="Left" Margin="40,18.244,0,0" TextWrapping="Wrap" Foreground="#FF5A6E81" FontSize="19.333" Width="159.49" Height="25.713" VerticalAlignment="Top"><Run Text="Send"/><LineBreak/><Run/></TextBlock>
             <Grid Margin="272.585,145,272.585,101.389" Grid.Row="3"/>
-            <TextBlock HorizontalAlignment="Left" Margin="40,10.102,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF0C1E3E" FontSize="10.667" RenderTransformOrigin="0.5,0.5" Width="338.783" Height="28.373">
-                <TextBlock.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="-0.045"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </TextBlock.RenderTransform><Run Text="Decred addresses always begin with letter "/><Run FontWeight="Bold" Text="D"/><Run Text=" contain 26-35 alphanumeric characters "/><Run FontWeight="Bold" Text="e.g. "/><Run Foreground="#FF828C9D" Text="DxxxXXXXXXXXXXXXXXXXXDXXx0XXx0X"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="40,10.102,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF0C1E3E" FontSize="11" MaxWidth="338.783"><Run Text="Decred addresses always begin with letter "/>
+                <Run FontWeight="Bold" Text="D"/><Run Text=" contain 26-35 alphanumeric characters "/><Run FontWeight="Bold" Text="e.g. "/><Run Foreground="#FF828C9D" Text="DxxxXXXXXXXXXXXXXXXXXDXXx0XXx0X"/></TextBlock>
             <Grid Margin="91,18,60.17,0" Grid.Row="2" VerticalAlignment="Top" Height="68">
                 <TextBlock x:Name="lblCode" Height="66" Margin="26,12.059,0,0" TextWrapping="Wrap" Text="TsVmeFSracV2bpTQJs" VerticalAlignment="Top" Foreground="#FF132F4B" FontSize="32" TextAlignment="Center" Visibility="Collapsed"/>
             </Grid>
