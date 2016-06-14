@@ -82,7 +82,7 @@
                 <RowDefinition/>
                 <RowDefinition Height="80"/>
             </Grid.RowDefinitions>
-            <Image Margin="15.333,22.667,97.667,17.333" Source="Images/paymetheus - 137x20.png" Stretch="Fill"/>
+            <Image Margin="15.333,22.667,97.667,17.333" Source="Images/paymetheus - 137x20.png"/>
             <ListBox Grid.Row="1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Style="{DynamicResource ListBoxStyle}">
                 <ListBox.Resources>
                     <SolidColorBrush x:Key="ListBox.Static.Background" Color="#FFFFFFFF"/>
@@ -137,10 +137,24 @@
             <Rectangle Fill="#FF69D5F7" HorizontalAlignment="Center" Height="1" Margin="20,4.166,20,0" Grid.Row="2" Stroke="{x:Null}" VerticalAlignment="Top" Width="210"/>
             <TextBlock HorizontalAlignment="Left" Margin="20,15.5,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Total Balance" VerticalAlignment="Top" FontSize="10" Foreground="#FF69D5F7"/>
             <local:AmountLabel Value="{Binding Path=SynchronizerViewModel.TotalBalance, Source={StaticResource ViewModelLocator}}" HorizontalAlignment="Right" Grid.Row="2" Margin="0,15,20,28" FontSizeWhole="10" FontSizeDecimal="10" ForegroundWhole="#FF2ED8a3" ForegroundDecimal="#FF2ED8a3"/>
-            <Rectangle Fill="#FF09182D" HorizontalAlignment="Left" Margin="0,34.667,0,0" Grid.Row="2" Stroke="{x:Null}" Width="250" Height="40"/>
-            <TextBlock HorizontalAlignment="Left" Margin="20,52,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Latest Block" VerticalAlignment="Top" FontSize="10" Foreground="#FF69D5F7" RenderTransformOrigin="0.5,2.59"/>
-            <TextBlock HorizontalAlignment="Left" Margin="80,52,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Path=SynchronizerViewModel.SyncedBlockHeight, StringFormat='{}{0:#,0}', FallbackValue='0', Source={StaticResource ViewModelLocator}}" VerticalAlignment="Top" FontSize="10" Foreground="#FF2ED8A3" Width="72"/>
-            <TextBlock HorizontalAlignment="Right" Margin="0,52,19,0" Grid.Row="2" TextWrapping="Wrap" Text="1 min ago" VerticalAlignment="Top" FontSize="10" Foreground="#FF69D5F7" TextAlignment="Right"/>
+            <Border Margin="0,34.667,0,0" Grid.Row="2" Background="#FF09182D" Padding="20 15">
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="FontSize" Value="10"/>
+                        </Style>
+                    </Grid.Resources>
+                    <TextBlock Grid.Column="0" Text="Latest Block">
+                        <Run Text="Latest block:" Foreground="#FF69D5F7" />
+                        <Run Text="{Binding Path=SynchronizerViewModel.SyncedBlockHeight, StringFormat='{}{0:#,0}', FallbackValue='0', Source={StaticResource ViewModelLocator}}" Foreground="#FF2ED8A3"/>
+                    </TextBlock>
+                    <TextBlock Grid.Column="1" Text="1 min ago" Foreground="#FF69D5F7" TextAlignment="Right"/>
+                </Grid>
+            </Border>
         </Grid>
         <!--<Frame Name="ContentHolder" Content="Frame" Grid.Column="1" Source="{Binding SelectedView, FallbackValue=/Paymetheus;component/Overview.xaml}" NavigationUIVisibility="Hidden" />-->
         <Frame Name="ContentHolder" Content="Frame" Grid.Column="1" Source="{Binding SelectedView}" NavigationUIVisibility="Hidden" />
