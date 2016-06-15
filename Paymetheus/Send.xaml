@@ -306,34 +306,45 @@
             <Border BorderBrush="#FFD3D9DF" BorderThickness="0,1" Margin="40,0,0,0" Grid.Row="2" Background="White">
                 <Grid Margin="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="71.9845161290322"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="85"/>
+                        <ColumnDefinition Width="80"/>
                         <ColumnDefinition Width="35"/>
                         <ColumnDefinition Width="250"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="200"/>
                     </Grid.ColumnDefinitions>
-                    <Rectangle Grid.ColumnSpan="4" Fill="#FFDEE0E1" Height="1" Margin="1,69,0,0" VerticalAlignment="Top" Grid.Column="2"/>
-                    <TextBlock Margin="15,10,0,0" TextWrapping="Wrap" Foreground="#FF0C1E3E" FontSize="16" Height="21.713" VerticalAlignment="Top" Text="From:" TextAlignment="Right"/>
-                    <ComboBox Margin="0.514,10,0,0" VerticalAlignment="Top" Style="{DynamicResource ComboBoxStyleWithCurrency}" Height="23.356" Foreground="#FF2970FF" ItemContainerStyle="{DynamicResource ComboBoxItemStyle}" Grid.Column="2">
-                        <ComboBox.Background>
-                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                                <GradientStop Color="#FFF0F0F0" Offset="0"/>
-                                <GradientStop Color="White" Offset="1"/>
-                            </LinearGradientBrush>
-                        </ComboBox.Background>
-                    </ComboBox>
-                    <Image Margin="8.334,14.713,11.666,42.272" Source="Images/pm - icons - accounts.png" Stretch="Fill" Grid.Column="1"/>
-                    <TextBlock Margin="15,48.335,0,0" TextWrapping="Wrap" Foreground="#FF0C1E3E" FontSize="16" Height="18.939" VerticalAlignment="Top" Text="To:" TextAlignment="Right"/>
-                    <TextBox Margin="0,50.502,0,0" Grid.Column="2"/>
-                    <Button Content="+" Height="17.083" Margin="8.335,50.191,9.25,0" Foreground="#FF132F4B" VerticalAlignment="Top" Grid.Column="1" FontSize="10.667"/>
-                    <TextBlock Margin="0,48.335,20,0" TextWrapping="Wrap" Foreground="#FF0C1E3E" FontSize="16" Height="20.665" VerticalAlignment="Top" Text="Amount:" TextAlignment="Right" Grid.Column="4" HorizontalAlignment="Right"/>
-                    <local:AmountLabel Grid.Column="5" HorizontalAlignment="Right" Margin="0,0,40,2.985" VerticalAlignment="Bottom" FontSizeWhole="16" FontSizeDecimal="16" FontWeightWhole="Bold"/>
-                    <ListBox HorizontalContentAlignment="Stretch" x:Name="additionalOutputs" HorizontalAlignment="Stretch" BorderBrush="{x:Null}" ItemContainerStyle="{DynamicResource ListBoxItemStyle2}" Grid.ColumnSpan="6" Grid.Row="1" Margin="0"/>
+                    <Grid.Resources>
+                        <Style TargetType="{x:Type ComboBox}">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                                        <GradientStop Color="White" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Grid.Resources>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" TextAlignment="Right" Text="From:" FontSize="16" Foreground="#FF0C1E3E"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" TextAlignment="Right" Text="To:" FontSize="16" Foreground="#FF0C1E3E"/>
+                    
+                    <Image Grid.Row="0" Grid.Column="1" Source="Images/pm - icons - accounts.png" Stretch="UniformToFill"/>
+                    <Button Grid.Row="1" Grid.Column="1" Content="+" Height="20" Width="20"/>
+
+                    <ComboBox Grid.Row="0" Grid.Column="2" Style="{DynamicResource ComboBoxStyleWithCurrency}" Foreground="#FF2970FF" ItemContainerStyle="{DynamicResource ComboBoxItemStyle}"/>
+                    <TextBox Grid.Row="1" Grid.Column="2"/>
+
+                    <TextBlock Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" Text="Amount:" FontSize="16" Foreground="#FF0C1E3E" />
+                    <local:AmountLabel Margin="0 0 40 0" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSizeWhole="16" FontSizeDecimal="16" FontWeightWhole="Bold"/>
+
+                    <Rectangle Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="4" Fill="#FFDEE0E1" Height="1" VerticalAlignment="Bottom"/>
+                    
+                    <ListBox Grid.Row="2" Grid.ColumnSpan="5" HorizontalContentAlignment="Stretch" x:Name="additionalOutputs" HorizontalAlignment="Stretch" BorderBrush="{x:Null}" ItemContainerStyle="{DynamicResource ListBoxItemStyle2}" Margin="0"/>
                 </Grid>
             </Border>
             <Grid Margin="40,13.794,40,216.793" Grid.Row="3" VerticalAlignment="Top">
@@ -360,7 +371,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Button Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Send" Style="{DynamicResource ButtonBlue}" Foreground="#FF132F4B"/>
+                <Button Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Send" Style="{DynamicResource ButtonBlue}"/>
                 <CheckBox Grid.Row="0" Grid.Column="1" Content="Sign" HorizontalAlignment="Left" Style="{StaticResource CheckBoxStyle}" />
                 <CheckBox Grid.Row="1" Grid.Column="1" Content="Publish" HorizontalAlignment="Left" Style="{StaticResource CheckBoxStyle}" />
                 <TextBlock Grid.Row="0" Grid.Column="2" Text="Estimated fee:" HorizontalAlignment="Right" Style="{StaticResource TextBlockStyle}" />
