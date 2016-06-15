@@ -338,6 +338,13 @@
                 </Grid>
             </Border>
             <Grid Margin="40,13.794,29.178,216.793" Grid.Row="3" VerticalAlignment="Top">
+                <Grid.Resources>
+                    <Style TargetType="{x:Type local:AmountLabel}">
+                        <Setter Property="FontWeightWhole" Value="Bold"/>
+                        <Setter Property="FontSizeWhole" Value="12"/>
+                        <Setter Property="FontSizeDecimal" Value="12"/>
+                    </Style>
+                </Grid.Resources>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="80"/>
                     <ColumnDefinition Width="80"/>
