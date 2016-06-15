@@ -281,7 +281,7 @@
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
 
-        <Grid x:Name="LayoutRoot" Background="#FFF9FBFC">
+        <Grid Background="#FFF9FBFC">
             <Grid.RowDefinitions>
                 <RowDefinition Height="46"/>
                 <RowDefinition Height="46"/>
@@ -296,7 +296,7 @@
             <TextBlock HorizontalAlignment="Left" Margin="40,10.102,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF0C1E3E" FontSize="11" MaxWidth="338.783">
                 <Run Text="Decred addresses always begin with letter"/>
                 <Run FontWeight="Bold" Text="D"/>
-                <Run Text="contain 26-35 alphanumeric characters"/>
+                <Run Text="and contain 26-35 alphanumeric characters"/>
                 <Run FontWeight="Bold" Text="e.g."/>
                 <Run Foreground="#FF828C9D" Text="DxxxXXXXXXXXXXXXXXXXXDXXx0XXx0X"/>
             </TextBlock>
@@ -330,7 +330,7 @@
                     <Image Margin="8.334,14.713,11.666,42.272" Source="Images/pm - icons - accounts.png" Stretch="Fill" Grid.Column="1"/>
                     <TextBlock Margin="15,48.335,0,0" TextWrapping="Wrap" Foreground="#FF0C1E3E" FontSize="16" Height="18.939" VerticalAlignment="Top" Text="To:" TextAlignment="Right"/>
                     <TextBox Margin="0,50.502,0,0" Grid.Column="2"/>
-                    <Button Content="+" Height="17.083" Margin="8.335,50.191,9.25,0" Style="{DynamicResource ButtonStyleSmall}" Foreground="#FF132F4B" VerticalAlignment="Top" Grid.Column="1" FontSize="10.667"/>
+                    <Button Content="+" Height="17.083" Margin="8.335,50.191,9.25,0" Foreground="#FF132F4B" VerticalAlignment="Top" Grid.Column="1" FontSize="10.667"/>
                     <TextBlock Margin="0,48.335,20,0" TextWrapping="Wrap" Foreground="#FF0C1E3E" FontSize="16" Height="20.665" VerticalAlignment="Top" Text="Amount:" TextAlignment="Right" Grid.Column="4" HorizontalAlignment="Right"/>
                     <TextBlock Margin="0,0,58.165,2.985" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="#FF0C1E3E" TextAlignment="Right" Grid.Column="5" HorizontalAlignment="Right" FontSize="16" Width="120"><Run FontWeight="Bold" Text="1,444"/><Run Text="."/><Run Text="45243009"/></TextBlock>
                     <TextBlock Margin="0,0,18.511,2.985" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="#FF0C1E3E" TextAlignment="Right" HorizontalAlignment="Right" Grid.Column="5" FontSize="16" Width="40"><Run Text="DC"/><Run Text="R"/></TextBlock>
@@ -339,20 +339,22 @@
             </Border>
             <Grid Margin="40,13.794,29.178,216.793" Grid.Row="3" VerticalAlignment="Top">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="160"/>
-                    <ColumnDefinition Width="207*"/>
-                    <ColumnDefinition Width="53*"/>
-                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <Button Content="Send" Height="35.5" Margin="0,7.206,91.751,0" Style="{DynamicResource ButtonBlue}" Foreground="#FF132F4B" VerticalAlignment="Top"/>
-                <CheckBox Content="Sign" HorizontalAlignment="Left" Margin="105.156,9.456,0,0" VerticalAlignment="Top" Style="{DynamicResource CheckBoxStyle}" Foreground="#FF828C9D" FontSize="10.667" RenderTransformOrigin="-0.064,0.182"/>
-                <CheckBox Content="Publish" HorizontalAlignment="Left" Margin="105.156,26.108,0,0" VerticalAlignment="Top" Style="{DynamicResource CheckBoxStyle}" Foreground="#FF828C9D" FontSize="10.667"/>
-                <TextBlock Height="16.834" Margin="2.503,0,26.322,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF0C1E3E" TextAlignment="Right" Grid.Column="3"><Run FontWeight="Bold" Text="0"/><Run Text=".2006"/></TextBlock>
-                <TextBlock Height="15" Margin="0.325,23.668,26.322,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF0C1E3E" TextAlignment="Right" Grid.Column="3"><Run FontWeight="Bold" Text="1,444"/><Run Text="."/><Run Text="45243009"/></TextBlock>
-                <TextBlock Height="16.834" TextWrapping="Wrap" Text="DCR" VerticalAlignment="Top" Foreground="#FF0C1E3E" TextAlignment="Right" HorizontalAlignment="Right" Grid.Column="3"/>
-                <TextBlock Height="15" Margin="0,23.668,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF0C1E3E" TextAlignment="Right" HorizontalAlignment="Right" Grid.Column="3"><Run Text="DC"/><Run Text="R"/></TextBlock>
-                <TextBlock Height="16.834" TextWrapping="Wrap" Text="Estimated fee:" VerticalAlignment="Top" Foreground="#FF8392A1" TextAlignment="Right" HorizontalAlignment="Right" Margin="0,0,1.997,0" Grid.Column="1"/>
-                <TextBlock Height="17.538" Margin="0,23.668,1.885,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF8392A1" TextAlignment="Right" HorizontalAlignment="Right" Grid.Column="1"><Run Text="Estimated remaining balance:"/></TextBlock>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Send" Style="{DynamicResource ButtonBlue}" Foreground="#FF132F4B"/>
+                <CheckBox Grid.Row="0" Grid.Column="1" Content="Sign" HorizontalAlignment="Left" Style="{DynamicResource CheckBoxStyle}" Foreground="#FF828C9D"/>
+                <CheckBox Grid.Row="1" Grid.Column="1" Content="Publish" HorizontalAlignment="Left" Style="{DynamicResource CheckBoxStyle}" Foreground="#FF828C9D"/>
+                <TextBlock Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" Text="Estimated fee:" VerticalAlignment="Top" Foreground="#FF8392A1" HorizontalAlignment="Right"/>
+                <TextBlock Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" Text="Estimated remaining balance:" VerticalAlignment="Top" Foreground="#FF8392A1" HorizontalAlignment="Right"/>
+                <local:AmountLabel Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" Value="{Binding EstimatedFee}"/>
+                <local:AmountLabel Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" Value="{Binding EstimatedRemainingBalance}"/>
             </Grid>
         </Grid>
     </ScrollViewer>
