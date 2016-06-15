@@ -329,16 +329,7 @@
                     </ComboBox>
                     <Image Margin="8.334,14.713,11.666,42.272" Source="Images/pm - icons - accounts.png" Stretch="Fill" Grid.Column="1"/>
                     <TextBlock Margin="15,48.335,0,0" TextWrapping="Wrap" Foreground="#FF0C1E3E" FontSize="16" Height="18.939" VerticalAlignment="Top" Text="To:" TextAlignment="Right"/>
-                    <ComboBox Margin="0,50.502,0,0" VerticalAlignment="Top" Style="{DynamicResource ComboBoxStyleWithCurrency}" Height="20.998" Foreground="#FF2970FF" ItemContainerStyle="{DynamicResource ComboBoxItemStyle}" Grid.Column="2">
-                        <ComboBox.Background>
-                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                                <GradientStop Color="#FFF0F0F0" Offset="0"/>
-                                <GradientStop Color="White" Offset="1"/>
-                            </LinearGradientBrush>
-                        </ComboBox.Background>
-                        <ComboBoxItem Content="Primary Account" IsSelected="True"/>
-                        <ComboBoxItem Content="Second Account"/>
-                    </ComboBox>
+                    <TextBox Margin="0,50.502,0,0" Grid.Column="2"/>
                     <Button Content="+" Height="17.083" Margin="8.335,50.191,9.25,0" Style="{DynamicResource ButtonStyleSmall}" Foreground="#FF132F4B" VerticalAlignment="Top" Grid.Column="1" FontSize="10.667"/>
                     <TextBlock Margin="0,48.335,20,0" TextWrapping="Wrap" Foreground="#FF0C1E3E" FontSize="16" Height="20.665" VerticalAlignment="Top" Text="Amount:" TextAlignment="Right" Grid.Column="4" HorizontalAlignment="Right"/>
                     <TextBlock Margin="0,0,58.165,2.985" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="#FF0C1E3E" TextAlignment="Right" Grid.Column="5" HorizontalAlignment="Right" FontSize="16" Width="120"><Run FontWeight="Bold" Text="1,444"/><Run Text="."/><Run Text="45243009"/></TextBlock>
