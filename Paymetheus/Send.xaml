@@ -315,7 +315,7 @@
                         <ColumnDefinition Width="250"/>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="80"/>
-                        <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="200"/>
                     </Grid.ColumnDefinitions>
                     <Rectangle Grid.ColumnSpan="4" Fill="#FFDEE0E1" Height="1" Margin="1,69,0,0" VerticalAlignment="Top" Grid.Column="2"/>
                     <TextBlock Margin="15,10,0,0" TextWrapping="Wrap" Foreground="#FF0C1E3E" FontSize="16" Height="21.713" VerticalAlignment="Top" Text="From:" TextAlignment="Right"/>
@@ -332,9 +332,8 @@
                     <TextBox Margin="0,50.502,0,0" Grid.Column="2"/>
                     <Button Content="+" Height="17.083" Margin="8.335,50.191,9.25,0" Foreground="#FF132F4B" VerticalAlignment="Top" Grid.Column="1" FontSize="10.667"/>
                     <TextBlock Margin="0,48.335,20,0" TextWrapping="Wrap" Foreground="#FF0C1E3E" FontSize="16" Height="20.665" VerticalAlignment="Top" Text="Amount:" TextAlignment="Right" Grid.Column="4" HorizontalAlignment="Right"/>
-                    <TextBlock Margin="0,0,58.165,2.985" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="#FF0C1E3E" TextAlignment="Right" Grid.Column="5" HorizontalAlignment="Right" FontSize="16" Width="120"><Run FontWeight="Bold" Text="1,444"/><Run Text="."/><Run Text="45243009"/></TextBlock>
-                    <TextBlock Margin="0,0,40,2.985" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="#FF0C1E3E" TextAlignment="Right" HorizontalAlignment="Right" Grid.Column="5" FontSize="16" Width="40"><Run Text="DC"/><Run Text="R"/></TextBlock>
-                    <ListBox HorizontalContentAlignment="Stretch" x:Name="lstRecentActivity" HorizontalAlignment="Stretch" BorderBrush="{x:Null}" ItemContainerStyle="{DynamicResource ListBoxItemStyle2}" Grid.ColumnSpan="6" Grid.Row="1" Margin="0"/>
+                    <local:AmountLabel Grid.Column="5" HorizontalAlignment="Right" Margin="0,0,40,2.985" VerticalAlignment="Bottom" FontSizeWhole="16" FontSizeDecimal="16" FontWeightWhole="Bold"/>
+                    <ListBox HorizontalContentAlignment="Stretch" x:Name="additionalOutputs" HorizontalAlignment="Stretch" BorderBrush="{x:Null}" ItemContainerStyle="{DynamicResource ListBoxItemStyle2}" Grid.ColumnSpan="6" Grid.Row="1" Margin="0"/>
                 </Grid>
             </Border>
             <Grid Margin="40,13.794,40,216.793" Grid.Row="3" VerticalAlignment="Top">
