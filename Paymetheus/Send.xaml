@@ -333,21 +333,27 @@
                     <Button Content="+" Height="17.083" Margin="8.335,50.191,9.25,0" Foreground="#FF132F4B" VerticalAlignment="Top" Grid.Column="1" FontSize="10.667"/>
                     <TextBlock Margin="0,48.335,20,0" TextWrapping="Wrap" Foreground="#FF0C1E3E" FontSize="16" Height="20.665" VerticalAlignment="Top" Text="Amount:" TextAlignment="Right" Grid.Column="4" HorizontalAlignment="Right"/>
                     <TextBlock Margin="0,0,58.165,2.985" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="#FF0C1E3E" TextAlignment="Right" Grid.Column="5" HorizontalAlignment="Right" FontSize="16" Width="120"><Run FontWeight="Bold" Text="1,444"/><Run Text="."/><Run Text="45243009"/></TextBlock>
-                    <TextBlock Margin="0,0,18.511,2.985" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="#FF0C1E3E" TextAlignment="Right" HorizontalAlignment="Right" Grid.Column="5" FontSize="16" Width="40"><Run Text="DC"/><Run Text="R"/></TextBlock>
+                    <TextBlock Margin="0,0,40,2.985" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="#FF0C1E3E" TextAlignment="Right" HorizontalAlignment="Right" Grid.Column="5" FontSize="16" Width="40"><Run Text="DC"/><Run Text="R"/></TextBlock>
                     <ListBox HorizontalContentAlignment="Stretch" x:Name="lstRecentActivity" HorizontalAlignment="Stretch" BorderBrush="{x:Null}" ItemContainerStyle="{DynamicResource ListBoxItemStyle2}" Grid.ColumnSpan="6" Grid.Row="1" Margin="0"/>
                 </Grid>
             </Border>
-            <Grid Margin="40,13.794,29.178,216.793" Grid.Row="3" VerticalAlignment="Top">
+            <Grid Margin="40,13.794,40,216.793" Grid.Row="3" VerticalAlignment="Top">
                 <Grid.Resources>
                     <Style TargetType="{x:Type local:AmountLabel}">
                         <Setter Property="FontWeightWhole" Value="Bold"/>
                         <Setter Property="FontSizeWhole" Value="12"/>
                         <Setter Property="FontSizeDecimal" Value="12"/>
                     </Style>
+                    <Style x:Key="CheckBoxStyle" TargetType="{x:Type CheckBox}">
+                        <Setter Property="Foreground" Value="#FF8392A1"/>
+                    </Style>
+                    <Style x:Key="TextBlockStyle" TargetType="{x:Type TextBlock}">
+                        <Setter Property="Foreground" Value="#FF8392A1"/>
+                    </Style>
                 </Grid.Resources>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="80"/>
-                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="160"/>
                 </Grid.ColumnDefinitions>
@@ -356,10 +362,10 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Button Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Send" Style="{DynamicResource ButtonBlue}" Foreground="#FF132F4B"/>
-                <CheckBox Grid.Row="0" Grid.Column="1" Content="Sign" HorizontalAlignment="Left" Style="{DynamicResource CheckBoxStyle}" Foreground="#FF828C9D"/>
-                <CheckBox Grid.Row="1" Grid.Column="1" Content="Publish" HorizontalAlignment="Left" Style="{DynamicResource CheckBoxStyle}" Foreground="#FF828C9D"/>
-                <TextBlock Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" Text="Estimated fee:" VerticalAlignment="Top" Foreground="#FF8392A1" HorizontalAlignment="Right"/>
-                <TextBlock Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" Text="Estimated remaining balance:" VerticalAlignment="Top" Foreground="#FF8392A1" HorizontalAlignment="Right"/>
+                <CheckBox Grid.Row="0" Grid.Column="1" Content="Sign" HorizontalAlignment="Left" Style="{StaticResource CheckBoxStyle}" />
+                <CheckBox Grid.Row="1" Grid.Column="1" Content="Publish" HorizontalAlignment="Left" Style="{StaticResource CheckBoxStyle}" />
+                <TextBlock Grid.Row="0" Grid.Column="2" Text="Estimated fee:" HorizontalAlignment="Right" Style="{StaticResource TextBlockStyle}" />
+                <TextBlock Grid.Row="1" Grid.Column="2" Text="Estimated remaining balance:" HorizontalAlignment="Right" Style="{StaticResource TextBlockStyle}" />
                 <local:AmountLabel Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" Value="{Binding EstimatedFee}"/>
                 <local:AmountLabel Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" Value="{Binding EstimatedRemainingBalance}"/>
             </Grid>
