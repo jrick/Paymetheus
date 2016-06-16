@@ -281,17 +281,17 @@
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
 
-        <Grid Margin="40 0 0 0">
+        <Grid Margin="40 60 0 0">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="46"/>
-                <RowDefinition Height="46"/>
-                <RowDefinition Height="86*"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="371*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBlock HorizontalAlignment="Left" Margin="0,18.244,0,0" TextWrapping="Wrap" Foreground="#FF5A6E81" FontSize="19.333" Width="159.49" Height="25.713" VerticalAlignment="Top"><Run Text="Send"/><LineBreak/><Run/></TextBlock>
+            <TextBlock Foreground="#FF5A6E81" FontSize="20" Text="Create transaction"/>
             <Grid Margin="272.585,145,272.585,101.389" Grid.Row="3"/>
             <TextBlock HorizontalAlignment="Left" Margin="0,10.102,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF0C1E3E" FontSize="11" MaxWidth="338.783">
                 <Run Text="Decred addresses always begin with letter"/>
@@ -300,10 +300,9 @@
                 <Run FontWeight="Bold" Text="e.g."/>
                 <Run Foreground="#FF828C9D" Text="DxxxXXXXXXXXXXXXXXXXXDXXx0XXx0X"/>
             </TextBlock>
-            <Border BorderBrush="#FFD3D9DF" BorderThickness="0,1" Grid.Row="2" Background="White">
+            <Border BorderBrush="#FFD3D9DF" BorderThickness="0,1" Grid.Row="2" Background="White" Padding="0 20">
                 <Grid Margin="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
@@ -325,23 +324,41 @@
                                 </Setter.Value>
                             </Setter>
                         </Style>
+
+                        <DataTemplate x:Key="PendingOutput">
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Remove"
+                                        Command="{Binding DataContext.RemovePendingOutput, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"
+                                        CommandParameter="{Binding}"
+                                        Margin="6 2" Padding="10 2"/>
+                                <ComboBox SelectedIndex="0" Width="120" Margin="6 2">
+                                    <ComboBoxItem Content="Address"/>
+                                    <ComboBoxItem Content="Script (hex)"/>
+                                </ComboBox>
+                                <TextBox Text="{Binding Destination}" Width="340" Margin="6 2" Padding="2 2"/>
+                                <TextBox Text="{Binding OutputAmount}"
+                                         Width="140" Padding="2 2" Margin="6 2" HorizontalContentAlignment="Right"
+                                         FontFamily="Consolas" />
+                            </StackPanel>
+                        </DataTemplate>
                     </Grid.Resources>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" TextAlignment="Right" Text="From:" FontSize="16" Foreground="#FF0C1E3E"/>
                     <TextBlock Grid.Row="1" Grid.Column="0" TextAlignment="Right" Text="To:" FontSize="16" Foreground="#FF0C1E3E"/>
-                    
+
                     <Image Grid.Row="0" Grid.Column="1" Source="Images/pm - icons - accounts.png" Stretch="UniformToFill"/>
                     <Button Grid.Row="1" Grid.Column="1" Content="+" Height="20" Width="20"/>
 
                     <ComboBox Grid.Row="0" Grid.Column="2" Style="{DynamicResource ComboBoxStyleWithCurrency}" Foreground="#FF2970FF" ItemContainerStyle="{DynamicResource ComboBoxItemStyle}"/>
-                    <TextBox Grid.Row="1" Grid.Column="2"/>
+                    <ItemsControl Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" ItemsSource="{Binding PendingOutputs}" ItemTemplate="{StaticResource PendingOutput}"/>
 
+                    <!--
+                    <TextBox Grid.Row="1" Grid.Column="2"/>
                     <TextBlock Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" Text="Amount:" FontSize="16" Foreground="#FF0C1E3E" />
                     <local:AmountLabel Margin="0 0 40 0" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSizeWhole="16" FontSizeDecimal="16" FontWeightWhole="Bold"/>
+                    -->
 
-                    <Rectangle Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="4" Fill="#FFDEE0E1" Height="1" VerticalAlignment="Bottom"/>
-                    
-                    <ListBox Grid.Row="2" Grid.ColumnSpan="5" HorizontalContentAlignment="Stretch" x:Name="additionalOutputs" HorizontalAlignment="Stretch" BorderBrush="{x:Null}" ItemContainerStyle="{DynamicResource ListBoxItemStyle2}"/>
+                    <Rectangle Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="4" Fill="#FFDEE0E1" Height="1" VerticalAlignment="Bottom"/>
                 </Grid>
             </Border>
             <Grid Margin="0,13.794,40,216.793" Grid.Row="3" VerticalAlignment="Top">
