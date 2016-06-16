@@ -135,9 +135,9 @@
             </ListBox>
             <Path Data="M52.666667,460 C55.333333,453.33333 125.33317,387.3335 125.33317,387.3335 L199.33249,461.33283 z" Fill="#FF69D5F7" HorizontalAlignment="Center" Height="3.868" Margin="121.166,0.547,121.167,0" Grid.Row="2" Stretch="Fill" Stroke="{x:Null}" VerticalAlignment="Top" Width="7.667"/>
             <Rectangle Fill="#FF69D5F7" HorizontalAlignment="Center" Height="1" Margin="20,4.166,20,0" Grid.Row="2" Stroke="{x:Null}" VerticalAlignment="Top" Width="210"/>
-            <TextBlock HorizontalAlignment="Left" Margin="20,15.5,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Total Balance" VerticalAlignment="Top" FontSize="11" Foreground="#FF69D5F7"/>
+            <TextBlock HorizontalAlignment="Left" Margin="20,15.5,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Total Balance" VerticalAlignment="Top" FontSize="12" Foreground="#FF69D5F7"/>
             
-            <local:AmountLabel Value="{Binding Path=SynchronizerViewModel.TotalBalance, Source={StaticResource ViewModelLocator}}" HorizontalAlignment="Right" Grid.Row="2" Margin="0,15,20,28" FontSizeWhole="11" FontSizeDecimal="11" ForegroundWhole="#FF2ED8a3" ForegroundDecimal="#FF2ED8a3"/>
+            <local:AmountLabel Value="{Binding Path=SynchronizerViewModel.TotalBalance, Source={StaticResource ViewModelLocator}}" HorizontalAlignment="Right" Grid.Row="2" Margin="0,15,20,28" FontSizeWhole="12" FontSizeDecimal="12" ForegroundWhole="#FF2ED8a3" ForegroundDecimal="#FF2ED8a3"/>
             <Border Margin="0,40,0,0" Grid.Row="2" Background="#FF09182D" Padding="20 0">
                 <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center">
                     <Grid.ColumnDefinitions>
@@ -146,7 +146,7 @@
                     </Grid.ColumnDefinitions>
                     <Grid.Resources>
                         <Style TargetType="{x:Type TextBlock}">
-                            <Setter Property="FontSize" Value="11"/>
+                            <Setter Property="FontSize" Value="12"/>
                         </Style>
                     </Grid.Resources>
                     <TextBlock Grid.Column="0">
