@@ -344,7 +344,7 @@
 
                     <Rectangle Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="4" Fill="#FFDEE0E1" Height="1" VerticalAlignment="Bottom"/>
                     
-                    <ListBox Grid.Row="2" Grid.ColumnSpan="5" HorizontalContentAlignment="Stretch" x:Name="additionalOutputs" HorizontalAlignment="Stretch" BorderBrush="{x:Null}" ItemContainerStyle="{DynamicResource ListBoxItemStyle2}" Margin="0"/>
+                    <ListBox Grid.Row="2" Grid.ColumnSpan="5" HorizontalContentAlignment="Stretch" x:Name="additionalOutputs" HorizontalAlignment="Stretch" BorderBrush="{x:Null}" ItemContainerStyle="{DynamicResource ListBoxItemStyle2}"/>
                 </Grid>
             </Border>
             <Grid Margin="40,13.794,40,216.793" Grid.Row="3" VerticalAlignment="Top">
