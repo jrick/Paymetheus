@@ -281,7 +281,7 @@
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
 
-        <Grid Background="#FFF9FBFC">
+        <Grid Margin="40 0 0 0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="46"/>
                 <RowDefinition Height="46"/>
@@ -291,9 +291,9 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBlock HorizontalAlignment="Left" Margin="40,18.244,0,0" TextWrapping="Wrap" Foreground="#FF5A6E81" FontSize="19.333" Width="159.49" Height="25.713" VerticalAlignment="Top"><Run Text="Send"/><LineBreak/><Run/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="0,18.244,0,0" TextWrapping="Wrap" Foreground="#FF5A6E81" FontSize="19.333" Width="159.49" Height="25.713" VerticalAlignment="Top"><Run Text="Send"/><LineBreak/><Run/></TextBlock>
             <Grid Margin="272.585,145,272.585,101.389" Grid.Row="3"/>
-            <TextBlock HorizontalAlignment="Left" Margin="40,10.102,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF0C1E3E" FontSize="11" MaxWidth="338.783">
+            <TextBlock HorizontalAlignment="Left" Margin="0,10.102,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF0C1E3E" FontSize="11" MaxWidth="338.783">
                 <Run Text="Decred addresses always begin with letter"/>
                 <Run FontWeight="Bold" Text="D"/>
                 <Run Text="and contain 26-35 alphanumeric characters"/>
@@ -303,7 +303,7 @@
             <Grid Margin="91,18,60.17,0" Grid.Row="2" VerticalAlignment="Top" Height="68">
                 <TextBlock x:Name="lblCode" Height="66" Margin="26,12.059,0,0" TextWrapping="Wrap" Text="TsVmeFSracV2bpTQJs" VerticalAlignment="Top" Foreground="#FF132F4B" FontSize="32" TextAlignment="Center" Visibility="Collapsed"/>
             </Grid>
-            <Border BorderBrush="#FFD3D9DF" BorderThickness="0,1" Margin="40,0,0,0" Grid.Row="2" Background="White">
+            <Border BorderBrush="#FFD3D9DF" BorderThickness="0,1" Grid.Row="2" Background="White">
                 <Grid Margin="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -342,12 +342,12 @@
                     <TextBlock Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" Text="Amount:" FontSize="16" Foreground="#FF0C1E3E" />
                     <local:AmountLabel Margin="0 0 40 0" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSizeWhole="16" FontSizeDecimal="16" FontWeightWhole="Bold"/>
 
-                    <Rectangle Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="4" Fill="#FFDEE0E1" Height="1" VerticalAlignment="Bottom"/>
+                    <Rectangle Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="4" Fill="#FFDEE0E1" Height="1" VerticalAlignment="Bottom"/>
                     
                     <ListBox Grid.Row="2" Grid.ColumnSpan="5" HorizontalContentAlignment="Stretch" x:Name="additionalOutputs" HorizontalAlignment="Stretch" BorderBrush="{x:Null}" ItemContainerStyle="{DynamicResource ListBoxItemStyle2}"/>
                 </Grid>
             </Border>
-            <Grid Margin="40,13.794,40,216.793" Grid.Row="3" VerticalAlignment="Top">
+            <Grid Margin="0,13.794,40,216.793" Grid.Row="3" VerticalAlignment="Top">
                 <Grid.Resources>
                     <Style TargetType="{x:Type local:AmountLabel}">
                         <Setter Property="FontWeightWhole" Value="Bold"/>

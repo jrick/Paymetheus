@@ -161,7 +161,7 @@
             </Border>
         </Grid>
         <!--<Frame Name="ContentHolder" Content="Frame" Grid.Column="1" Source="{Binding SelectedView, FallbackValue=/Paymetheus;component/Overview.xaml}" NavigationUIVisibility="Hidden" />-->
-        <Frame Name="ContentHolder" Content="Frame" Grid.Column="1" Source="{Binding SelectedView}" NavigationUIVisibility="Hidden" />
+        <Frame Name="ContentHolder" Content="Frame" Grid.Column="1" Source="{Binding SelectedView}" NavigationUIVisibility="Hidden" Background="#FFF9FBFC"/>
 
         <UserControl Grid.ColumnSpan="2" Panel.ZIndex="1000" KeyboardNavigation.TabNavigation="Cycle" KeyboardNavigation.ControlTabNavigation="Cycle">
             <UserControl.Style>
