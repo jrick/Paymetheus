@@ -223,8 +223,18 @@ namespace Paymetheus.ViewModels
             {
                 ConfirmSeedCommand.Executable = false;
 
+                // When on testnet, allow clicking through the dialog without any validation.
+                if (App.Current.ActiveNetwork == BlockChainIdentity.TestNet)
+                {
+                    if (Input.Length == 0)
+                    {
+                        _wizard.CurrentDialog = new PromptPassphrasesDialog(Wizard, _seed);
+                        return;
+                    }
+                }
+
                 var decodedSeed = WalletSeed.DecodeAndValidateUserInput(Input, _pgpWordList);
-                if (ValueArray.ShallowEquals(_seed, decodedSeed) || (App.Current.ActiveNetwork == BlockChainIdentity.TestNet && decodedSeed.Length == 0))
+                if (ValueArray.ShallowEquals(_seed, decodedSeed))
                 {
                     _wizard.CurrentDialog = new PromptPassphrasesDialog(Wizard, _seed);
                 }
