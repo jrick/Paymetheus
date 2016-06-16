@@ -224,7 +224,7 @@ namespace Paymetheus.ViewModels
                 ConfirmSeedCommand.Executable = false;
 
                 var decodedSeed = WalletSeed.DecodeAndValidateUserInput(Input, _pgpWordList);
-                if (ValueArray.ShallowEquals(_seed, decodedSeed))
+                if (ValueArray.ShallowEquals(_seed, decodedSeed) || (App.Current.ActiveNetwork == BlockChainIdentity.TestNet && decodedSeed.Length == 0))
                 {
                     _wizard.CurrentDialog = new PromptPassphrasesDialog(Wizard, _seed);
                 }
