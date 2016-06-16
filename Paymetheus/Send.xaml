@@ -369,8 +369,8 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Button Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding FinishCreateTransaction}" Style="{DynamicResource ButtonBlue}" Width="100"/>
-                <CheckBox Grid.Row="0" Grid.Column="1" Content="Sign" HorizontalAlignment="Left" Style="{StaticResource CheckBoxStyle}" />
-                <CheckBox Grid.Row="1" Grid.Column="1" Content="Publish" HorizontalAlignment="Left" Style="{StaticResource CheckBoxStyle}" />
+                <CheckBox Grid.Row="0" Grid.Column="1" Content="Sign" HorizontalAlignment="Left" IsChecked="{Binding SignTransaction}" IsEnabled="{Binding PublishActive}" Style="{StaticResource CheckBoxStyle}" />
+                <CheckBox Grid.Row="1" Grid.Column="1" Content="Publish" HorizontalAlignment="Left" IsChecked="{Binding PublishTransaction}" Style="{StaticResource CheckBoxStyle}" />
                 <TextBlock Grid.Row="0" Grid.Column="2" Text="Estimated fee:" HorizontalAlignment="Right" Style="{StaticResource TextBlockStyle}" />
                 <TextBlock Grid.Row="1" Grid.Column="2" Text="Estimated remaining balance:" HorizontalAlignment="Right" Style="{StaticResource TextBlockStyle}" />
                 <local:AmountLabel Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" Value="{Binding EstimatedFee}"/>
