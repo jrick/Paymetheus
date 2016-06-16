@@ -300,9 +300,6 @@
                 <Run FontWeight="Bold" Text="e.g."/>
                 <Run Foreground="#FF828C9D" Text="DxxxXXXXXXXXXXXXXXXXXDXXx0XXx0X"/>
             </TextBlock>
-            <Grid Margin="91,18,60.17,0" Grid.Row="2" VerticalAlignment="Top" Height="68">
-                <TextBlock x:Name="lblCode" Height="66" Margin="26,12.059,0,0" TextWrapping="Wrap" Text="TsVmeFSracV2bpTQJs" VerticalAlignment="Top" Foreground="#FF132F4B" FontSize="32" TextAlignment="Center" Visibility="Collapsed"/>
-            </Grid>
             <Border BorderBrush="#FFD3D9DF" BorderThickness="0,1" Grid.Row="2" Background="White">
                 <Grid Margin="0">
                     <Grid.RowDefinitions>
@@ -362,7 +359,7 @@
                     </Style>
                 </Grid.Resources>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="115"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="160"/>
@@ -371,7 +368,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Button Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Send" Style="{DynamicResource ButtonBlue}"/>
+                <Button Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding FinishCreateTransaction}" Style="{DynamicResource ButtonBlue}" Width="100"/>
                 <CheckBox Grid.Row="0" Grid.Column="1" Content="Sign" HorizontalAlignment="Left" Style="{StaticResource CheckBoxStyle}" />
                 <CheckBox Grid.Row="1" Grid.Column="1" Content="Publish" HorizontalAlignment="Left" Style="{StaticResource CheckBoxStyle}" />
                 <TextBlock Grid.Row="0" Grid.Column="2" Text="Estimated fee:" HorizontalAlignment="Right" Style="{StaticResource TextBlockStyle}" />
