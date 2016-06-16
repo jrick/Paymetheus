@@ -57,7 +57,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Image Grid.Row="0" Source="Images/paymetheus - 262x37.png" Stretch="Uniform" Height="40"/>
+        <Image Grid.Row="0" Source="Images/paymetheus - 262x37.png" Stretch="Uniform" Height="37"/>
 
         <Border Grid.Row="1" BorderThickness="0 0 0 1" BorderBrush="#FF69D5F7" Width="340" Padding="0 0 0 15">
             <Grid>
