@@ -65,6 +65,11 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="{x:Type RadioButton}">
+                        <Setter Property="Focusable" Value="False"/>
+                    </Style>
+                </Grid.Resources>
                 <RadioButton Grid.Column="0" HorizontalAlignment="Left" Content="Create new wallet" Name="CreateWallet" IsChecked="{Binding CreateChecked}" Style="{DynamicResource RadioButtonStyle}" GroupName="group"/>
                 <RadioButton Grid.Column="1" HorizontalAlignment="Right" Content="Recover wallet from seed" Name="ImportWallet"  IsChecked="{Binding ImportChecked}" Style="{DynamicResource RadioButtonStyle}" GroupName="group"/>
             </Grid>
