@@ -82,21 +82,20 @@
             </Setter>
         </Style>
     </Page.Resources>
-    <Grid x:Name="LayoutRoot" Background="#FFF4F7F9">
+    <Grid Margin="40 60 0 0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="21"/>
-            <RowDefinition Height="75"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="280*"/>
-            <RowDefinition Height="53*"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBlock HorizontalAlignment="Left" Margin="40,59.904,0,0" TextWrapping="Wrap" Text="Totals" VerticalAlignment="Top" Foreground="#FF0C1E3E" FontSize="19.333" Grid.RowSpan="3" Height="25.713" Width="48.84"/>
+        <TextBlock Grid.Row="0" HorizontalAlignment="Left" Text="Totals" VerticalAlignment="Top" Foreground="#FF0C1E3E" FontSize="20"/>
         <!--<Rectangle Fill="#FFA9B4BF" Height="1" VerticalAlignment="Top" Margin="40,0,70,0" Grid.Row="3"/>-->
-        <Border Grid.Row="2" Margin="40 0 40 0" BorderBrush="#FFA9B4BF" BorderThickness="0 0 0 1" VerticalAlignment="Stretch">
+        <Border Grid.Row="1" Margin="0 0 40 0" BorderBrush="#FFA9B4BF" BorderThickness="0 0 0 1" VerticalAlignment="Stretch">
             <Grid VerticalAlignment="Top">
                 <Grid.Resources>
                     <Style TargetType="{x:Type local:AmountLabel}">
@@ -155,14 +154,13 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Foreground="#FF0C1E3E" FontSize="28" Height="30" TextAlignment="Right" FontWeight="Bold" Text="{Binding TransactionCount, FallbackValue=0}"/>
-                    <TextBlock Grid.Row="1" HorizontalAlignment="Right" Height="18" Margin="0,0,1,-5" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="#FF0C1E3E" FontSize="11" TextAlignment="Right"><Run Text="transactions"/></TextBlock>
+                    <TextBlock Grid.Row="0" Foreground="#FF0C1E3E" FontSize="28" TextAlignment="Right" FontWeight="Bold" Text="{Binding TransactionCount, FallbackValue=0}"/>
+                    <TextBlock Grid.Row="1" HorizontalAlignment="Right" TextWrapping="Wrap" Foreground="#FF0C1E3E" FontSize="11" Text="transactions"/>
                 </Grid>
             </Grid>
         </Border>
-        <TextBlock HorizontalAlignment="Left" Margin="40,15,0,20" TextWrapping="Wrap" Foreground="#FF0C1E3E" FontSize="19.333" Grid.Row="3"><Run Text="Recen"/><Run Text="t"/><Run Text=" activity"/></TextBlock>
-        <ListBox HorizontalContentAlignment="Stretch" x:Name="lstRecentActivity" Margin="40,0,0,0" Grid.Row="4" HorizontalAlignment="Stretch" BorderBrush="{x:Null}" ItemContainerStyle="{DynamicResource ListBoxItemStyle}"/>
-        <Button Content="View More" Height="20.95" Margin="0,20,0,0" VerticalAlignment="Top" Width="72" Style="{DynamicResource ButtonWhite}" Foreground="#FF132F4B" Grid.Row="5" />
-        <Rectangle Fill="#FFA9B4BF" Height="1" VerticalAlignment="Top" Margin="40,0,0,0" Grid.Row="4"/>
+        <TextBlock Grid.Row="2" HorizontalAlignment="Left" TextWrapping="Wrap" Foreground="#FF0C1E3E" FontSize="20" Text="Recent activity" />
+        <ListBox Grid.Row="3" x:Name="lstRecentActivity" BorderBrush="{x:Null}" ItemContainerStyle="{DynamicResource ListBoxItemStyle}"/>
+        <Button Grid.Row="4" Content="View More" VerticalAlignment="Top" HorizontalAlignment="Center" Style="{DynamicResource ButtonWhite}" Foreground="#FF132F4B"/>
     </Grid>
 </Page>
