@@ -119,14 +119,25 @@
             <Button Grid.Row="3" Content="CONTINUE" Command="{Binding ContinueCommand}" HorizontalAlignment="Center" Height="35.5" Width="123" Style="{DynamicResource ButtonBlue}" Foreground="#FF132F4B"/>
         </Grid>
 
-        <TextBlock Visibility="{Binding IsChecked,ElementName=ImportWallet,Converter={StaticResource b2v}}" HorizontalAlignment="Left" Margin="0,176.726,0,0" TextWrapping="Wrap" Text="Recover from seed" VerticalAlignment="Top" FontSize="21.333" Foreground="White"/>
-        <TextBlock Visibility="{Binding IsChecked,ElementName=ImportWallet,Converter={StaticResource b2v}}" HorizontalAlignment="Left" Margin="0,219.726,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="340"  Foreground="#FFB7D1F0" Height="95.76">
-                <Run Text="The seed from a previously-created wallet may be used to recreate the wallet with all of its addresses and keys."/>
+        <Grid Grid.Row="2" Width="700"
+              Visibility="{Binding IsChecked, ElementName=ImportWallet, Converter={StaticResource b2v}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" HorizontalAlignment="Left" Text="Recover from seed" FontSize="22" Foreground="White"/>
+            <TextBlock Grid.Row="1" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFB7D1F0">
+                The seed from a previously-created wallet may be used to recreate the wallet with all of its addresses and keys.
                 <LineBreak/>
-                <Run Text="The seed should be formatted as a hexadecimal number (64 characters between 0-9 and A-F) or a list of mneumonic words."/>
-        </TextBlock>
-        <Rectangle Visibility="{Binding IsChecked,ElementName=ImportWallet,Converter={StaticResource b2v}}" Fill="#FFF4F4F5" Margin="0,0,0,0.449" RadiusY="5" RadiusX="5" Height="55" VerticalAlignment="Bottom" Grid.Row="2"/>
-        <TextBox Visibility="{Binding IsChecked,ElementName=ImportWallet,Converter={StaticResource b2v}}" Text="{Binding ImportedSeed, Mode=TwoWay}"  Height="22.667" Margin="20,18,20,0" Grid.Row="2" TextWrapping="Wrap" BorderThickness="0" VerticalAlignment="Top" Foreground="{DynamicResource ColorDarkBlueFull}" FontSize="16" />
-        <Button Visibility="{Binding IsChecked,ElementName=ImportWallet,Converter={StaticResource b2v}}" Content="CONTINUE" Command="{Binding ContinueCommand}" HorizontalAlignment="Center" Height="35.5" Margin="288.5,0" VerticalAlignment="Top" Width="123" Style="{DynamicResource ButtonBlue}" Foreground="#FF132F4B" Grid.Row="4"/>
+                The seed should be formatted as a hexadecimal number (64 characters between 0-9 and A-F) or a list of mneumonic words.
+            </TextBlock>
+            <Border Grid.Row="2" VerticalAlignment="Center" CornerRadius="5" Background="#FFF4F4F5" Padding="5">
+                <TextBox Text="{Binding ImportedSeed, Mode=TwoWay}"  BorderThickness="0" Foreground="{DynamicResource ColorDarkBlueFull}" FontSize="16" />
+            </Border>
+            <Button Grid.Row="3" Content="CONTINUE" Command="{Binding ContinueCommand}" HorizontalAlignment="Center" Style="{DynamicResource ButtonBlue}" Foreground="#FF132F4B"/>
+        </Grid>
     </Grid>
 </UserControl>
