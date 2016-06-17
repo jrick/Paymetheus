@@ -153,8 +153,8 @@
                         <Run Text="Latest block:" Foreground="#FF69D5F7" />
                         <Run Text="{Binding Path=SynchronizerViewModel.SyncedBlockHeight, StringFormat='{}{0:#,0}', FallbackValue='0', Source={StaticResource ViewModelLocator}}" Foreground="#FF2ED8A3"/>
                     </TextBlock>
-                    <TextBlock Grid.Column="1" TextAlignment="Right" Foreground="#FF69D5F7">
-                        <Run Text="1"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Right" Foreground="#FF69D5F7">
+                        <Run Text="{Binding BlockMinuteAge, FallbackValue=?}"/>
                         <Run Text="min ago"/>
                     </TextBlock>
                 </Grid>
