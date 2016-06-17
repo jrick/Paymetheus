@@ -51,7 +51,7 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Stretch">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Stretch" Width="700">
         <Grid.RowDefinitions>
             <RowDefinition Height="120"/>
             <RowDefinition Height="Auto"/>
@@ -76,7 +76,7 @@
             </Grid>
         </Border>
 
-        <Grid Grid.Row="2" Width="700"
+        <Grid Grid.Row="2"
               Visibility="{Binding IsChecked, ElementName=CreateWallet, Converter={StaticResource b2v}}">
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -116,10 +116,10 @@
                            Text="{Binding Bip0032SeedWordList}"
                            Foreground="{DynamicResource ColorDarkBlueFull}" FontSize="16"/>
             </Border>
-            <Button Grid.Row="3" Content="CONTINUE" Command="{Binding ContinueCommand}" HorizontalAlignment="Center" Height="35.5" Width="123" Style="{DynamicResource ButtonBlue}" Foreground="#FF132F4B"/>
+            <Button Grid.Row="3" Content="CONTINUE" Command="{Binding ContinueCommand}" HorizontalAlignment="Center" Style="{DynamicResource ButtonBlue}" Foreground="#FF132F4B"/>
         </Grid>
 
-        <Grid Grid.Row="2" Width="700"
+        <Grid Grid.Row="2"
               Visibility="{Binding IsChecked, ElementName=ImportWallet, Converter={StaticResource b2v}}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
