@@ -215,26 +215,19 @@
         </Style>
     </Page.Resources>
 
-    <Grid x:Name="LayoutRoot" Background="#FFF4F7F9">
+    <Grid x:Name="LayoutRoot" Margin="40 60 0 0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="21"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="280*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <TextBlock HorizontalAlignment="Left" Margin="40,59.904,0,0" TextWrapping="Wrap" Text="Accounts" VerticalAlignment="Top" Foreground="#FF0C1E3E" FontSize="19.333" Grid.RowSpan="3" Height="25.713"/>
-        <Rectangle Fill="#FFA9B4BF" Height="1" VerticalAlignment="Top" Margin="40,0,70,0" Grid.Row="3"/>
-        <ListBox x:Name="lstAccounts" Grid.Row="4"
+        <TextBlock Grid.Row="0" TextWrapping="Wrap" Text="Accounts" Foreground="#FF0C1E3E" FontSize="20"/>
+        <Button Grid.Row="0" Margin="0 0 40 0" Content="ADD A NEW ACCOUNT" Command="{Binding ShellViewModel.CreateAccountCommand, Source={StaticResource ViewModelLocator}}"  HorizontalAlignment="Right" Style="{DynamicResource ButtonBlue}"/>
+        <TextBlock Grid.Row="1" Margin="0 10 0 20" TextWrapping="Wrap" Text="Brief how to..." Foreground="#FF0C1E3E"/>
+        <ListBox x:Name="lstAccounts" Grid.Row="2"
                  ItemsSource="{Binding Source={StaticResource ViewModelLocator}, Path=SynchronizerViewModel.Accounts}"
                  ItemContainerStyle="{DynamicResource ListBoxItemStyle}"
-                 HorizontalContentAlignment="Stretch" Margin="40,0,0,0" HorizontalAlignment="Stretch"
-                 BorderBrush="{x:Null}"/>
-        <Rectangle Fill="#FFA9B4BF" Height="1" VerticalAlignment="Top" Margin="40,0,0,0" Grid.Row="4"/>
-        <TextBlock Margin="40,20" TextWrapping="Wrap" Text="Brief how to..." Foreground="#FF0C1E3E" Grid.Row="2"/>
-        <Button Content="ADD A NEW ACCOUNT" Command="{Binding ShellViewModel.CreateAccountCommand, Source={StaticResource ViewModelLocator}}"  HorizontalAlignment="Right" Height="35.5" Margin="0,59.904,40,0" VerticalAlignment="Top" Style="{DynamicResource ButtonBlue}" Foreground="#FF132F4B" Grid.RowSpan="3"/>
+                 HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch"
+                 BorderBrush="{x:Null}" BorderThickness="0"/>
     </Grid>
 </Page>

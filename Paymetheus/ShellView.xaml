@@ -26,7 +26,6 @@
             <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -83,7 +82,7 @@
                 <RowDefinition Height="80"/>
             </Grid.RowDefinitions>
             <Image Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15,0,0,0" Stretch="Uniform" Source="Images/paymetheus - 137x20.png" Height="20"/>
-            <ListBox Grid.Row="1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Style="{DynamicResource ListBoxStyle}">
+            <ListBox Grid.Row="1" Background="{x:Null}" Style="{DynamicResource ListBoxStyle}">
                 <ListBox.Resources>
                     <SolidColorBrush x:Key="ListBox.Static.Background" Color="#FFFFFFFF"/>
                     <SolidColorBrush x:Key="ListBox.Static.Border" Color="#FFABADB3"/>
@@ -92,7 +91,7 @@
                     <Style x:Key="ListBoxStyle" TargetType="{x:Type ListBox}">
                         <Setter Property="Background" Value="{StaticResource ListBox.Static.Background}"/>
                         <Setter Property="BorderBrush" Value="{StaticResource ListBox.Static.Border}"/>
-                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="BorderThickness" Value="0"/>
                         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
                         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
                         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
