@@ -219,7 +219,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" TextWrapping="Wrap" Text="Accounts" Foreground="#FF0C1E3E" FontSize="20"/>
         <Button Grid.Row="0" Margin="0 0 40 0" Content="ADD A NEW ACCOUNT" Command="{Binding ShellViewModel.CreateAccountCommand, Source={StaticResource ViewModelLocator}}"  HorizontalAlignment="Right" Style="{DynamicResource ButtonBlue}"/>
