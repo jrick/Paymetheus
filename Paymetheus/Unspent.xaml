@@ -122,18 +122,18 @@
 
         <Grid x:Name="LayoutRoot">
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="67"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
                 <RowDefinition Height="11*"/>
                 <RowDefinition Height="97*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Rectangle Fill="White"/>
-            <TextBlock HorizontalAlignment="Left" Margin="40,18.244,0,6.043" TextWrapping="Wrap" Foreground="#FF5A6E81" FontSize="19.333"><Run Text="Unspent"/><Run Text=" outputs"/></TextBlock>
-            <Rectangle Fill="#FFA9B4BF" Height="1" VerticalAlignment="Bottom"/>
-            <TextBlock HorizontalAlignment="Left" Margin="40,28.904,0,13.596" TextWrapping="Wrap" Foreground="#FF828C9D" FontSize="16" Grid.Row="1" Width="122.78" Text="Primary Account"/>
+            <Border Grid.Row="0" Background="White" BorderBrush="#FFA9B4BF" BorderThickness="0 0 0 1">
+                <TextBlock VerticalAlignment="Center" Margin="40 0 0 0" TextWrapping="Wrap" Foreground="#FF5A6E81" FontSize="20" Text="Unspent outputs"/>
+            </Border>
+            <TextBlock Grid.Row="1" VerticalAlignment="Center" Margin="40 0 0 0" TextWrapping="Wrap" Foreground="#FF828C9D" FontSize="16" Text="{Binding SelectedAccountName, FallbackValue=Selected account name}"/>
             <Grid Margin="40,0,40,1.752" Grid.Row="2" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>
@@ -146,14 +146,14 @@
                 </Grid.ColumnDefinitions>
                 <Rectangle Grid.ColumnSpan="3" Fill="#FFCACFD6" Height="42.173" VerticalAlignment="Top" RadiusY="5" RadiusX="5" Stroke="#FFA9B4BF" Grid.RowSpan="2"/>
                 <ListBox HorizontalContentAlignment="Stretch" x:Name="lstRecentActivity" HorizontalAlignment="Stretch" BorderBrush="#FFCACFD6" ItemContainerStyle="{DynamicResource ListBoxItemStyle}" Grid.ColumnSpan="3" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,34.086,0,0" Grid.RowSpan="2"/>
-                <TextBlock Margin="20.667,9.543,10,9.545" TextWrapping="Wrap" Text="Data" Foreground="#FF828C9D" FontWeight="Bold"/>
+                <TextBlock Margin="20.667,9.543,10,9.545" TextWrapping="Wrap" Text="Date" Foreground="#FF828C9D" FontWeight="Bold"/>
                 <TextBlock Margin="10,9.543,5,9.545" TextWrapping="Wrap" Text="Transaction" Foreground="#FF828C9D" FontWeight="Bold" Grid.Column="1"/>
                 <Rectangle Fill="White" HorizontalAlignment="Left" Margin="0,10,0,8.001" Width="1" Grid.Column="1"/>
                 <TextBlock Margin="10,9.543,14,9.545" TextWrapping="Wrap" Text="Amount" Foreground="#FF828C9D" FontWeight="Bold" Grid.Column="2" TextAlignment="Right"/>
                 <Rectangle Fill="White" HorizontalAlignment="Left" Margin="0,10,0,8.001" Width="1" Grid.Column="2"/>
                 <Rectangle Fill="White" HorizontalAlignment="Left" Margin="236,10,-126.83,8.001" Width="1" Grid.Column="2"/>
             </Grid>
-            <ComboBox HorizontalAlignment="Right" Margin="0,16.644,40,0" VerticalAlignment="Top" Width="271.5" Style="{DynamicResource ComboBoxStyle}" Height="23.356" Foreground="#FF132F4B" ItemContainerStyle="{DynamicResource ComboBoxItemStyle}">
+            <ComboBox Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 40 0" Width="200" Style="{DynamicResource ComboBoxStyle}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle}">
                 <ComboBox.Background>
                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                         <GradientStop Color="#FFF0F0F0" Offset="0"/>
