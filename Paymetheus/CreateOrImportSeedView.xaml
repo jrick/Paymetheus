@@ -101,7 +101,7 @@
                     <LineBreak/>
                     <Run Foreground="#FFFD714B" FontWeight="Bold" Text="Warning:"/>
                     Failure to keep this seed private can result in the theft of your entire wallet.
-                    Under no circunmstances should this seed ever be revealed to someone else.
+                    Under no circumstances should this seed ever be revealed to someone else.
                 </TextBlock>
             </Grid>
 
