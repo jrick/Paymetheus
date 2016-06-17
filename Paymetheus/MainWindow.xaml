@@ -22,8 +22,7 @@
                                     VerticalAlignment="Center"
                                     Width="700" Focusable="False"/>
         </UserControl>
-        <local:ShellView x:Name="Shellview" HorizontalAlignment="Stretch"
-                         Visibility="{Binding Path=StartupWizardVisible, Converter={StaticResource invertedVisibilityConverter}}"
-                         Margin="1"/>
+        <local:ShellView x:Name="Shellview"
+                         Visibility="{Binding Path=StartupWizardVisible, Converter={StaticResource invertedVisibilityConverter}}"/>
     </Grid>
 </Window>
