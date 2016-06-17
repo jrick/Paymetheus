@@ -126,7 +126,7 @@
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
 
-        <Grid x:Name="LayoutRoot" Background="#FFF4F7F9">
+        <Grid x:Name="LayoutRoot">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="67"/>
