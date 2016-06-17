@@ -4,12 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Paymetheus"
+             xmlns:vc="clr-namespace:Paymetheus.Framework.ValueConverters"
              mc:Ignorable="d" 
 	         Background="{DynamicResource ColorDarkBlueFull}" 
-             d:DesignWidth="842" d:DesignHeight="718"
-             >
+             d:DesignWidth="842" d:DesignHeight="718">
     <UserControl.Resources>
-        <BooleanToVisibilityConverter x:Key="b2v" />
+        <vc:BooleanToVisibilityConverter x:Key="b2v" False="Hidden"/>
         <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
         <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
         <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
