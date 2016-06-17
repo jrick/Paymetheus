@@ -82,7 +82,7 @@
                 <RowDefinition/>
                 <RowDefinition Height="80"/>
             </Grid.RowDefinitions>
-            <Image Margin="15,23,98,17" Source="Images/paymetheus - 137x20.png"/>
+            <Image Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15,0,0,0" Stretch="UniformToFill" Source="Images/paymetheus - 137x20.png" Height="20" Width="137"/>
             <ListBox Grid.Row="1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Style="{DynamicResource ListBoxStyle}">
                 <ListBox.Resources>
                     <SolidColorBrush x:Key="ListBox.Static.Background" Color="#FFFFFFFF"/>
