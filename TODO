@@ -48,6 +48,9 @@ View:
   "locked" for those who stake
 - Need a textbox-like control for inputing amounts, to use in create
   transaction view.
+- Add pending output button in create transaction view is not functional
+- There is no way to remove pending outputs yet, each item should contain
+  a button for removing itself from the ObservableCollection.
 - Request view doesn't hide UI elements depending on whether a generated
   address is shown yet or not
 - Some text is too small, make it bigger
