@@ -311,7 +311,6 @@
                         <ColumnDefinition Width="35"/>
                         <ColumnDefinition Width="250"/>
                         <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="200"/>
                     </Grid.ColumnDefinitions>
                     <Grid.Resources>
                         <Style TargetType="{x:Type ComboBox}">
@@ -329,7 +328,7 @@
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="250"/>
-                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="1*"/>
                                     <ColumnDefinition Width="160"/>
                                 </Grid.ColumnDefinitions>
                                 <TextBox Grid.Column="0" Text="{Binding Destination}"/>
@@ -352,7 +351,7 @@
                               SelectedItem="{Binding Source={StaticResource ViewModelLocator}, Path=SynchronizerViewModel.SelectedAccount}"
                               ItemTemplate="{StaticResource ComboBoxAccountDataTemplate}"
                               Style="{DynamicResource ComboBoxStyleWithCurrency}" Foreground="#FF2970FF" ItemContainerStyle="{DynamicResource ComboBoxItemStyle}"/>
-                    <ItemsControl Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" ItemsSource="{Binding PendingOutputs}" ItemTemplate="{StaticResource PendingOutput}"/>
+                    <ItemsControl Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Padding="0 0 40 0" ItemsSource="{Binding PendingOutputs}" ItemTemplate="{StaticResource PendingOutput}"/>
 
                     
 

@@ -718,7 +718,7 @@
         </Style>
 
         <DataTemplate x:Key="ComboBoxAccountDataTemplate">
-            <TextBlock Text="{Binding ., Converter={StaticResource accountToNameConverter}}"/>
+            <TextBlock Grid.Column="0" Text="{Binding ., Converter={StaticResource accountToNameConverter}}"/>
         </DataTemplate>
 
     </Application.Resources>
