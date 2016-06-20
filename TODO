@@ -9,6 +9,8 @@ RPC/dcrwallet:
   already running (hate!) or perhaps rigging the gRPC server in dcrwallet
   to close the process after the client disconnects, but no idea if this
   is possible.
+- Need to run dcrwallet gRPC server on different ports to not interfere with
+  a typical dcrwallet install
 
 Model/ViewModel:
 
