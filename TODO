@@ -52,3 +52,6 @@ View:
 - Input controls that require validation should have visual indicators
   for when entered data is invalid (especially important for the create
   transaction view).
+- Block hash of current block is no where to be found.  For desktop (mouse)
+  users it might be adequate to use a tooltip over the block height, but
+  this is a bad solution to those with touch screens.
