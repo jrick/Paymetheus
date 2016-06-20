@@ -21,6 +21,10 @@ Model/ViewModel:
   match dcrwallet.  I kinda hate this format and don't want to display
   it when creating a new wallet, but we should at least not bail out when
   decoding a seed created by other dcr tools.
+- Would be nice to make Paymetheus.Decred a PCL again (Paymetheus.Bitcoin is
+  in the btcsuite version), currently impossible because BlakeSharp requires
+  the older .NET cryptographic libraries (low prio for windows, but may be
+  necessary for portability on other platforms).
 
 View:
 
