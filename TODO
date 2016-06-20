@@ -45,3 +45,6 @@ View:
 - Way too much duplicated xaml all over the place
 - Bindings for history
 - Bindings for unspent outputs
+- Input controls that require validation should have visual indicators
+  for when entered data is invalid (especially important for the create
+  transaction view).
