@@ -32,7 +32,7 @@ Model/ViewModel:
   in the btcsuite version), currently impossible because BlakeSharp requires
   the older .NET cryptographic libraries (low prio for windows, but may be
   necessary for portability on other platforms).
-- Some address/script functionality is not yet unimplemented.  Search for
+- Some address/script functionality is not yet implemented.  Search for
   NotImplementedException.
 
 View:
