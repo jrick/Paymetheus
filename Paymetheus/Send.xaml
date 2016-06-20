@@ -384,18 +384,8 @@
                 <CheckBox Grid.Row="1" Grid.Column="1" Content="Publish" HorizontalAlignment="Left" IsChecked="{Binding PublishTransaction}" Style="{StaticResource CheckBoxStyle}" />
                 <TextBlock Grid.Row="0" Grid.Column="2" Text="Estimated fee:" HorizontalAlignment="Right" Style="{StaticResource TextBlockStyle}" />
                 <TextBlock Grid.Row="1" Grid.Column="2" Text="Estimated remaining balance:" HorizontalAlignment="Right" Style="{StaticResource TextBlockStyle}" />
-                <local:AmountLabel Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" Value="{Binding EstimatedFee}">
-                    <local:AmountLabel.Style>
-                        <Style TargetType="{x:Type local:AmountLabel}">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding EstimatedFee}" Value="{x:Null}">
-                                    <Setter Property="Visibility" Value="Hidden"/>
-                                </DataTrigger>  
-                            </Style.Triggers>
-                        </Style>
-                    </local:AmountLabel.Style>
-                </local:AmountLabel>
-                <local:AmountLabel Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" Value="{Binding EstimatedRemainingBalance}"/>
+                <local:AmountLabel Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" Value="{Binding EstimatedFee}" Visibility="{Binding EstimatedFee, Converter={StaticResource NullToHiddenConverter}}"/>
+                <local:AmountLabel Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" Value="{Binding EstimatedRemainingBalance}" Visibility="{Binding EstimatedRemainingBalance, Converter={StaticResource NullToHiddenConverter}}"/>
             </Grid>
         </Grid>
     </ScrollViewer>

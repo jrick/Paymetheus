@@ -8,7 +8,7 @@ using System.Windows.Data;
 
 namespace Paymetheus.Framework.ValueConverters
 {
-    class OneWayConverter<TSource, TResult> : IValueConverter
+    public class OneWayConverter<TSource, TResult> : IValueConverter
     {
         Func<TSource, TResult> Converter;
 
