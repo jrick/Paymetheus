@@ -11,5 +11,6 @@ namespace Paymetheus.ViewModels
         public static object ShellViewModel => SingletonViewModelLocator.Resolve("ShellView");
         public static object OverviewViewModel => SingletonViewModelLocator.Resolve("Overview");
         public static object RequestViewModel => SingletonViewModelLocator.Resolve("Request");
+        public static object CreateTransactionViewModel => SingletonViewModelLocator.Resolve("Send");
     }
 }

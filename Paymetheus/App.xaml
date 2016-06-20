@@ -19,7 +19,7 @@
         <local:AccountToNameConverter x:Key="accountToNameConverter" />
 
         <DataTemplate x:Key="buttonTemplate">
-            <Button Content="{Binding ButtonLabel}" Command="{Binding}" Margin="6 2" Padding="10 2"/>
+            <Button Content="{Binding ButtonLabel}" Command="{Binding}" Style="{DynamicResource ButtonBlue}"/>
         </DataTemplate>
 
         <Style x:Key="alternatingListViewBackgrounds" TargetType="{x:Type ListViewItem}">

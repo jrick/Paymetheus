@@ -181,6 +181,7 @@
     <Compile Include="OverviewDeeper.xaml.cs">
       <DependentUpon>OverviewDeeper.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\CreateTransactionViewModel.cs" />
     <Compile Include="ViewModels\OverviewViewModel.cs" />
     <Compile Include="ProcessArguments.cs" />
     <Compile Include="Request.xaml.cs">
