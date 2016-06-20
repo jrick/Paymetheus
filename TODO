@@ -1,9 +1,14 @@
-RPC:
+RPC/dcrwallet:
 
 - New gRPC APIs to:
   - purchase tickets
   - anything else?
 - Update existing messages for stake related fields (cj has full list)
+- No recovery if previous process was killed and didn't get a chance to stop
+  the dcrwallet process.  Possible solutions are killing any dcrwallet
+  already running (hate!) or perhaps rigging the gRPC server in dcrwallet
+  to close the process after the client disconnects, but no idea if this
+  is possible.
 
 Model/ViewModel:
 
