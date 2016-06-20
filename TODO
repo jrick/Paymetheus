@@ -39,6 +39,10 @@ Model/ViewModel:
 
 View:
 
+- Offer to start dcrd for the user at beginning of startup dialog (if found
+  in the PATH), to avoid the need to run the process separately.  No RPC
+  credentials will need to be manually entered by the user since everything
+  will be known by Paymetheus already.
 - Time since last block has no binding and there is no easy way to access
   this yet for blocks already processed before starting the wallet.
   Might be wise to remove this in the first release.
