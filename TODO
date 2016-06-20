@@ -1,0 +1,40 @@
+RPC:
+
+- New gRPC APIs to:
+  - purchase tickets
+  - anything else?
+- Update existing messages for stake related fields (cj has full list)
+
+Model/ViewModel:
+
+- Don't save every transaction in memory (can fix post-release)
+- Imported account is already hidden since it will be removed in a later
+  dcrwallet release
+- Fee estimation needs to be ported (partially completed in a btcsuite
+  Paymetheus PR: https://github.com/btcsuite/Paymetheus/pull/44).
+- Add viewmodel for history
+- Add viewmodel for unspent outputs
+
+View:
+
+- Time since last block has no binding and there is no easy way to access
+  this yet for blocks already processed before starting the wallet.
+  Might be wise to remove this in the first release.
+- Should default to opening the overview frame
+- "sent" and "received" amounts in overview need to go, wallet does
+  not track them and it would be more useful to put something like
+  "locked" for those who stake
+- Need a textbox-like control for inputing amounts, to use in create
+  transaction view.
+- Request view doesn't hide UI elements depending on whether a generated
+  address is shown yet or not
+- Some text is too small, make it bigger
+- In create transaction view, the type of output needs to be selectable
+  (such as paying to a raw script instead of an address), viewmodel already
+  supports this.
+- Still lots of hardcoded positions with margins in the new views.  These
+  need to be repositioned relative to other objects (using Grid, StackPanel,
+  DockPanel, Border, etc.)
+- Way too much duplicated xaml all over the place
+- Bindings for history
+- Bindings for unspent outputs
