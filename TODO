@@ -15,6 +15,8 @@ Model/ViewModel:
   Paymetheus PR: https://github.com/btcsuite/Paymetheus/pull/44).
 - Add viewmodel for history
 - Add viewmodel for unspent outputs
+- Remove all MessageBox usage, hook up everything to display in the Shell
+  view instead
 
 View:
 
