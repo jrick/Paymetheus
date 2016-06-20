@@ -124,6 +124,20 @@ namespace Paymetheus.ViewModels
             set { _estimatedFee = value; RaisePropertyChanged(); }
         }
 
+        private bool _signChecked = true;
+        public bool SignChecked
+        {
+            get { return _signChecked; }
+            set { _signChecked = value; RaisePropertyChanged(); }
+        }
+
+        private bool _publishChecked = true;
+        public bool PublishChecked
+        {
+            get { return _publishChecked; }
+            set { _publishChecked = value; RaisePropertyChanged(); }
+        }
+
         public ButtonCommand FinishCreateTransaction { get; }
 
         public ICommand RemovePendingOutput { get; }
