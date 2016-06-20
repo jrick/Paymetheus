@@ -9,7 +9,8 @@ Model/ViewModel:
 
 - Don't save every transaction in memory (can fix post-release)
 - Imported account is already hidden since it will be removed in a later
-  dcrwallet release
+  dcrwallet release.  Decide if this needs to be displayed in first release
+  or not.
 - Fee estimation needs to be ported (partially completed in a btcsuite
   Paymetheus PR: https://github.com/btcsuite/Paymetheus/pull/44).
 - Add viewmodel for history
