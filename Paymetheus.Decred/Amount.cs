@@ -78,7 +78,6 @@ namespace Paymetheus.Decred
                 throw new ArgumentNullException(nameof(value));
 
             var doubleValue = double.Parse(value);
-            System.Console.WriteLine(doubleValue);
 
             return AmountFromDouble(doubleValue);
         }

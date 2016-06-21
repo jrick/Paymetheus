@@ -12,13 +12,11 @@ using System.Threading.Tasks;
 
 namespace Paymetheus.Framework.TypeConverters
 {
-    class AmountTypeConverter : TypeConverter
+    public class AmountTypeConverter : TypeConverter
     {
-        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType) =>
-            sourceType == typeof(string);
+        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType) => sourceType == typeof(string);
 
-        public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType) =>
-            destinationType == typeof(Amount);
+        public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType) => destinationType == typeof(Amount);
 
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value) =>
             Denomination.Decred.AmountFromString((string)value);

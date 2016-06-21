@@ -5,6 +5,7 @@
              xmlns:viewmodels="clr-namespace:Paymetheus.ViewModels"
              xmlns:f="clr-namespace:Paymetheus.Framework"
              xmlns:vc="clr-namespace:Paymetheus.Framework.ValueConverters"
+             xmlns:v="clr-namespace:Paymetheus.Validation"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:w="clr-namespace:Paymetheus.Decred.Wallet;assembly=Paymetheus.Decred"
              xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
@@ -17,6 +18,8 @@
         <vc:BooleanToVisibilityConverter x:Key="invertedVisibilityConverter" True="Collapsed" False="Visible" />
         <vc:BooleanToVisibilityConverter x:Key="hiddenConverter" False="Hidden" />
         <vc:NullToHiddenConverter x:Key="NullToHiddenConverter"/>
+        <vc:AmountConverter x:Key="AmountConverter"/>
+        <v:AmountValidator x:Key="AmountValidator"/>
         <local:AccountToNameConverter x:Key="accountToNameConverter" />
 
         <DataTemplate x:Key="buttonTemplate">

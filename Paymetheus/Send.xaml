@@ -4,6 +4,8 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:vc="clr-namespace:Paymetheus.Framework.ValueConverters"
+      xmlns:v="clr-namespace:Paymetheus.Validation"
       mc:Ignorable="d"
       x:Name="Page"
       WindowTitle="Page"
@@ -334,8 +336,21 @@
                                 <TextBox Grid.Column="0" Text="{Binding Destination}"/>
                                 <TextBlock Grid.Column="1" HorizontalAlignment="Right" Text="Amount:"
                                            FontSize="16" Foreground="#FF0C1E3E" />
-                                <local:AmountLabel Grid.Column="2" HorizontalAlignment="Right" Value="{Binding OutputAmount}"
-                                                   FontSizeWhole="16" FontSizeDecimal="16" FontWeightWhole="Bold"/>
+                                <TextBox Grid.Column="2" HorizontalAlignment="Right">
+                                    <TextBox.Text>
+                                        <Binding Path="OutputAmount" UpdateSourceTrigger="PropertyChanged">
+                                            <Binding.ValidationRules>
+                                                <v:AmountValidator/>
+                                            </Binding.ValidationRules>
+                                            <Binding.Converter>
+                                                <vc:AmountConverter/>
+                                            </Binding.Converter>
+                                        </Binding>
+                                    </TextBox.Text>
+                                </TextBox>
+                                <!--="{Binding OutputAmount, Converter={StaticResource AmountConverter}, ValidatesOnExceptions=True}"/>-->
+                                <!--<local:AmountLabel Grid.Column="2" HorizontalAlignment="Right" Value="{Binding OutputAmount}"
+                                                   FontSizeWhole="16" FontSizeDecimal="16" FontWeightWhole="Bold"/>-->
                             </Grid>
                         </DataTemplate>
                     </Grid.Resources>
