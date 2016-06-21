@@ -50,8 +50,9 @@ View:
 - "sent" and "received" amounts in overview need to go, wallet does
   not track them and it would be more useful to put something like
   "locked" for those who stake
-- Need a textbox-like control for inputing amounts, to use in create
-  transaction view.
+- Textbox for amounts and destination strings in create transaction view
+  need restyling.  For amounts, the text content should not include the
+  trailing spaces.
 - Add pending output button in create transaction view is not functional
 - There is no way to remove pending outputs yet, each item should contain
   a button for removing itself from the ObservableCollection.
