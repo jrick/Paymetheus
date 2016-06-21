@@ -72,7 +72,7 @@ namespace Paymetheus.ViewModels
                                 _destinationAddress = Address.Decode(value);
                                 if (_destinationAddress.IntendedBlockChain != App.Current.ActiveNetwork)
                                 {
-                                    throw new ArgumentException("Address is intended for use on another network");
+                                    throw new ArgumentException("Address is intended for use on another block chain");
                                 }
                                 break;
                             case Kind.Script:
@@ -130,14 +130,18 @@ namespace Paymetheus.ViewModels
 
             public OutputScript BuildOutputScript()
             {
+                if (!DestinationValid)
+                {
+                    throw new Exception("Unable to build output script from invalid destination");
+                }
+
                 switch (OutputKind)
                 {
                     case Kind.Address:
-                        var address = Address.Decode(Destination);
-                        return address.BuildScript();
+                        return _destinationAddress.BuildScript();
 
                     case Kind.Script:
-                        return new OutputScript.Unrecognized(Hexadecimal.Decode(Destination));
+                        return new OutputScript.Unrecognized(_destinationScript);
 
                     default:
                         throw new Exception($"Unknown pending output kind {OutputKind}");
@@ -201,6 +205,7 @@ namespace Paymetheus.ViewModels
                 EstimatedFee = 0;
                 EstimatedRemainingBalance = 0;
 
+                // TODO: only make executable if we know the transaction can be created
                 FinishCreateTransaction.Executable = true;
             }
             else
