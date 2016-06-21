@@ -328,6 +328,15 @@
 
                         <DataTemplate x:Key="PendingOutput">
                             <Grid>
+                                <Grid.Resources>
+                                    <Style TargetType="{x:Type TextBox}">
+                                        <Style.Triggers>
+                                            <Trigger Property="Validation.HasError" Value="True">
+                                                <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Resources>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="250"/>
                                     <ColumnDefinition Width="1*"/>
@@ -338,17 +347,7 @@
                                            FontSize="16" Foreground="#FF0C1E3E" />
                                 <TextBox Grid.Column="2" HorizontalAlignment="Right"
                                          Text="{Binding OutputAmount, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
-                                         FontFamily="Consolas" >
-                                    <TextBox.Style>
-                                        <Style TargetType="{x:Type TextBox}">
-                                            <Style.Triggers>
-                                                <Trigger Property="Validation.HasError" Value="True">
-                                                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </TextBox.Style>
-                                </TextBox>
+                                         FontFamily="Consolas"/>
                                 <!--="{Binding OutputAmount, Converter={StaticResource AmountConverter}, ValidatesOnExceptions=True}"/>-->
                                 <!--<local:AmountLabel Grid.Column="2" HorizontalAlignment="Right" Value="{Binding OutputAmount}"
                                                    FontSizeWhole="16" FontSizeDecimal="16" FontWeightWhole="Bold"/>-->
@@ -369,7 +368,7 @@
                               Style="{DynamicResource ComboBoxStyleWithCurrency}" Foreground="#FF2970FF" ItemContainerStyle="{DynamicResource ComboBoxItemStyle}"/>
                     <ItemsControl Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Padding="0 0 40 0" ItemsSource="{Binding PendingOutputs}" ItemTemplate="{StaticResource PendingOutput}"/>
 
-                    
+
 
                     <Rectangle Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="4" Fill="#FFDEE0E1" Height="1" VerticalAlignment="Bottom"/>
                 </Grid>
