@@ -14,6 +14,8 @@ RPC/dcrwallet:
 
 Model/ViewModel:
 
+- Validation of user input in the startup dialogs would be nice (instead
+  of opening a message box with parse errors when trying to continue).
 - Don't save every transaction in memory (can fix post-release)
 - Imported account is already hidden since it will be removed in a later
   dcrwallet release.  Decide if this needs to be displayed in first release
