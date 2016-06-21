@@ -23,6 +23,7 @@ namespace Paymetheus.ViewModels
         {
             RemovePendingOutput = new DelegateCommand<PendingOutput>(RemovePendingOutputAction);
             FinishCreateTransaction = new ButtonCommand("Send", FinishCreateTransactionAction);
+            FinishCreateTransaction.Executable = false;
         }
 
         public class PendingOutput
