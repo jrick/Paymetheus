@@ -21,6 +21,10 @@ namespace Paymetheus.ViewModels
     {
         public CreateTransactionViewModel() : base()
         {
+            var firstPendingOutput = new PendingOutput();
+            firstPendingOutput.Changed += PendingOutput_Changed;
+            PendingOutputs.Add(firstPendingOutput);
+
             RemovePendingOutput = new DelegateCommand<PendingOutput>(RemovePendingOutputAction);
             FinishCreateTransaction = new ButtonCommand("Send", FinishCreateTransactionAction);
             FinishCreateTransaction.Executable = false;
@@ -28,13 +32,23 @@ namespace Paymetheus.ViewModels
 
         public class PendingOutput
         {
+            bool DestinationValid = false; // No default destination
+            bool OutputAmountValid = true; // Output amount defaults to zero, which is valid.
+
+            /// <summary>
+            /// Checks whether all user-set fields of the pending output are ready to be used
+            /// to create a transaction output.
+            /// </summary>
+            /// <returns>Validity of the pending output</returns>
+            public bool IsValid => DestinationValid && OutputAmountValid;
+
             public enum Kind
             {
                 Address,
                 Script,
             }
 
-            private Kind _outputKind;
+            private Kind _outputKind = Kind.Address;
             public Kind OutputKind
             {
                 get { return _outputKind; }
@@ -42,10 +56,35 @@ namespace Paymetheus.ViewModels
             }
 
             private string _destination;
+            private Address _destinationAddress;
+            private byte[] _destinationScript;
             public string Destination
             {
                 get { return _destination; }
-                set { _destination = value; RaiseChanged(); }
+                set
+                {
+                    _destination = value;
+
+                    var valid = false;
+                    switch (OutputKind)
+                    {
+                        case Kind.Address:
+                            valid = Address.TryDecode(value, out _destinationAddress);
+                            break;
+                        case Kind.Script:
+                            valid = Hexadecimal.TryDecode(value, out _destinationScript);
+                            break;
+                    }
+
+                    DestinationValid = valid;
+                    RaiseChanged();
+
+                    if (!valid && value != "")
+                    {
+                        // TODO: this goes in a tooltip, needs a better message.
+                        throw new ArgumentException("Invalid input");
+                    }
+                }
             }
 
             public Amount _outputAmount;
@@ -60,26 +99,6 @@ namespace Paymetheus.ViewModels
                         RaiseChanged();
                     }
                 }
-            }
-
-            /// <summary>
-            /// Checks whether all user-set fields of the pending output are ready to be used
-            /// to create a transaction output.
-            /// </summary>
-            /// <returns>Validity of the pending output</returns>
-            public bool IsValid()
-            {
-                if (string.IsNullOrWhiteSpace(Destination))
-                {
-                    return false;
-                }
-
-                if (!TransactionRules.IsSaneOutputValue(OutputAmount))
-                {
-                    return false;
-                }
-
-                return true;
             }
 
             public event EventHandler Changed;
@@ -106,10 +125,7 @@ namespace Paymetheus.ViewModels
             }
         }
 
-        public ObservableCollection<PendingOutput> PendingOutputs { get; } = new ObservableCollection<PendingOutput>
-        {
-            new PendingOutput(),
-        };
+        public ObservableCollection<PendingOutput> PendingOutputs { get; } = new ObservableCollection<PendingOutput>();
 
         private Amount? _estimatedRemainingBalance;
         public Amount? EstimatedRemainingBalance
@@ -159,10 +175,12 @@ namespace Paymetheus.ViewModels
 
         private void RecalculateTransaction()
         {
-            if (PendingOutputs.Count > 0 && PendingOutputs.All(x => x.IsValid()))
+            if (PendingOutputs.Count > 0 && PendingOutputs.All(x => x.IsValid))
             {
+                // TODO: calculate estimated fee
                 EstimatedFee = 0;
                 EstimatedRemainingBalance = 0;
+
                 FinishCreateTransaction.Executable = true;
             }
             else

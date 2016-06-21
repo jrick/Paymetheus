@@ -333,7 +333,7 @@
                                     <ColumnDefinition Width="1*"/>
                                     <ColumnDefinition Width="160"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBox Grid.Column="0" Text="{Binding Destination}"/>
+                                <TextBox Grid.Column="0" Text="{Binding Destination, ValidatesOnExceptions=True}"/>
                                 <TextBlock Grid.Column="1" HorizontalAlignment="Right" Text="Amount:"
                                            FontSize="16" Foreground="#FF0C1E3E" />
                                 <TextBox Grid.Column="2" HorizontalAlignment="Right" FontFamily="Consolas">
