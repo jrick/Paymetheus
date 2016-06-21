@@ -19,7 +19,13 @@ namespace Paymetheus.Validation
         {
             try
             {
-                var amount = Denomination.Decred.AmountFromString((string)value);
+                double doubleResult;
+                if (!double.TryParse((string)value, out doubleResult))
+                {
+                    return new ValidationResult(false, "String to double conversion failed");
+                }
+
+                var amount = Denomination.Decred.AmountFromDouble(doubleResult);
 
                 if (!AllowNegative && amount < 0)
                 {
