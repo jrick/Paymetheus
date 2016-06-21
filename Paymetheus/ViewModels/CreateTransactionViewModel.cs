@@ -63,39 +63,59 @@ namespace Paymetheus.ViewModels
                 get { return _destination; }
                 set
                 {
-                    _destination = value;
-
-                    var valid = false;
-                    switch (OutputKind)
+                    try
                     {
-                        case Kind.Address:
-                            valid = Address.TryDecode(value, out _destinationAddress);
-                            break;
-                        case Kind.Script:
-                            valid = Hexadecimal.TryDecode(value, out _destinationScript);
-                            break;
+                        _destination = value;
+                        switch (OutputKind)
+                        {
+                            case Kind.Address:
+                                _destinationAddress = Address.Decode(value);
+                                if (_destinationAddress.IntendedBlockChain != App.Current.ActiveNetwork)
+                                {
+                                    throw new ArgumentException("Address is intended for use on another network");
+                                }
+                                break;
+                            case Kind.Script:
+                                _destinationScript = Hexadecimal.Decode(value);
+                                break;
+                        }
+                        DestinationValid = true;
                     }
-
-                    DestinationValid = valid;
-                    RaiseChanged();
-
-                    if (!valid && value != "")
+                    catch
                     {
-                        // TODO: this goes in a tooltip, needs a better message.
-                        throw new ArgumentException("Invalid input");
+                        DestinationValid = false;
+                        if (value != "")
+                            throw;
+                    }
+                    finally
+                    {
+                        RaiseChanged();
                     }
                 }
             }
 
-            public Amount _outputAmount;
-            public Amount OutputAmount
+            private Amount _outputAmount;
+            public string OutputAmount
             {
-                get { return _outputAmount; }
+                get { return _outputAmount.ToString(); }
                 set
                 {
-                    if (_outputAmount != value)
+                    try
                     {
-                        _outputAmount = value;
+                        _outputAmount = Denomination.Decred.AmountFromString(value);
+                        if (!TransactionRules.IsSaneOutputValue(_outputAmount))
+                        {
+                            throw new ArgumentException("Value exceeds allowed bounds");
+                        }
+                        OutputAmountValid = true;
+                    }
+                    catch
+                    {
+                        OutputAmountValid = false;
+                        throw;
+                    }
+                    finally
+                    {
                         RaiseChanged();
                     }
                 }
