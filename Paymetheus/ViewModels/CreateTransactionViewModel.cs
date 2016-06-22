@@ -18,13 +18,12 @@ namespace Paymetheus.ViewModels
     {
         public CreateTransactionViewModel() : base()
         {
-            var firstPendingOutput = new PendingOutput();
-            firstPendingOutput.Changed += PendingOutput_Changed;
-            PendingOutputs.Add(firstPendingOutput);
-
-            RemovePendingOutput = new DelegateCommand<PendingOutput>(RemovePendingOutputAction);
+            AddPendingOutputCommand = new DelegateCommand(AddPendingOutput);
+            RemovePendingOutputCommand = new DelegateCommand<PendingOutput>(RemovePendingOutput);
             FinishCreateTransaction = new ButtonCommand("Send", FinishCreateTransactionAction);
             FinishCreateTransaction.Executable = false;
+
+            AddPendingOutput();
         }
 
         public class PendingOutput
@@ -100,9 +99,9 @@ namespace Paymetheus.ViewModels
                     try
                     {
                         _outputAmount = Denomination.Decred.AmountFromString(value);
-                        if (!TransactionRules.IsSaneOutputValue(_outputAmount))
+                        if (_outputAmount < 0)
                         {
-                            throw new ArgumentException("Value exceeds allowed bounds");
+                            throw new ArgumentException("Value may not be negative");
                         }
                         OutputAmountValid = true;
                     }
@@ -178,9 +177,18 @@ namespace Paymetheus.ViewModels
 
         public ButtonCommand FinishCreateTransaction { get; }
 
-        public ICommand RemovePendingOutput { get; }
+        public ICommand AddPendingOutputCommand { get; }
+        public ICommand RemovePendingOutputCommand { get; }
 
-        private void RemovePendingOutputAction(PendingOutput item)
+        private void AddPendingOutput()
+        {
+            var pendingOutput = new PendingOutput();
+            pendingOutput.Changed += PendingOutput_Changed;
+            PendingOutputs.Add(pendingOutput);
+            RecalculateTransaction();
+        }
+
+        private void RemovePendingOutput(PendingOutput item)
         {
             if (PendingOutputs.Remove(item))
             {
