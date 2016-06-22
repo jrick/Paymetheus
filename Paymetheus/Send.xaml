@@ -294,9 +294,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBlock Foreground="#FF5A6E81" FontSize="20" Text="Create transaction"/>
-            <Grid Margin="272.585,145,272.585,101.389" Grid.Row="3"/>
-            <TextBlock HorizontalAlignment="Left" Margin="0,10.102,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF0C1E3E" FontSize="11" MaxWidth="338.783">
+            <TextBlock Grid.Row="0" Foreground="#FF5A6E81" FontSize="20" Text="Create transaction"/>
+            <TextBlock Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Foreground="#FF0C1E3E" FontSize="11" MaxWidth="338.783">
                 <Run Text="Decred addresses always begin with letter"/>
                 <Run FontWeight="Bold" Text="D"/>
                 <Run Text="and contain 26-35 alphanumeric characters"/>
