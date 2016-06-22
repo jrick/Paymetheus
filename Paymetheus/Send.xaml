@@ -347,12 +347,9 @@
                                          f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
                                 <TextBlock Grid.Column="1" HorizontalAlignment="Right" Text="Amount:"
                                            FontSize="16" Foreground="#FF0C1E3E"/>
-                                <TextBox Grid.Column="2" HorizontalAlignment="Right"
+                                <TextBox Grid.Column="2" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
                                          Text="{Binding OutputAmount, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
                                          FontFamily="Consolas"/>
-                                <!--="{Binding OutputAmount, Converter={StaticResource AmountConverter}, ValidatesOnExceptions=True}"/>-->
-                                <!--<local:AmountLabel Grid.Column="2" HorizontalAlignment="Right" Value="{Binding OutputAmount}"
-                                                   FontSizeWhole="16" FontSizeDecimal="16" FontWeightWhole="Bold"/>-->
                             </Grid>
                         </DataTemplate>
                     </Grid.Resources>
