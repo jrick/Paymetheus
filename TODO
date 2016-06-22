@@ -76,3 +76,7 @@ View:
 - Block hash of current block is no where to be found.  For desktop (mouse)
   users it might be adequate to use a tooltip over the block height, but
   this is a bad solution to those with touch screens.
+- Pending outputs in the create transaction view need buttons on each list
+  item to remove the output (removing the last inserts a new empty one).
+- Add pending output button in send view needs to be relocated away from the
+  side.  Somewhere above, or just under the pending outputs should work.

@@ -295,7 +295,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Row="0" Foreground="#FF5A6E81" FontSize="20" Text="Create transaction"/>
-            <TextBlock Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Foreground="#FF0C1E3E" FontSize="11" MaxWidth="338.783">
+            <TextBlock Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Foreground="#FF0C1E3E" FontSize="11" Width="340">
                 <Run Text="Decred addresses always begin with letter"/>
                 <Run FontWeight="Bold" Text="D"/>
                 <Run Text="and contain 26-35 alphanumeric characters"/>
@@ -365,9 +365,6 @@
                               ItemTemplate="{StaticResource ComboBoxAccountDataTemplate}"
                               Style="{DynamicResource ComboBoxStyleWithCurrency}" Foreground="#FF2970FF" ItemContainerStyle="{DynamicResource ComboBoxItemStyle}"/>
                     <ItemsControl Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Padding="0 0 40 0" ItemsSource="{Binding PendingOutputs}" ItemTemplate="{StaticResource PendingOutput}"/>
-
-
-
                     <Rectangle Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="4" Fill="#FFDEE0E1" Height="1" VerticalAlignment="Bottom"/>
                 </Grid>
             </Border>
