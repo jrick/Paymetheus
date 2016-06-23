@@ -55,7 +55,6 @@ View:
 - Textbox for amounts and destination strings in create transaction view
   need restyling.  For amounts, the text content should not include the
   trailing spaces.
-- Add pending output button in create transaction view is not functional
 - There is no way to remove pending outputs yet, each item should contain
   a button for removing itself from the ObservableCollection.
 - Request view doesn't hide UI elements depending on whether a generated
@@ -76,7 +75,4 @@ View:
 - Block hash of current block is no where to be found.  For desktop (mouse)
   users it might be adequate to use a tooltip over the block height, but
   this is a bad solution to those with touch screens.
-- Pending outputs in the create transaction view need buttons on each list
-  item to remove the output (removing the last inserts a new empty one).
-- Add pending output button in send view needs to be relocated away from the
-  side.  Somewhere above, or just under the pending outputs should work.
+- Add/remove output buttons in create transaction view need restyling
