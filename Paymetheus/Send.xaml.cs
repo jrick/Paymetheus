@@ -24,5 +24,10 @@ namespace Paymetheus
         {
             InitializeComponent();
         }
+
+        private void OutputAmountTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = e.Text.All(ch => !((ch >= '0' && ch <= '9') || ch == '.'));
+        }
     }
 }

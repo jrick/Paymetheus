@@ -145,69 +145,6 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="ListBoxItemStyle2" TargetType="{x:Type ListBoxItem}">
-            <Setter Property="SnapsToDevicePixels" Value="True"/>
-            <Setter Property="Padding" Value="4,1"/>
-            <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-            <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                        <Grid x:Name="grid1" Background="White" d:DesignWidth="1014.079" Height="38" >
-
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="85"/>
-                                <ColumnDefinition Width="35"/>
-                                <ColumnDefinition Width="250"/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="80"/>
-                                <ColumnDefinition Width="180"/>
-                            </Grid.ColumnDefinitions>
-                            <ComboBox Margin="0,7.621,0,0" VerticalAlignment="Bottom" Style="{DynamicResource ComboBoxStyleWithCurrency}" Height="23.356" Foreground="#FF2970FF" ItemContainerStyle="{DynamicResource ComboBoxItemStyle}" Grid.Column="2" Grid.RowSpan="1" Grid.ColumnSpan="1" Grid.Row="1">
-                                <ComboBox.Background>
-                                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
-                                        <GradientStop Color="White" Offset="1"/>
-                                    </LinearGradientBrush>
-                                </ComboBox.Background>
-                                <ComboBoxItem Content="Primary Account" IsSelected="True"/>
-                                <ComboBoxItem Content="Second Account"/>
-                            </ComboBox>
-                            <Button Content="x" Height="11" Margin="7.585,0,9.9,7" Style="{DynamicResource ButtonStyleOnlyCharacters}" Foreground="#FF132F4B" VerticalAlignment="Bottom" Grid.Column="1" FontSize="16" Grid.RowSpan="1" Grid.Row="0" RenderTransformOrigin="0.766,0.604" Width="15"/>
-                            <TextBlock Margin="0,6.658,15.921,0" TextWrapping="Wrap" Foreground="#FF0C1E3E" FontSize="16" Height="21.713" VerticalAlignment="Bottom" Text="Amount:" TextAlignment="Right" Grid.RowSpan="1" Grid.Column="4" HorizontalAlignment="Right" Grid.Row="1"/>
-                            <TextBlock Margin="0,0,58,0" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="#FF0C1E3E" TextAlignment="Right" Grid.Column="5" HorizontalAlignment="Right" FontSize="16" Width="120" Grid.ColumnSpan="1" Grid.RowSpan="1" Grid.Row="1" Height="21"><Run FontWeight="Bold" Text="1,444"/><Run Text="."/><Run FontSize="12" Text="4"/><Run FontSize="12" Text="0"/><Run FontSize="12" Text="9"/></TextBlock>
-                            <TextBlock Margin="0,0,18,0" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="#FF0C1E3E" TextAlignment="Right" HorizontalAlignment="Right" Grid.Column="5" FontSize="16" Width="40" Grid.RowSpan="1" Grid.Row="1" Height="21"><Run Text="DC"/><Run Text="R"/></TextBlock>
-
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <MultiTrigger>
-                                <MultiTrigger.Conditions>
-                                    <Condition Property="IsMouseOver" Value="True"/>
-                                </MultiTrigger.Conditions>
-                            </MultiTrigger>
-                            <MultiTrigger>
-                                <MultiTrigger.Conditions>
-                                    <Condition Property="Selector.IsSelectionActive" Value="False"/>
-                                    <Condition Property="IsSelected" Value="True"/>
-                                </MultiTrigger.Conditions>
-                                <Setter Property="Background" TargetName="grid1" Value="White"/>
-                            </MultiTrigger>
-                            <MultiTrigger>
-                                <MultiTrigger.Conditions>
-                                    <Condition Property="Selector.IsSelectionActive" Value="True"/>
-                                    <Condition Property="IsSelected" Value="True"/>
-                                </MultiTrigger.Conditions>
-                            </MultiTrigger>
-                            <Trigger Property="IsEnabled" Value="False"/>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
         <Style x:Key="ButtonStyleOnlyCharacters" TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
             <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
@@ -307,6 +244,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="80"/>
@@ -338,17 +276,21 @@
                                     </Style>
                                 </Grid.Resources>
                                 <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="35"/>
                                     <ColumnDefinition Width="250"/>
                                     <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="160"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBox Grid.Column="0" Text="{Binding Destination, ValidatesOnExceptions=True}"
-                                         f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
-                                <TextBlock Grid.Column="1" HorizontalAlignment="Right" Text="Amount:"
-                                           FontSize="16" Foreground="#FF0C1E3E"/>
-                                <TextBox Grid.Column="2" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
-                                         Text="{Binding OutputAmount, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
-                                         FontFamily="Consolas"/>
+                                <Button Grid.Column="0" Content="-"
+                                        Command="{Binding Source={StaticResource ViewModelLocator}, Path=CreateTransactionViewModel.RemovePendingOutputCommand}" CommandParameter="{Binding}"
+                                        Width="20" Height="20"/>
+                                <TextBox Grid.Column="1" Text="{Binding Destination, ValidatesOnExceptions=True}"
+                                         f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"
+                                         Background="{x:Null}"/>
+                                <TextBox Grid.Column="2" HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Width="160"
+                                         Text="{Binding OutputAmount, ValidatesOnExceptions=True}"
+                                         f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"
+                                         PreviewTextInput="OutputAmountTextBox_PreviewTextInput"
+                                         FontFamily="Consolas" BorderThickness="0 0 0 1" Background="{x:Null}"/>
                             </Grid>
                         </DataTemplate>
                     </Grid.Resources>
@@ -357,18 +299,25 @@
                     <TextBlock Grid.Row="1" Grid.Column="0" TextAlignment="Right" Text="To:" FontSize="16" Foreground="#FF0C1E3E"/>
 
                     <Image Grid.Row="0" Grid.Column="1" Source="Images/pm - icons - accounts.png" Stretch="UniformToFill"/>
-                    <Button Grid.Row="1" Grid.Column="1" Content="+" Command="{Binding AddPendingOutputCommand}" Height="20" Width="20"/>
+                    <Button Grid.Row="2" Grid.Column="1" Content="+" Command="{Binding AddPendingOutputCommand}" Height="20" Width="20"/>
 
                     <ComboBox Grid.Row="0" Grid.Column="2"
                               ItemsSource="{Binding Source={StaticResource ViewModelLocator}, Path=SynchronizerViewModel.Accounts}"
-                              SelectedItem="{Binding Source={StaticResource ViewModelLocator}, Path=SynchronizerViewModel.SelectedAccount}"
+                              SelectedItem="{Binding SelectedAccount}"
                               ItemTemplate="{StaticResource ComboBoxAccountDataTemplate}"
                               Style="{DynamicResource ComboBoxStyleWithCurrency}" Foreground="#FF2970FF" ItemContainerStyle="{DynamicResource ComboBoxItemStyle}"/>
-                    <ItemsControl Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Padding="0 0 40 0" ItemsSource="{Binding PendingOutputs}" ItemTemplate="{StaticResource PendingOutput}"/>
-                    <Rectangle Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="4" Fill="#FFDEE0E1" Height="1" VerticalAlignment="Bottom"/>
+                    <Border Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" BorderBrush="#FFDEE0E1" BorderThickness="0 0 0 1">
+                        <ItemsControl Padding="0 0 40 0" ItemsSource="{Binding PendingOutputs}" ItemTemplate="{StaticResource PendingOutput}">
+                            <ItemsControl.ItemContainerStyle>
+                                <Style>
+                                    <Setter Property="FrameworkElement.Margin" Value="0 0 0 5"/>
+                                </Style>
+                            </ItemsControl.ItemContainerStyle>
+                        </ItemsControl>
+                    </Border>
                 </Grid>
             </Border>
-            <Grid Margin="0,13.794,40,216.793" Grid.Row="3" VerticalAlignment="Top">
+            <Grid Margin="0,20,40,0" Grid.Row="3" VerticalAlignment="Top">
                 <Grid.Resources>
                     <Style TargetType="{x:Type local:AmountLabel}">
                         <Setter Property="FontWeightWhole" Value="Bold"/>

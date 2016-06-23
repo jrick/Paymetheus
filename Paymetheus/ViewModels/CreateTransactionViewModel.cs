@@ -18,12 +18,25 @@ namespace Paymetheus.ViewModels
     {
         public CreateTransactionViewModel() : base()
         {
+            var synchronizer = ViewModelLocator.SynchronizerViewModel as SynchronizerViewModel;
+            if (synchronizer != null)
+            {
+                SelectedAccount = synchronizer.Accounts[0];
+            }
+
             AddPendingOutputCommand = new DelegateCommand(AddPendingOutput);
             RemovePendingOutputCommand = new DelegateCommand<PendingOutput>(RemovePendingOutput);
             FinishCreateTransaction = new ButtonCommand("Send", FinishCreateTransactionAction);
             FinishCreateTransaction.Executable = false;
 
             AddPendingOutput();
+        }
+
+        private AccountViewModel _selectedAccount;
+        public AccountViewModel SelectedAccount
+        {
+            get { return _selectedAccount; }
+            set { _selectedAccount = value; RaisePropertyChanged(); }
         }
 
         public class PendingOutput
@@ -101,7 +114,7 @@ namespace Paymetheus.ViewModels
                         _outputAmount = Denomination.Decred.AmountFromString(value);
                         if (_outputAmount < 0)
                         {
-                            throw new ArgumentException("Value may not be negative");
+                            throw new ArgumentException("Output amount may not be negative");
                         }
                         OutputAmountValid = true;
                     }
@@ -193,6 +206,12 @@ namespace Paymetheus.ViewModels
             if (PendingOutputs.Remove(item))
             {
                 item.Changed -= PendingOutput_Changed;
+
+                if (PendingOutputs.Count == 0)
+                {
+                    AddPendingOutput();
+                }
+
                 RecalculateTransaction();
             }
         }
