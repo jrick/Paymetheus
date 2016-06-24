@@ -147,7 +147,7 @@
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
 
-        <Grid x:Name="LayoutRoot" Background="White">
+        <Grid x:Name="LayoutRoot">
             <Grid.RowDefinitions>
                 <RowDefinition Height="46"/>
                 <RowDefinition Height="25"/>
@@ -182,7 +182,11 @@
                 <Button x:Name="ButtonGenerate" Visibility="{Binding HideIfAddressToDisplay}" Command="{Binding GenerateAddressCommand}"  Content="Generate a single-use address" Style="{DynamicResource HyperLinkButton}" FontSize="19.333" Foreground="#FF2970FF" Height="36.274" Width="299.774" />
                 <TextBlock x:Name="LblCode" Visibility="{Binding HideWhenNoAddressToDisplay}" Height="66" Margin="0,12,-0.17,0" TextWrapping="Wrap" Text="{Binding GeneratedAddress}" VerticalAlignment="Top" Foreground="#FF132F4B" FontSize="28" TextAlignment="Center"/>
             </Grid>
-            <TextBlock Height="24" Margin="0,76.059,0,0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF586D80" TextAlignment="Center"><Run Text="Single use address generated for "/><Run FontWeight="Bold" Text="&quot;Primary account&quot; "/><Run Text="+ copied to clipboard"/></TextBlock>
+            <TextBlock Height="24" Margin="0,76.059,0,0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF586D80" TextAlignment="Center">
+                <Run Text="Single use address generated for account"/>
+                <Run FontWeight="Bold" Text="{Binding Source={StaticResource ViewModelLocator}, Path=SynchronizerViewModel.SelectedAccount.AccountName, Mode=OneWay, FallbackValue=Account Name}"/>
+                <Run Text="+ copied to clipboard"/>
+            </TextBlock>
             <Button Name="GenerateAnotherBtn"  Visibility="{Binding HideWhenNoAddressToDisplay}" Content="GENERATE ANOTHER" Command="{Binding GenerateAddressCommand}" Height="35.5" Margin="0,128,0,0" Style="{DynamicResource ButtonBlue}" Foreground="#FF132F4B" Grid.Row="5" Width="162.697" VerticalAlignment="Top"/>
         </Grid>
     </ScrollViewer>
