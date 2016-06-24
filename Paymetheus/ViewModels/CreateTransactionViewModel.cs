@@ -74,7 +74,6 @@ namespace Paymetheus.ViewModels
                 {
                     try
                     {
-                        _destination = value;
                         switch (OutputKind)
                         {
                             case Kind.Address:
@@ -88,6 +87,7 @@ namespace Paymetheus.ViewModels
                                 _destinationScript = Hexadecimal.Decode(value);
                                 break;
                         }
+                        _destination = value;
                         DestinationValid = true;
                     }
                     catch
@@ -111,11 +111,12 @@ namespace Paymetheus.ViewModels
                 {
                     try
                     {
-                        _outputAmount = Denomination.Decred.AmountFromString(value);
+                        var outputAmount = Denomination.Decred.AmountFromString(value);
                         if (_outputAmount < 0)
                         {
                             throw new ArgumentException("Output amount may not be negative");
                         }
+                        _outputAmount = outputAmount;
                         OutputAmountValid = true;
                     }
                     catch
