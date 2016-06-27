@@ -121,6 +121,7 @@
                                     </Button.Template>
                                 </Button>
 
+                                <!-- These buttons don't don anything useful right now so don't display them -->
                                 <!--
                                 <Button Command="{Binding OpenImportKeyDialogCommand}" ToolTip="Import key"
                                         HorizontalAlignment="Right" Height="26" Margin="0,0,120.004,0" Grid.Row="5" VerticalAlignment="Top" Width="26" Grid.Column="1">
@@ -132,7 +133,6 @@
                                         </ControlTemplate>
                                     </Button.Template>
                                 </Button>
-                                -->
 
                                 <Button Command="{Binding HideAccountCommand}" ToolTip="Hide account"
                                         HorizontalAlignment="Right" Height="26" Margin="0,0,40,0" Grid.Row="5" VerticalAlignment="Top" Width="26" Grid.Column="1">
@@ -144,8 +144,7 @@
                                         </ControlTemplate>
                                     </Button.Template>
                                 </Button>
-
-
+                                -->
 
                             </Grid>
                             <Rectangle Fill="#FFA9B4BF" Height="1" VerticalAlignment="Bottom" Margin="0" Grid.Row="1" Grid.ColumnSpan="1"/>
