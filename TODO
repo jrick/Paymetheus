@@ -57,6 +57,9 @@ View:
   generated address is shown yet or not
 - [required] Bindings for history
 - [required] Bindings for unspent outputs
+- [required] None of the (post-startup) dialogs are working correctly.
+  Most are missing their views, while others are just being displayed with
+  many layout issues are are unusable.
 - Offer to start dcrd for the user at beginning of startup dialog (if found
   in the PATH), to avoid the need to run the process separately.  No RPC
   credentials will need to be manually entered by the user since everything

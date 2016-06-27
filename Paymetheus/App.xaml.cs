@@ -7,7 +7,6 @@ using Paymetheus.Framework;
 using Paymetheus.Rpc;
 using Paymetheus.ViewModels;
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
@@ -46,7 +45,7 @@ namespace Paymetheus
 
                 MessageBox.Show(ex.Message, "Error");
                 UncleanShutdown();
-                Current.Shutdown(1);
+                Application.Current.Shutdown(1);
             };
 
             Application.Current.Startup += Application_Startup;
