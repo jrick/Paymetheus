@@ -14,33 +14,49 @@ RPC/dcrwallet:
 
 Model/ViewModel:
 
+- [required] Add viewmodel for history
+- [required] Add viewmodel for unspent outputs
+- [required] Fee estimation needs to be ported (partially completed in a
+  btcsuite Paymetheus PR: https://github.com/btcsuite/Paymetheus/pull/44) or
+  added to the RPC API.  Right now all estimated fees when constructing
+  transactions are displayed as 0.
+- [required] Some address/script functionality (in
+  Paymetheus.Decred.Script.OutputScript and Paymetheus.Decred.Wallet.Address)
+  is not yet implemented.  This can cause application crashes when trying to
+  parse these scripts/addresses when decoding raw transactions returned by
+  the wallet. Search these classes for NotImplementedException.
+- [required] Wallet seed word list encoding needs extra word at end for
+  checksum to match dcrwallet.  I kinda hate this format and don't want to
+  display it when creating a new wallet (one byte of checksum is not enough,
+  the PGG word list already catches missing words, and if there is any extra
+  data added it should be some kind of timestamp or blockheight of when the
+  seed was generated), but we should at least not bail out when decoding a
+  seed created by other dcr tools.
+- [required] Imported account is currently hidden since it will be removed
+  in a later dcrwallet release.  Decide if this needs to be displayed in
+  first release or not (how soon can it be fixed in dcrwallet?).  Importing
+  to other (BIP0044) accounts is currently unsupported so without the
+  imported account, all key imports are impossible.
 - Validation of user input in the startup dialogs would be nice (instead
   of opening a message box with parse errors when trying to continue).
 - Don't save every transaction in memory (can fix post-release)
-- Imported account is already hidden since it will be removed in a later
-  dcrwallet release.  Decide if this needs to be displayed in first release
-  or not.
-- Fee estimation needs to be ported (partially completed in a btcsuite
-  Paymetheus PR: https://github.com/btcsuite/Paymetheus/pull/44).
-- Add viewmodel for history
-- Add viewmodel for unspent outputs
 - Remove all MessageBox usage, hook up everything to display in the Shell
   view instead
-- Wallet seed word list encoding needs extra word at end for checksum to
-  match dcrwallet.  I kinda hate this format and don't want to display
-  it when creating a new wallet (one byte of checksum is not enough, the PGP
-  word list already catches missing words, and there should be extra data in
-  the seed for when it was created), but we should at least not bail out when
-  decoding a seed created by other dcr tools.
 - Would be nice to make Paymetheus.Decred a PCL again (Paymetheus.Bitcoin is
   in the btcsuite version), currently impossible because BlakeSharp requires
-  the older .NET cryptographic libraries (low prio for windows, but may be
-  necessary for portability on other platforms).
-- Some address/script functionality is not yet implemented.  Search for
-  NotImplementedException.
+  the older .NET cryptographic libraries (low prio for windows desktop and
+  maybe mono, but could be necessary for portability on other platforms).
 
 View:
 
+- [required] Should default to opening the overview frame
+- [required] "sent" and "received" amounts in overview need to go, wallet
+  does not track them and it would be more useful to put something like
+  "locked" for those who stake
+- [required] Request view doesn't hide UI elements depending on whether a
+  generated address is shown yet or not
+- [required] Bindings for history
+- [required] Bindings for unspent outputs
 - Offer to start dcrd for the user at beginning of startup dialog (if found
   in the PATH), to avoid the need to run the process separately.  No RPC
   credentials will need to be manually entered by the user since everything
@@ -48,30 +64,18 @@ View:
 - Time since last block has no binding and there is no easy way to access
   this yet for blocks already processed before starting the wallet.
   Might be wise to remove this in the first release.
-- Should default to opening the overview frame
-- "sent" and "received" amounts in overview need to go, wallet does
-  not track them and it would be more useful to put something like
-  "locked" for those who stake
 - Textbox for amounts and destination strings in create transaction view
-  need restyling.  For amounts, the text content should not include the
-  trailing spaces.
-- There is no way to remove pending outputs yet, each item should contain
-  a button for removing itself from the ObservableCollection.
-- Request view doesn't hide UI elements depending on whether a generated
-  address is shown yet or not
+  need restyling.
 - Some text is too small, make it bigger
 - In create transaction view, the type of output needs to be selectable
   (such as paying to a raw script instead of an address), viewmodel already
   supports this.
 - Still lots of hardcoded positions with margins in the new views.  These
   need to be repositioned relative to other objects (using Grid, StackPanel,
-  DockPanel, Border, etc.)
-- Way too much duplicated xaml all over the place
-- Bindings for history
-- Bindings for unspent outputs
-- Input controls that require validation should have visual indicators
-  for when entered data is invalid (especially important for the create
-  transaction view).
+  DockPanel, Border, etc.).  Most of these are probably in the transaction
+  history and utxo views since i haven't gotten around to binding those yet.
+- Way too much duplicated xaml all over the place.  All common styles should
+  be put in <Application.Resources>.
 - Block hash of current block is no where to be found.  For desktop (mouse)
   users it might be adequate to use a tooltip over the block height, but
   this is a bad solution to those with touch screens.
