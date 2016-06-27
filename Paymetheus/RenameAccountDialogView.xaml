@@ -10,14 +10,19 @@
     <StackPanel VerticalAlignment="Center">
         <DockPanel FocusManager.FocusedElement="{Binding ElementName=textBox}">
             <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Content="OK" IsDefault="True" Command="{Binding Execute}" Style="{DynamicResource ButtonBlue}" Width="100" Margin="5"/>
+                <Button Content="Rename" IsDefault="True" Command="{Binding Rename}" Style="{DynamicResource ButtonBlue}" Width="100" Margin="5"/>
                 <Button Content="Cancel" IsCancel="True" Command="{Binding HideDialogCommand}" Style="{DynamicResource ButtonWhite}" Width="100" Margin="5"/>
             </StackPanel>
             <StackPanel>
-                <Label Content="Rename account" FontSize="18"/>
+                <Label>
+                    <TextBlock FontSize="18">
+                        <Run Text="Rename account"/>
+                        <Run Text="{Binding CurrentAccountName, Mode=OneWay, FallbackValue=Current Name}"/>
+                    </TextBlock>
+                </Label>
                 <Label Content="New name:"/>
                 <TextBox Name="textBox" Margin="5 2" Padding="2"
-                     Text="{Binding AccountName, Mode=OneWayToSource}"
+                     Text="{Binding NewAccountName, Mode=OneWayToSource}"
                      f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"/>
             </StackPanel>
         </DockPanel>
