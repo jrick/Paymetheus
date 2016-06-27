@@ -28,7 +28,7 @@ Model/ViewModel:
 - [required] Wallet seed word list encoding needs extra word at end for
   checksum to match dcrwallet.  I kinda hate this format and don't want to
   display it when creating a new wallet (one byte of checksum is not enough,
-  the PGG word list already catches missing words, and if there is any extra
+  the PGP word list already catches missing words, and if there is any extra
   data added it should be some kind of timestamp or blockheight of when the
   seed was generated), but we should at least not bail out when decoding a
   seed created by other dcr tools.
