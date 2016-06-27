@@ -222,7 +222,9 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" TextWrapping="Wrap" Text="Accounts" Foreground="#FF0C1E3E" FontSize="20"/>
-        <Button Grid.Row="0" Margin="0 0 40 0" Content="ADD A NEW ACCOUNT" Command="{Binding ShellViewModel.CreateAccountCommand, Source={StaticResource ViewModelLocator}}"  HorizontalAlignment="Right" Style="{DynamicResource ButtonBlue}"/>
+        <Button Grid.Row="0"  HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 40 0"
+                Content="ADD A NEW ACCOUNT" Command="{Binding ShellViewModel.CreateAccountCommand, Source={StaticResource ViewModelLocator}}"
+                Style="{DynamicResource ButtonBlue}"/>
         <ListBox x:Name="lstAccounts" Grid.Row="1" Margin="0 20 0 0"
                  ItemsSource="{Binding Source={StaticResource ViewModelLocator}, Path=SynchronizerViewModel.Accounts}"
                  ItemContainerStyle="{DynamicResource ListBoxItemStyle}"
