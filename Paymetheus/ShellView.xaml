@@ -135,7 +135,7 @@
             <Path Data="M52.666667,460 C55.333333,453.33333 125.33317,387.3335 125.33317,387.3335 L199.33249,461.33283 z" Fill="#FF69D5F7" HorizontalAlignment="Center" Height="3.868" Margin="121.166,0.547,121.167,0" Grid.Row="2" Stretch="Fill" Stroke="{x:Null}" VerticalAlignment="Top" Width="7.667"/>
             <Rectangle Fill="#FF69D5F7" HorizontalAlignment="Center" Height="1" Margin="20,4.166,20,0" Grid.Row="2" Stroke="{x:Null}" VerticalAlignment="Top" Width="210"/>
             <TextBlock HorizontalAlignment="Left" Margin="20,15.5,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Total Balance" VerticalAlignment="Top" FontSize="12" Foreground="#FF69D5F7"/>
-            
+
             <local:AmountLabel Value="{Binding Path=SynchronizerViewModel.TotalBalance, Source={StaticResource ViewModelLocator}}" HorizontalAlignment="Right" Grid.Row="2" Margin="0,15,20,28" FontSizeWhole="12" FontSizeDecimal="12" ForegroundWhole="#FF2ED8a3" ForegroundDecimal="#FF2ED8a3"/>
             <Border Margin="0,40,0,0" Grid.Row="2" Background="#FF09182D" Padding="20 0">
                 <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center">
@@ -177,13 +177,8 @@
             <UserControl.Background>
                 <SolidColorBrush Color="#FF132F4B" Opacity="0.5"/>
             </UserControl.Background>
-            <Border CornerRadius="10,10,10,10" Background="#FFE9EDF1" Width="340" Height="215">
-                <UserControl VerticalAlignment="Center" Padding="20">
-                    <UserControl.Background>
-                        <SolidColorBrush Color="#FFE9EDF1"/>
-                    </UserControl.Background>
-                    <ContentControl Content="{Binding VisibleDialogContent}" KeyboardNavigation.IsTabStop="False"/>
-                </UserControl>
+            <Border CornerRadius="10,10,10,10" Padding="10" Background="#FFE9EDF1" MinWidth="340" MinHeight="215" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <ContentControl Content="{Binding VisibleDialogContent}" KeyboardNavigation.IsTabStop="False"/>
             </Border>
         </UserControl>
     </Grid>

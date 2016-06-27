@@ -35,8 +35,9 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Rectangle Fill="White" Height="35" Width="700" Margin="0,0,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" />
-                <PasswordBox x:Name="PasswordBoxPublicPassphrase" Margin="10 10" BorderThickness="0" Padding="2" PasswordChanged="PasswordBoxPublicPassphrase_PasswordChanged" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" />
+                <Border Padding="5" CornerRadius="5" Background="White" Height="35" Width="700" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+                    <PasswordBox x:Name="PasswordBoxPublicPassphrase" BorderThickness="0" Background="{x:Null}" PasswordChanged="PasswordBoxPublicPassphrase_PasswordChanged"/>
+                </Border>
             </Grid>
             <Button Content="Open Wallet" Command="{Binding OpenWalletCommand}" HorizontalAlignment="Center" Height="35.5" Margin="288.5,0" VerticalAlignment="Top" Width="123" Style="{DynamicResource ButtonBlue}" Foreground="#FF132F4B"  Grid.Row="2" Grid.Column="1"  />
         </StackPanel>

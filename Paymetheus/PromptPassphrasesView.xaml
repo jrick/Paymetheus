@@ -6,48 +6,6 @@
              xmlns:local="clr-namespace:Paymetheus"
              mc:Ignorable="d" 
 	         Background="{DynamicResource ColorDarkBlueFull}" d:DesignWidth="842" d:DesignHeight="718">
-    <UserControl.Resources>
-        <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
-        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
-        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
-        <Style TargetType="{x:Type TextBox}">
-            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
-            <Setter Property="HorizontalContentAlignment" Value="Left"/>
-            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-            <Setter Property="AllowDrop" Value="true"/>
-            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
-            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type TextBox}">
-                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
-                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true"/>
-                            <Trigger Property="IsKeyboardFocused" Value="true"/>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <MultiTrigger>
-                    <MultiTrigger.Conditions>
-                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
-                        <Condition Property="IsSelectionActive" Value="false"/>
-                    </MultiTrigger.Conditions>
-                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
-                </MultiTrigger>
-            </Style.Triggers>
-        </Style>
-    </UserControl.Resources>
     <Grid x:Name="LayoutRoot">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Height="532.452" Width="700" >
             <Image Source="Images/paymetheus - 262x37.png" Stretch="Fill" Width="262" Height="37" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="219,24,219,0"/>
@@ -62,7 +20,7 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Rectangle Fill="#FFF4F4F5" Margin="0,0,0,0.449" RadiusY="5" RadiusX="5" Height="25" VerticalAlignment="Bottom" Grid.Row="2"/>
-                <PasswordBox x:Name="TextBoxPrivatePassphrase"  Margin="6 2" Padding="2" BorderBrush="{x:Null}" BorderThickness="0" PasswordChanged="TextBoxPrivatePassphrase_PasswordChanged"/>
+                <PasswordBox x:Name="TextBoxPrivatePassphrase"  Margin="6 2" Padding="2" Background="{x:Null}" BorderThickness="0" PasswordChanged="TextBoxPrivatePassphrase_PasswordChanged"/>
             </Grid>
             <Label Grid.Column="0"  Margin="0 12 0 2">
                 <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left" Foreground="#FFB7D1F0">
@@ -85,7 +43,7 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Rectangle Visibility="{Binding UsePublicEncryption, Converter={StaticResource hiddenConverter}}" Fill="#FFF4F4F5" Margin="0,0,0,0.449" RadiusY="5" RadiusX="5" Height="25" VerticalAlignment="Bottom" Grid.Row="2"/>
-                <PasswordBox x:Name="TextBoxPublicPassphrase" Visibility="{Binding UsePublicEncryption, Converter={StaticResource hiddenConverter}}" Margin="6 2" Padding="2" BorderBrush="{x:Null}" BorderThickness="0" PasswordChanged="TextBoxPublicPassphrase_PasswordChanged"/>
+                <PasswordBox x:Name="TextBoxPublicPassphrase" Visibility="{Binding UsePublicEncryption, Converter={StaticResource hiddenConverter}}" Margin="6 2" Padding="2" Background="{x:Null}" BorderThickness="0" PasswordChanged="TextBoxPublicPassphrase_PasswordChanged"/>
             </Grid>
             <Button Content="Encrypt" Command="{Binding CreateWalletCommand}" HorizontalAlignment="Center" Height="35.5" Margin="288.5,0" VerticalAlignment="Top" Width="123" Style="{DynamicResource ButtonBlue}" Foreground="#FF132F4B" Grid.Row="4"/>
         </StackPanel>
