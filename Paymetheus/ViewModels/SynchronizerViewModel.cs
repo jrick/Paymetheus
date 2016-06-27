@@ -192,6 +192,17 @@ namespace Paymetheus.ViewModels
                     }
                 });
             }
+
+            foreach (var modifiedAccount in e.ModifiedAccountProperties)
+            {
+                var accountNumber = checked((int)modifiedAccount.Key.AccountNumber);
+                var accountProperties = modifiedAccount.Value;
+
+                if (accountNumber < Accounts.Count)
+                {
+                    Accounts[accountNumber].AccountProperties = accountProperties;
+                }
+            }
         }
 
         private void OnSyncedWallet()
