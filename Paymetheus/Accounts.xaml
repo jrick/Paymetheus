@@ -121,6 +121,7 @@
                                     </Button.Template>
                                 </Button>
 
+                                <!--
                                 <Button Command="{Binding OpenImportKeyDialogCommand}" ToolTip="Import key"
                                         HorizontalAlignment="Right" Height="26" Margin="0,0,120.004,0" Grid.Row="5" VerticalAlignment="Top" Width="26" Grid.Column="1">
                                     <Button.Template>
@@ -131,6 +132,7 @@
                                         </ControlTemplate>
                                     </Button.Template>
                                 </Button>
+                                -->
 
                                 <Button Command="{Binding HideAccountCommand}" ToolTip="Hide account"
                                         HorizontalAlignment="Right" Height="26" Margin="0,0,40,0" Grid.Row="5" VerticalAlignment="Top" Width="26" Grid.Column="1">
