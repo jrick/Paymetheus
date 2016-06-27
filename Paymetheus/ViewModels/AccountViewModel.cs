@@ -29,7 +29,6 @@ namespace Paymetheus.ViewModels
         public Account Account { get; }
 
         public uint AccountNumber => Account.AccountNumber;
-        public string AccountName => AccountProperties.AccountName;
 
         private AccountProperties _accountProperties;
         public AccountProperties AccountProperties

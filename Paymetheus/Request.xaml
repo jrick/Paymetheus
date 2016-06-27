@@ -184,7 +184,7 @@
             </Grid>
             <TextBlock Height="24" Margin="0,76.059,0,0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF586D80" TextAlignment="Center">
                 <Run Text="Single use address generated for account"/>
-                <Run FontWeight="Bold" Text="{Binding Source={StaticResource ViewModelLocator}, Path=SynchronizerViewModel.SelectedAccount.AccountName, Mode=OneWay, FallbackValue=Account Name}"/>
+                <Run FontWeight="Bold" Text="{Binding Source={StaticResource ViewModelLocator}, Path=SynchronizerViewModel.SelectedAccount.AccountProperties.AccountName, Mode=OneWay, FallbackValue=Account Name}"/>
                 <Run Text="+ copied to clipboard"/>
             </TextBlock>
             <Button Name="GenerateAnotherBtn"  Visibility="{Binding HideWhenNoAddressToDisplay}" Content="GENERATE ANOTHER" Command="{Binding GenerateAddressCommand}" Height="35.5" Margin="0,128,0,0" Style="{DynamicResource ButtonBlue}" Foreground="#FF132F4B" Grid.Row="5" Width="162.697" VerticalAlignment="Top"/>
