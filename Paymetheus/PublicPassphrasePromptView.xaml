@@ -24,21 +24,9 @@
                 data encryption is disabled.
                 </TextBlock>
             </Label>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Border Padding="5" CornerRadius="5" Background="White" Height="35" Width="700" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
-                    <PasswordBox x:Name="PasswordBoxPublicPassphrase" BorderThickness="0" Background="{x:Null}" PasswordChanged="PasswordBoxPublicPassphrase_PasswordChanged"/>
-                </Border>
-            </Grid>
+            <Border Padding="5" CornerRadius="5" Background="White" Height="35" Width="700" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+                <PasswordBox x:Name="PasswordBoxPublicPassphrase" BorderThickness="0" Background="{x:Null}" PasswordChanged="PasswordBoxPublicPassphrase_PasswordChanged"/>
+            </Border>
             <Button Content="Open Wallet" Command="{Binding OpenWalletCommand}" HorizontalAlignment="Center" Height="35.5" Margin="288.5,0" VerticalAlignment="Top" Width="123" Style="{DynamicResource ButtonBlue}" Foreground="#FF132F4B"  Grid.Row="2" Grid.Column="1"  />
         </StackPanel>
     </Grid>
