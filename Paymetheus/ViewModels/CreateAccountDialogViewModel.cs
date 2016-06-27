@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace Paymetheus.ViewModels
 {
-    sealed class CreateAccountDialogViewModel : DialogViewModelBase
+    public sealed class CreateAccountDialogViewModel : DialogViewModelBase
     {
         public CreateAccountDialogViewModel(ShellViewModel shell) : base(shell)
         {

@@ -22,6 +22,13 @@
         <v:AmountValidator x:Key="AmountValidator"/>
         <local:AccountToNameConverter x:Key="accountToNameConverter" />
 
+        <DataTemplate DataType="{x:Type viewmodels:CreateAccountDialogViewModel}">
+            <local:CreateAccountDialogView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:RenameAccountDialogViewModel}">
+            <local:RenameAccountDialogView/>
+        </DataTemplate>
+
         <DataTemplate x:Key="buttonTemplate">
             <Button Content="{Binding ButtonLabel}" Command="{Binding}" Style="{DynamicResource ButtonBlue}"/>
         </DataTemplate>
@@ -723,6 +730,5 @@
         <DataTemplate x:Key="ComboBoxAccountDataTemplate">
             <TextBlock Grid.Column="0" Text="{Binding ., Converter={StaticResource accountToNameConverter}}"/>
         </DataTemplate>
-
     </Application.Resources>
 </Application>

@@ -10,9 +10,6 @@
              d:DesignHeight="550" d:DesignWidth="900"
              DataContext="{Binding ShellViewModel, Source={StaticResource ViewModelLocator}}">
     <UserControl.Resources>
-        <DataTemplate DataType="{x:Type viewmodels:CreateAccountDialogViewModel}">
-            <local:CreateAccountDialogView/>
-        </DataTemplate>
         <SolidColorBrush x:Key="Item.MouseOver.Background" Color="#1F26A0DA"/>
         <SolidColorBrush x:Key="Item.MouseOver.Border" Color="#a826A0Da"/>
         <SolidColorBrush x:Key="Item.SelectedInactive.Background" Color="#3DDADADA"/>
@@ -177,7 +174,7 @@
             <UserControl.Background>
                 <SolidColorBrush Color="#FF132F4B" Opacity="0.5"/>
             </UserControl.Background>
-            <Border CornerRadius="10,10,10,10" Padding="10" Background="#FFE9EDF1" MinWidth="340" MinHeight="215" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Border CornerRadius="10,10,10,10" Padding="10" Background="#FFE9EDF1" MinWidth="340" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <ContentControl Content="{Binding VisibleDialogContent}" KeyboardNavigation.IsTabStop="False"/>
             </Border>
         </UserControl>
