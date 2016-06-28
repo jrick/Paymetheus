@@ -282,13 +282,13 @@ namespace Paymetheus.ViewModels
         {
             var walletClient = App.Current.Synchronizer.WalletRpcClient;
             var requiredConfirmations = 1; // TODO: Don't hardcode confs.
-            var targetAmount = (Amount)outputs.Sum(o => o.Amount);
+            var targetAmount = outputs.Sum(o => o.Amount);
             var targetFee = (Amount)1e6; // TODO: Don't hardcode fee/kB.
             var funding = await walletClient.FundTransactionAsync(SelectedAccount.Account, targetAmount + targetFee, requiredConfirmations);
             var fundingAmount = funding.Item2;
             if (fundingAmount < targetAmount + targetFee)
             {
-                MessageBox.Show($"Transaction requires {targetAmount + targetFee} but only {fundingAmount} is spendable.",
+                MessageBox.Show($"Transaction requires {(Amount)(targetAmount + targetFee)} input value but only {fundingAmount} is spendable.",
                     "Insufficient funds to create transaction.");
                 return;
             }
