@@ -38,10 +38,10 @@ namespace Paymetheus.Decred.Wallet
                 var digest = DoubleSha256(d);
                 if (decodedInput[SeedLength] != digest[0])
                 {
-                    throw new Exception($"Invalid checksum, please reenter word list");
+                    throw new Exception("Invalid checksum");
                 }
             }
-                else if (decodedInput.Length != SeedLength)
+            else if (decodedInput.Length != SeedLength)
             {
                 throw new Exception($"Decoded seed must have byte length {SeedLength}");
             }
