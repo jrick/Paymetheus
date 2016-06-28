@@ -32,10 +32,12 @@ namespace Paymetheus.Decred.Wallet
             if (decodedInput.Length == (SeedLength + 1))
             {
                 // deal with "checksum"
-                var digest = Checksum.DoubleSha256(decodedInput);
+                byte[] d = new byte[SeedLength];
+                Array.Copy(decodedInput, 0, d, 0, SeedLength);
+                var digest = Checksum.DoubleSha256(d);
                 if (decodedInput[SeedLength] != digest[0])
                 {
-                    throw new Exception($"Invalid checksum");
+                    throw new Exception($"Invalid checksum, please reenter word list");
                 }
             }
                 else if (decodedInput.Length != SeedLength)
