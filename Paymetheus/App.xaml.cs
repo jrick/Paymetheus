@@ -1,10 +1,13 @@
 ﻿// Copyright (c) 2016 The btcsuite developers
+// Copyright (c) 2016 The Decred developers
 // Licensed under the ISC license.  See LICENSE file in the project root for full license information.
 
-using Paymetheus.Bitcoin;
+using Paymetheus.Decred;
+using Paymetheus.Framework;
 using Paymetheus.Rpc;
+using Paymetheus.ViewModels;
 using System;
-using System.Diagnostics;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -22,9 +25,25 @@ namespace Paymetheus
             if (Current != null)
                 throw new ApplicationException("Application instance already exists");
 
+            InitializeComponent();
+
+            SingletonViewModelLocator.RegisterFactory<ShellView, ShellViewModel>();
+            SingletonViewModelLocator.RegisterFactory<Overview, OverviewViewModel>();
+            SingletonViewModelLocator.RegisterFactory<Request, RequestViewModel>();
+            SingletonViewModelLocator.RegisterFactory<Send, CreateTransactionViewModel>();
+
             Application.Current.Dispatcher.UnhandledException += (sender, args) =>
             {
-                MessageBox.Show(args.Exception.Message, "Error");
+                var ex = args.Exception;
+
+                var ae = ex as AggregateException;
+                Exception inner;
+                if (ae != null && ae.TryUnwrap(out inner))
+                {
+                    ex = inner;
+                }
+
+                MessageBox.Show(ex.Message, "Error");
                 UncleanShutdown();
                 Application.Current.Shutdown(1);
             };
@@ -34,10 +53,10 @@ namespace Paymetheus
             Current = this;
         }
 
-        private bool _walletLoaded;
+        public BlockChainIdentity ActiveNetwork { get; private set; }
+        internal SynchronizerViewModel Synchronizer { get; private set; }
 
-        public Process WalletRpcProcess { get; private set; }
-        public WalletClient WalletRpcClient { get; private set; }
+        private bool _walletLoaded;
 
         public void MarkWalletLoaded()
         {
@@ -46,38 +65,27 @@ namespace Paymetheus
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            var args = ProcessArguments.ParseArguments(e.Args);
+
+            var activeNetwork = args.IntendedNetwork;
+
             WalletClient.Initialize();
 
-            var startupTask = Task.Run(async () =>
+            var appDataDir = Portability.LocalAppData(Environment.OSVersion.Platform,
+                AssemblyResources.Organization, AssemblyResources.ProductName);
+
+            Directory.CreateDirectory(appDataDir);
+
+            var syncTask = Task.Run(async () =>
             {
-                await TransportSecurity.EnsureCertificatePairExists();
-
-                // TODO: Make network selectable (parse e.Args for a network)
-                var walletProcess = WalletProcess.Start(BlockChainIdentity.TestNet3);
-
-                WalletClient walletClient;
-                try
-                {
-                    walletClient = await WalletClient.ConnectAsync(WalletClient.LocalNetworkAddress);
-                }
-                catch (Exception)
-                {
-                    if (walletProcess.HasExited)
-                    {
-                        throw new Exception("Wallet process closed unexpectedly");
-                    }
-                    walletProcess.KillIfExecuting();
-                    throw;
-                }
-
-                return Tuple.Create(walletProcess, walletClient);
+                return await SynchronizerViewModel.Startup(activeNetwork, appDataDir);
             });
+            var synchronizer = syncTask.Result;
 
-            startupTask.Wait();
-            var startupResult = startupTask.Result;
-            WalletRpcProcess = startupResult.Item1;
-            WalletRpcClient = startupResult.Item2;
-            Application.Current.Exit += Application_Exit;
+            SingletonViewModelLocator.RegisterInstance("Synchronizer", synchronizer);
+            ActiveNetwork = activeNetwork;
+            Synchronizer = synchronizer;
+            Current.Exit += Application_Exit;
         }
 
         private void Application_Exit(object sender, ExitEventArgs e)
@@ -90,7 +98,7 @@ namespace Paymetheus
             // Cancel all outstanding requests and notification streams,
             // close the wallet if it was loaded, disconnect the client
             // from the process, and stop the process.
-            var walletClient = WalletRpcClient;
+            var walletClient = Synchronizer.WalletRpcClient;
             walletClient.CancelRequests();
             Task.Run(async () =>
             {
@@ -102,7 +110,7 @@ namespace Paymetheus
             }).Wait();
             walletClient.Dispose();
 
-            WalletRpcProcess.KillIfExecuting();
+            Synchronizer.WalletRpcProcess.KillIfExecuting();
         }
 
         private void UncleanShutdown()
@@ -113,7 +121,7 @@ namespace Paymetheus
             // client connection is still active.
             try
             {
-                var walletClient = WalletRpcClient;
+                var walletClient = Synchronizer.WalletRpcClient;
                 if (walletClient == null)
                     return;
 
@@ -125,7 +133,7 @@ namespace Paymetheus
             catch (Exception) { }
             finally
             {
-                WalletRpcProcess?.KillIfExecuting();
+                Synchronizer.WalletRpcProcess?.KillIfExecuting();
             }
         }
     }

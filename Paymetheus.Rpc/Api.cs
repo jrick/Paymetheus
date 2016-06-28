@@ -9,202 +9,214 @@ using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
 namespace Walletrpc {
 
+  /// <summary>Holder for reflection information generated from api.proto</summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-  public static partial class Api {
+  public static partial class ApiReflection {
 
     #region Descriptor
+    /// <summary>File descriptor for api.proto</summary>
     public static pbr::FileDescriptor Descriptor {
       get { return descriptor; }
     }
     private static pbr::FileDescriptor descriptor;
 
-    static Api() {
+    static ApiReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CglhcGkucHJvdG8SCXdhbGxldHJwYyLcAgoSVHJhbnNhY3Rpb25EZXRhaWxz", 
-            "EgwKBGhhc2gYASABKAwSEwoLdHJhbnNhY3Rpb24YAiABKAwSMwoGZGViaXRz", 
-            "GAMgAygLMiMud2FsbGV0cnBjLlRyYW5zYWN0aW9uRGV0YWlscy5JbnB1dBI1", 
-            "CgdvdXRwdXRzGAQgAygLMiQud2FsbGV0cnBjLlRyYW5zYWN0aW9uRGV0YWls", 
-            "cy5PdXRwdXQSCwoDZmVlGAUgASgDEhEKCXRpbWVzdGFtcBgGIAEoAxpJCgVJ", 
-            "bnB1dBINCgVpbmRleBgBIAEoDRIYChBwcmV2aW91c19hY2NvdW50GAIgASgN", 
-            "EhcKD3ByZXZpb3VzX2Ftb3VudBgDIAEoAxpMCgZPdXRwdXQSDAoEbWluZRgD", 
-            "IAEoCBIPCgdhY2NvdW50GAQgASgNEhAKCGludGVybmFsGAUgASgIEhEKCWFk", 
-            "ZHJlc3NlcxgGIAMoCSJ0CgxCbG9ja0RldGFpbHMSDAoEaGFzaBgBIAEoDBIO", 
-            "CgZoZWlnaHQYAiABKAUSEQoJdGltZXN0YW1wGAMgASgDEjMKDHRyYW5zYWN0", 
-            "aW9ucxgEIAMoCzIdLndhbGxldHJwYy5UcmFuc2FjdGlvbkRldGFpbHMiOAoO", 
-            "QWNjb3VudEJhbGFuY2USDwoHYWNjb3VudBgBIAEoDRIVCg10b3RhbF9iYWxh", 
-            "bmNlGAIgASgDIg0KC1BpbmdSZXF1ZXN0Ig4KDFBpbmdSZXNwb25zZSIQCg5O", 
-            "ZXR3b3JrUmVxdWVzdCIpCg9OZXR3b3JrUmVzcG9uc2USFgoOYWN0aXZlX25l", 
-            "dHdvcmsYASABKA0iLAoUQWNjb3VudE51bWJlclJlcXVlc3QSFAoMYWNjb3Vu", 
-            "dF9uYW1lGAEgASgJIi8KFUFjY291bnROdW1iZXJSZXNwb25zZRIWCg5hY2Nv", 
-            "dW50X251bWJlchgBIAEoDSIRCg9BY2NvdW50c1JlcXVlc3QiqAIKEEFjY291", 
-            "bnRzUmVzcG9uc2USNQoIYWNjb3VudHMYASADKAsyIy53YWxsZXRycGMuQWNj", 
-            "b3VudHNSZXNwb25zZS5BY2NvdW50EhoKEmN1cnJlbnRfYmxvY2tfaGFzaBgC", 
-            "IAEoDBIcChRjdXJyZW50X2Jsb2NrX2hlaWdodBgDIAEoBRqiAQoHQWNjb3Vu", 
-            "dBIWCg5hY2NvdW50X251bWJlchgBIAEoDRIUCgxhY2NvdW50X25hbWUYAiAB", 
-            "KAkSFQoNdG90YWxfYmFsYW5jZRgDIAEoAxIaChJleHRlcm5hbF9rZXlfY291", 
-            "bnQYBCABKA0SGgoSaW50ZXJuYWxfa2V5X2NvdW50GAUgASgNEhoKEmltcG9y", 
-            "dGVkX2tleV9jb3VudBgGIAEoDSJAChRSZW5hbWVBY2NvdW50UmVxdWVzdBIW", 
-            "Cg5hY2NvdW50X251bWJlchgBIAEoDRIQCghuZXdfbmFtZRgCIAEoCSIXChVS", 
-            "ZW5hbWVBY2NvdW50UmVzcG9uc2UiPgoSTmV4dEFjY291bnRSZXF1ZXN0EhIK", 
-            "CnBhc3NwaHJhc2UYASABKAwSFAoMYWNjb3VudF9uYW1lGAIgASgJIi0KE05l", 
-            "eHRBY2NvdW50UmVzcG9uc2USFgoOYWNjb3VudF9udW1iZXIYASABKA0iJQoS", 
-            "TmV4dEFkZHJlc3NSZXF1ZXN0Eg8KB2FjY291bnQYASABKA0iJgoTTmV4dEFk", 
-            "ZHJlc3NSZXNwb25zZRIPCgdhZGRyZXNzGAEgASgJImcKF0ltcG9ydFByaXZh", 
-            "dGVLZXlSZXF1ZXN0EhIKCnBhc3NwaHJhc2UYASABKAwSDwoHYWNjb3VudBgC", 
-            "IAEoDRIXCg9wcml2YXRlX2tleV93aWYYAyABKAkSDgoGcmVzY2FuGAQgASgI", 
-            "IhoKGEltcG9ydFByaXZhdGVLZXlSZXNwb25zZSJICg5CYWxhbmNlUmVxdWVz", 
-            "dBIWCg5hY2NvdW50X251bWJlchgBIAEoDRIeChZyZXF1aXJlZF9jb25maXJt", 
-            "YXRpb25zGAIgASgFIkwKD0JhbGFuY2VSZXNwb25zZRINCgV0b3RhbBgBIAEo", 
-            "AxIRCglzcGVuZGFibGUYAiABKAMSFwoPaW1tYXR1cmVfcmV3YXJkGAMgASgD", 
-            "IrEBChZHZXRUcmFuc2FjdGlvbnNSZXF1ZXN0EhsKE3N0YXJ0aW5nX2Jsb2Nr", 
-            "X2hhc2gYASABKAwSHQoVc3RhcnRpbmdfYmxvY2tfaGVpZ2h0GAIgASgREhkK", 
-            "EWVuZGluZ19ibG9ja19oYXNoGAMgASgMEhsKE2VuZGluZ19ibG9ja19oZWln", 
-            "aHQYBCABKAUSIwobbWluaW11bV9yZWNlbnRfdHJhbnNhY3Rpb25zGAUgASgF", 
-            "IosBChdHZXRUcmFuc2FjdGlvbnNSZXNwb25zZRIzChJtaW5lZF90cmFuc2Fj", 
-            "dGlvbnMYASADKAsyFy53YWxsZXRycGMuQmxvY2tEZXRhaWxzEjsKFHVubWlu", 
-            "ZWRfdHJhbnNhY3Rpb25zGAIgAygLMh0ud2FsbGV0cnBjLlRyYW5zYWN0aW9u", 
-            "RGV0YWlscyKeAQoXQ2hhbmdlUGFzc3BocmFzZVJlcXVlc3QSMwoDa2V5GAEg", 
-            "ASgOMiYud2FsbGV0cnBjLkNoYW5nZVBhc3NwaHJhc2VSZXF1ZXN0LktleRIW", 
-            "Cg5vbGRfcGFzc3BocmFzZRgCIAEoDBIWCg5uZXdfcGFzc3BocmFzZRgDIAEo", 
-            "DCIeCgNLZXkSCwoHUFJJVkFURRAAEgoKBlBVQkxJQxABIhoKGENoYW5nZVBh", 
-            "c3NwaHJhc2VSZXNwb25zZSKjAQoWRnVuZFRyYW5zYWN0aW9uUmVxdWVzdBIP", 
-            "CgdhY2NvdW50GAEgASgNEhUKDXRhcmdldF9hbW91bnQYAiABKAMSHgoWcmVx", 
-            "dWlyZWRfY29uZmlybWF0aW9ucxgDIAEoBRIiChppbmNsdWRlX2ltbWF0dXJl", 
-            "X2NvaW5iYXNlcxgEIAEoCBIdChVpbmNsdWRlX2NoYW5nZV9zY3JpcHQYBSAB", 
-            "KAgiqQIKF0Z1bmRUcmFuc2FjdGlvblJlc3BvbnNlEksKEHNlbGVjdGVkX291", 
-            "dHB1dHMYASADKAsyMS53YWxsZXRycGMuRnVuZFRyYW5zYWN0aW9uUmVzcG9u", 
-            "c2UuUHJldmlvdXNPdXRwdXQSFAoMdG90YWxfYW1vdW50GAIgASgDEhgKEGNo", 
-            "YW5nZV9wa19zY3JpcHQYAyABKAwakAEKDlByZXZpb3VzT3V0cHV0EhgKEHRy", 
-            "YW5zYWN0aW9uX2hhc2gYASABKAwSFAoMb3V0cHV0X2luZGV4GAIgASgNEg4K", 
-            "BmFtb3VudBgDIAEoAxIRCglwa19zY3JpcHQYBCABKAwSFAoMcmVjZWl2ZV90", 
-            "aW1lGAUgASgDEhUKDWZyb21fY29pbmJhc2UYBiABKAgiYwoWU2lnblRyYW5z", 
-            "YWN0aW9uUmVxdWVzdBISCgpwYXNzcGhyYXNlGAEgASgMEh4KFnNlcmlhbGl6", 
-            "ZWRfdHJhbnNhY3Rpb24YAiABKAwSFQoNaW5wdXRfaW5kZXhlcxgDIAMoDSJO", 
-            "ChdTaWduVHJhbnNhY3Rpb25SZXNwb25zZRITCgt0cmFuc2FjdGlvbhgBIAEo", 
-            "DBIeChZ1bnNpZ25lZF9pbnB1dF9pbmRleGVzGAIgAygNIjcKGVB1Ymxpc2hU", 
-            "cmFuc2FjdGlvblJlcXVlc3QSGgoSc2lnbmVkX3RyYW5zYWN0aW9uGAEgASgM", 
-            "IhwKGlB1Ymxpc2hUcmFuc2FjdGlvblJlc3BvbnNlIiEKH1RyYW5zYWN0aW9u", 
-            "Tm90aWZpY2F0aW9uc1JlcXVlc3QizgEKIFRyYW5zYWN0aW9uTm90aWZpY2F0", 
-            "aW9uc1Jlc3BvbnNlEjAKD2F0dGFjaGVkX2Jsb2NrcxgBIAMoCzIXLndhbGxl", 
-            "dHJwYy5CbG9ja0RldGFpbHMSFwoPZGV0YWNoZWRfYmxvY2tzGAIgAygMEjsK", 
-            "FHVubWluZWRfdHJhbnNhY3Rpb25zGAMgAygLMh0ud2FsbGV0cnBjLlRyYW5z", 
-            "YWN0aW9uRGV0YWlscxIiChp1bm1pbmVkX3RyYW5zYWN0aW9uX2hhc2hlcxgE", 
-            "IAMoDCJkCh1TcGVudG5lc3NOb3RpZmljYXRpb25zUmVxdWVzdBIPCgdhY2Nv", 
-            "dW50GAEgASgNEhkKEW5vX25vdGlmeV91bnNwZW50GAIgASgIEhcKD25vX25v", 
-            "dGlmeV9zcGVudBgDIAEoCCLOAQoeU3BlbnRuZXNzTm90aWZpY2F0aW9uc1Jl", 
-            "c3BvbnNlEhgKEHRyYW5zYWN0aW9uX2hhc2gYASABKAwSFAoMb3V0cHV0X2lu", 
-            "ZGV4GAIgASgNEkIKB3NwZW5kZXIYAyABKAsyMS53YWxsZXRycGMuU3BlbnRu", 
-            "ZXNzTm90aWZpY2F0aW9uc1Jlc3BvbnNlLlNwZW5kZXIaOAoHU3BlbmRlchIY", 
-            "ChB0cmFuc2FjdGlvbl9oYXNoGAEgASgMEhMKC2lucHV0X2luZGV4GAIgASgN", 
-            "Ih0KG0FjY291bnROb3RpZmljYXRpb25zUmVxdWVzdCKgAQocQWNjb3VudE5v", 
-            "dGlmaWNhdGlvbnNSZXNwb25zZRIWCg5hY2NvdW50X251bWJlchgBIAEoDRIU", 
-            "CgxhY2NvdW50X25hbWUYAiABKAkSGgoSZXh0ZXJuYWxfa2V5X2NvdW50GAMg", 
-            "ASgNEhoKEmludGVybmFsX2tleV9jb3VudBgEIAEoDRIaChJpbXBvcnRlZF9r", 
-            "ZXlfY291bnQYBSABKA0iWgoTQ3JlYXRlV2FsbGV0UmVxdWVzdBIZChFwdWJs", 
-            "aWNfcGFzc3BocmFzZRgBIAEoDBIaChJwcml2YXRlX3Bhc3NwaHJhc2UYAiAB", 
-            "KAwSDAoEc2VlZBgDIAEoDCIWChRDcmVhdGVXYWxsZXRSZXNwb25zZSIuChFP", 
-            "cGVuV2FsbGV0UmVxdWVzdBIZChFwdWJsaWNfcGFzc3BocmFzZRgBIAEoDCIU", 
-            "ChJPcGVuV2FsbGV0UmVzcG9uc2UiFAoSQ2xvc2VXYWxsZXRSZXF1ZXN0IhUK", 
-            "E0Nsb3NlV2FsbGV0UmVzcG9uc2UiFQoTV2FsbGV0RXhpc3RzUmVxdWVzdCIm", 
-            "ChRXYWxsZXRFeGlzdHNSZXNwb25zZRIOCgZleGlzdHMYASABKAgiZwoTU3Rh", 
-            "cnRCdGNkUnBjUmVxdWVzdBIXCg9uZXR3b3JrX2FkZHJlc3MYASABKAkSEAoI", 
-            "dXNlcm5hbWUYAiABKAkSEAoIcGFzc3dvcmQYAyABKAwSEwoLY2VydGlmaWNh", 
-            "dGUYBCABKAwiFgoUU3RhcnRCdGNkUnBjUmVzcG9uc2Uy0wsKDVdhbGxldFNl", 
-            "cnZpY2USNwoEUGluZxIWLndhbGxldHJwYy5QaW5nUmVxdWVzdBoXLndhbGxl", 
-            "dHJwYy5QaW5nUmVzcG9uc2USQAoHTmV0d29yaxIZLndhbGxldHJwYy5OZXR3", 
-            "b3JrUmVxdWVzdBoaLndhbGxldHJwYy5OZXR3b3JrUmVzcG9uc2USUgoNQWNj", 
-            "b3VudE51bWJlchIfLndhbGxldHJwYy5BY2NvdW50TnVtYmVyUmVxdWVzdBog", 
-            "LndhbGxldHJwYy5BY2NvdW50TnVtYmVyUmVzcG9uc2USQwoIQWNjb3VudHMS", 
-            "Gi53YWxsZXRycGMuQWNjb3VudHNSZXF1ZXN0Ghsud2FsbGV0cnBjLkFjY291", 
-            "bnRzUmVzcG9uc2USQAoHQmFsYW5jZRIZLndhbGxldHJwYy5CYWxhbmNlUmVx", 
-            "dWVzdBoaLndhbGxldHJwYy5CYWxhbmNlUmVzcG9uc2USWAoPR2V0VHJhbnNh", 
-            "Y3Rpb25zEiEud2FsbGV0cnBjLkdldFRyYW5zYWN0aW9uc1JlcXVlc3QaIi53", 
-            "YWxsZXRycGMuR2V0VHJhbnNhY3Rpb25zUmVzcG9uc2USdQoYVHJhbnNhY3Rp", 
-            "b25Ob3RpZmljYXRpb25zEioud2FsbGV0cnBjLlRyYW5zYWN0aW9uTm90aWZp", 
-            "Y2F0aW9uc1JlcXVlc3QaKy53YWxsZXRycGMuVHJhbnNhY3Rpb25Ob3RpZmlj", 
-            "YXRpb25zUmVzcG9uc2UwARJvChZTcGVudG5lc3NOb3RpZmljYXRpb25zEigu", 
-            "d2FsbGV0cnBjLlNwZW50bmVzc05vdGlmaWNhdGlvbnNSZXF1ZXN0Gikud2Fs", 
-            "bGV0cnBjLlNwZW50bmVzc05vdGlmaWNhdGlvbnNSZXNwb25zZTABEmkKFEFj", 
-            "Y291bnROb3RpZmljYXRpb25zEiYud2FsbGV0cnBjLkFjY291bnROb3RpZmlj", 
-            "YXRpb25zUmVxdWVzdBonLndhbGxldHJwYy5BY2NvdW50Tm90aWZpY2F0aW9u", 
-            "c1Jlc3BvbnNlMAESWwoQQ2hhbmdlUGFzc3BocmFzZRIiLndhbGxldHJwYy5D", 
-            "aGFuZ2VQYXNzcGhyYXNlUmVxdWVzdBojLndhbGxldHJwYy5DaGFuZ2VQYXNz", 
-            "cGhyYXNlUmVzcG9uc2USUgoNUmVuYW1lQWNjb3VudBIfLndhbGxldHJwYy5S", 
-            "ZW5hbWVBY2NvdW50UmVxdWVzdBogLndhbGxldHJwYy5SZW5hbWVBY2NvdW50", 
-            "UmVzcG9uc2USTAoLTmV4dEFjY291bnQSHS53YWxsZXRycGMuTmV4dEFjY291", 
-            "bnRSZXF1ZXN0Gh4ud2FsbGV0cnBjLk5leHRBY2NvdW50UmVzcG9uc2USTAoL", 
-            "TmV4dEFkZHJlc3MSHS53YWxsZXRycGMuTmV4dEFkZHJlc3NSZXF1ZXN0Gh4u", 
-            "d2FsbGV0cnBjLk5leHRBZGRyZXNzUmVzcG9uc2USWwoQSW1wb3J0UHJpdmF0", 
-            "ZUtleRIiLndhbGxldHJwYy5JbXBvcnRQcml2YXRlS2V5UmVxdWVzdBojLndh", 
-            "bGxldHJwYy5JbXBvcnRQcml2YXRlS2V5UmVzcG9uc2USWAoPRnVuZFRyYW5z", 
-            "YWN0aW9uEiEud2FsbGV0cnBjLkZ1bmRUcmFuc2FjdGlvblJlcXVlc3QaIi53", 
-            "YWxsZXRycGMuRnVuZFRyYW5zYWN0aW9uUmVzcG9uc2USWAoPU2lnblRyYW5z", 
-            "YWN0aW9uEiEud2FsbGV0cnBjLlNpZ25UcmFuc2FjdGlvblJlcXVlc3QaIi53", 
-            "YWxsZXRycGMuU2lnblRyYW5zYWN0aW9uUmVzcG9uc2USYQoSUHVibGlzaFRy", 
-            "YW5zYWN0aW9uEiQud2FsbGV0cnBjLlB1Ymxpc2hUcmFuc2FjdGlvblJlcXVl", 
-            "c3QaJS53YWxsZXRycGMuUHVibGlzaFRyYW5zYWN0aW9uUmVzcG9uc2UyoQMK", 
-            "E1dhbGxldExvYWRlclNlcnZpY2USTwoMV2FsbGV0RXhpc3RzEh4ud2FsbGV0", 
-            "cnBjLldhbGxldEV4aXN0c1JlcXVlc3QaHy53YWxsZXRycGMuV2FsbGV0RXhp", 
-            "c3RzUmVzcG9uc2USTwoMQ3JlYXRlV2FsbGV0Eh4ud2FsbGV0cnBjLkNyZWF0", 
-            "ZVdhbGxldFJlcXVlc3QaHy53YWxsZXRycGMuQ3JlYXRlV2FsbGV0UmVzcG9u", 
-            "c2USSQoKT3BlbldhbGxldBIcLndhbGxldHJwYy5PcGVuV2FsbGV0UmVxdWVz", 
-            "dBodLndhbGxldHJwYy5PcGVuV2FsbGV0UmVzcG9uc2USTAoLQ2xvc2VXYWxs", 
-            "ZXQSHS53YWxsZXRycGMuQ2xvc2VXYWxsZXRSZXF1ZXN0Gh4ud2FsbGV0cnBj", 
-            "LkNsb3NlV2FsbGV0UmVzcG9uc2USTwoMU3RhcnRCdGNkUnBjEh4ud2FsbGV0", 
-            "cnBjLlN0YXJ0QnRjZFJwY1JlcXVlc3QaHy53YWxsZXRycGMuU3RhcnRCdGNk", 
-            "UnBjUmVzcG9uc2ViBnByb3RvMw=="));
-      descriptor = pbr::FileDescriptor.InternalBuildGeneratedFileFrom(descriptorData,
+            "CglhcGkucHJvdG8SCXdhbGxldHJwYyIQCg5WZXJzaW9uUmVxdWVzdCKCAQoP",
+            "VmVyc2lvblJlc3BvbnNlEhYKDnZlcnNpb25fc3RyaW5nGAEgASgJEg0KBW1h",
+            "am9yGAIgASgNEg0KBW1pbm9yGAMgASgNEg0KBXBhdGNoGAQgASgNEhIKCnBy",
+            "ZXJlbGVhc2UYBSABKAkSFgoOYnVpbGRfbWV0YWRhdGEYBiABKAkiygIKElRy",
+            "YW5zYWN0aW9uRGV0YWlscxIMCgRoYXNoGAEgASgMEhMKC3RyYW5zYWN0aW9u",
+            "GAIgASgMEjMKBmRlYml0cxgDIAMoCzIjLndhbGxldHJwYy5UcmFuc2FjdGlv",
+            "bkRldGFpbHMuSW5wdXQSNQoHY3JlZGl0cxgEIAMoCzIkLndhbGxldHJwYy5U",
+            "cmFuc2FjdGlvbkRldGFpbHMuT3V0cHV0EgsKA2ZlZRgFIAEoAxIRCgl0aW1l",
+            "c3RhbXAYBiABKAMaSQoFSW5wdXQSDQoFaW5kZXgYASABKA0SGAoQcHJldmlv",
+            "dXNfYWNjb3VudBgCIAEoDRIXCg9wcmV2aW91c19hbW91bnQYAyABKAMaOgoG",
+            "T3V0cHV0Eg0KBWluZGV4GAEgASgNEg8KB2FjY291bnQYAiABKA0SEAoIaW50",
+            "ZXJuYWwYAyABKAgidAoMQmxvY2tEZXRhaWxzEgwKBGhhc2gYASABKAwSDgoG",
+            "aGVpZ2h0GAIgASgFEhEKCXRpbWVzdGFtcBgDIAEoAxIzCgx0cmFuc2FjdGlv",
+            "bnMYBCADKAsyHS53YWxsZXRycGMuVHJhbnNhY3Rpb25EZXRhaWxzIjgKDkFj",
+            "Y291bnRCYWxhbmNlEg8KB2FjY291bnQYASABKA0SFQoNdG90YWxfYmFsYW5j",
+            "ZRgCIAEoAyINCgtQaW5nUmVxdWVzdCIOCgxQaW5nUmVzcG9uc2UiEAoOTmV0",
+            "d29ya1JlcXVlc3QiKQoPTmV0d29ya1Jlc3BvbnNlEhYKDmFjdGl2ZV9uZXR3",
+            "b3JrGAEgASgNIiwKFEFjY291bnROdW1iZXJSZXF1ZXN0EhQKDGFjY291bnRf",
+            "bmFtZRgBIAEoCSIvChVBY2NvdW50TnVtYmVyUmVzcG9uc2USFgoOYWNjb3Vu",
+            "dF9udW1iZXIYASABKA0iEQoPQWNjb3VudHNSZXF1ZXN0IqgCChBBY2NvdW50",
+            "c1Jlc3BvbnNlEjUKCGFjY291bnRzGAEgAygLMiMud2FsbGV0cnBjLkFjY291",
+            "bnRzUmVzcG9uc2UuQWNjb3VudBIaChJjdXJyZW50X2Jsb2NrX2hhc2gYAiAB",
+            "KAwSHAoUY3VycmVudF9ibG9ja19oZWlnaHQYAyABKAUaogEKB0FjY291bnQS",
+            "FgoOYWNjb3VudF9udW1iZXIYASABKA0SFAoMYWNjb3VudF9uYW1lGAIgASgJ",
+            "EhUKDXRvdGFsX2JhbGFuY2UYAyABKAMSGgoSZXh0ZXJuYWxfa2V5X2NvdW50",
+            "GAQgASgNEhoKEmludGVybmFsX2tleV9jb3VudBgFIAEoDRIaChJpbXBvcnRl",
+            "ZF9rZXlfY291bnQYBiABKA0iQAoUUmVuYW1lQWNjb3VudFJlcXVlc3QSFgoO",
+            "YWNjb3VudF9udW1iZXIYASABKA0SEAoIbmV3X25hbWUYAiABKAkiFwoVUmVu",
+            "YW1lQWNjb3VudFJlc3BvbnNlIj4KEk5leHRBY2NvdW50UmVxdWVzdBISCgpw",
+            "YXNzcGhyYXNlGAEgASgMEhQKDGFjY291bnRfbmFtZRgCIAEoCSItChNOZXh0",
+            "QWNjb3VudFJlc3BvbnNlEhYKDmFjY291bnRfbnVtYmVyGAEgASgNIosBChJO",
+            "ZXh0QWRkcmVzc1JlcXVlc3QSDwoHYWNjb3VudBgBIAEoDRIwCgRraW5kGAIg",
+            "ASgOMiIud2FsbGV0cnBjLk5leHRBZGRyZXNzUmVxdWVzdC5LaW5kIjIKBEtp",
+            "bmQSFAoQQklQMDA0NF9FWFRFUk5BTBAAEhQKEEJJUDAwNDRfSU5URVJOQUwQ",
+            "ASImChNOZXh0QWRkcmVzc1Jlc3BvbnNlEg8KB2FkZHJlc3MYASABKAkiZwoX",
+            "SW1wb3J0UHJpdmF0ZUtleVJlcXVlc3QSEgoKcGFzc3BocmFzZRgBIAEoDBIP",
+            "CgdhY2NvdW50GAIgASgNEhcKD3ByaXZhdGVfa2V5X3dpZhgDIAEoCRIOCgZy",
+            "ZXNjYW4YBCABKAgiGgoYSW1wb3J0UHJpdmF0ZUtleVJlc3BvbnNlIkgKDkJh",
+            "bGFuY2VSZXF1ZXN0EhYKDmFjY291bnRfbnVtYmVyGAEgASgNEh4KFnJlcXVp",
+            "cmVkX2NvbmZpcm1hdGlvbnMYAiABKAUiTAoPQmFsYW5jZVJlc3BvbnNlEg0K",
+            "BXRvdGFsGAEgASgDEhEKCXNwZW5kYWJsZRgCIAEoAxIXCg9pbW1hdHVyZV9y",
+            "ZXdhcmQYAyABKAMisQEKFkdldFRyYW5zYWN0aW9uc1JlcXVlc3QSGwoTc3Rh",
+            "cnRpbmdfYmxvY2tfaGFzaBgBIAEoDBIdChVzdGFydGluZ19ibG9ja19oZWln",
+            "aHQYAiABKBESGQoRZW5kaW5nX2Jsb2NrX2hhc2gYAyABKAwSGwoTZW5kaW5n",
+            "X2Jsb2NrX2hlaWdodBgEIAEoBRIjChttaW5pbXVtX3JlY2VudF90cmFuc2Fj",
+            "dGlvbnMYBSABKAUiiwEKF0dldFRyYW5zYWN0aW9uc1Jlc3BvbnNlEjMKEm1p",
+            "bmVkX3RyYW5zYWN0aW9ucxgBIAMoCzIXLndhbGxldHJwYy5CbG9ja0RldGFp",
+            "bHMSOwoUdW5taW5lZF90cmFuc2FjdGlvbnMYAiADKAsyHS53YWxsZXRycGMu",
+            "VHJhbnNhY3Rpb25EZXRhaWxzIp4BChdDaGFuZ2VQYXNzcGhyYXNlUmVxdWVz",
+            "dBIzCgNrZXkYASABKA4yJi53YWxsZXRycGMuQ2hhbmdlUGFzc3BocmFzZVJl",
+            "cXVlc3QuS2V5EhYKDm9sZF9wYXNzcGhyYXNlGAIgASgMEhYKDm5ld19wYXNz",
+            "cGhyYXNlGAMgASgMIh4KA0tleRILCgdQUklWQVRFEAASCgoGUFVCTElDEAEi",
+            "GgoYQ2hhbmdlUGFzc3BocmFzZVJlc3BvbnNlIqMBChZGdW5kVHJhbnNhY3Rp",
+            "b25SZXF1ZXN0Eg8KB2FjY291bnQYASABKA0SFQoNdGFyZ2V0X2Ftb3VudBgC",
+            "IAEoAxIeChZyZXF1aXJlZF9jb25maXJtYXRpb25zGAMgASgFEiIKGmluY2x1",
+            "ZGVfaW1tYXR1cmVfY29pbmJhc2VzGAQgASgIEh0KFWluY2x1ZGVfY2hhbmdl",
+            "X3NjcmlwdBgFIAEoCCKpAgoXRnVuZFRyYW5zYWN0aW9uUmVzcG9uc2USSwoQ",
+            "c2VsZWN0ZWRfb3V0cHV0cxgBIAMoCzIxLndhbGxldHJwYy5GdW5kVHJhbnNh",
+            "Y3Rpb25SZXNwb25zZS5QcmV2aW91c091dHB1dBIUCgx0b3RhbF9hbW91bnQY",
+            "AiABKAMSGAoQY2hhbmdlX3BrX3NjcmlwdBgDIAEoDBqQAQoOUHJldmlvdXNP",
+            "dXRwdXQSGAoQdHJhbnNhY3Rpb25faGFzaBgBIAEoDBIUCgxvdXRwdXRfaW5k",
+            "ZXgYAiABKA0SDgoGYW1vdW50GAMgASgDEhEKCXBrX3NjcmlwdBgEIAEoDBIU",
+            "CgxyZWNlaXZlX3RpbWUYBSABKAMSFQoNZnJvbV9jb2luYmFzZRgGIAEoCCJj",
+            "ChZTaWduVHJhbnNhY3Rpb25SZXF1ZXN0EhIKCnBhc3NwaHJhc2UYASABKAwS",
+            "HgoWc2VyaWFsaXplZF90cmFuc2FjdGlvbhgCIAEoDBIVCg1pbnB1dF9pbmRl",
+            "eGVzGAMgAygNIk4KF1NpZ25UcmFuc2FjdGlvblJlc3BvbnNlEhMKC3RyYW5z",
+            "YWN0aW9uGAEgASgMEh4KFnVuc2lnbmVkX2lucHV0X2luZGV4ZXMYAiADKA0i",
+            "NwoZUHVibGlzaFRyYW5zYWN0aW9uUmVxdWVzdBIaChJzaWduZWRfdHJhbnNh",
+            "Y3Rpb24YASABKAwiHAoaUHVibGlzaFRyYW5zYWN0aW9uUmVzcG9uc2UiIQof",
+            "VHJhbnNhY3Rpb25Ob3RpZmljYXRpb25zUmVxdWVzdCLOAQogVHJhbnNhY3Rp",
+            "b25Ob3RpZmljYXRpb25zUmVzcG9uc2USMAoPYXR0YWNoZWRfYmxvY2tzGAEg",
+            "AygLMhcud2FsbGV0cnBjLkJsb2NrRGV0YWlscxIXCg9kZXRhY2hlZF9ibG9j",
+            "a3MYAiADKAwSOwoUdW5taW5lZF90cmFuc2FjdGlvbnMYAyADKAsyHS53YWxs",
+            "ZXRycGMuVHJhbnNhY3Rpb25EZXRhaWxzEiIKGnVubWluZWRfdHJhbnNhY3Rp",
+            "b25faGFzaGVzGAQgAygMImQKHVNwZW50bmVzc05vdGlmaWNhdGlvbnNSZXF1",
+            "ZXN0Eg8KB2FjY291bnQYASABKA0SGQoRbm9fbm90aWZ5X3Vuc3BlbnQYAiAB",
+            "KAgSFwoPbm9fbm90aWZ5X3NwZW50GAMgASgIIs4BCh5TcGVudG5lc3NOb3Rp",
+            "ZmljYXRpb25zUmVzcG9uc2USGAoQdHJhbnNhY3Rpb25faGFzaBgBIAEoDBIU",
+            "CgxvdXRwdXRfaW5kZXgYAiABKA0SQgoHc3BlbmRlchgDIAEoCzIxLndhbGxl",
+            "dHJwYy5TcGVudG5lc3NOb3RpZmljYXRpb25zUmVzcG9uc2UuU3BlbmRlcho4",
+            "CgdTcGVuZGVyEhgKEHRyYW5zYWN0aW9uX2hhc2gYASABKAwSEwoLaW5wdXRf",
+            "aW5kZXgYAiABKA0iHQobQWNjb3VudE5vdGlmaWNhdGlvbnNSZXF1ZXN0IqAB",
+            "ChxBY2NvdW50Tm90aWZpY2F0aW9uc1Jlc3BvbnNlEhYKDmFjY291bnRfbnVt",
+            "YmVyGAEgASgNEhQKDGFjY291bnRfbmFtZRgCIAEoCRIaChJleHRlcm5hbF9r",
+            "ZXlfY291bnQYAyABKA0SGgoSaW50ZXJuYWxfa2V5X2NvdW50GAQgASgNEhoK",
+            "EmltcG9ydGVkX2tleV9jb3VudBgFIAEoDSJaChNDcmVhdGVXYWxsZXRSZXF1",
+            "ZXN0EhkKEXB1YmxpY19wYXNzcGhyYXNlGAEgASgMEhoKEnByaXZhdGVfcGFz",
+            "c3BocmFzZRgCIAEoDBIMCgRzZWVkGAMgASgMIhYKFENyZWF0ZVdhbGxldFJl",
+            "c3BvbnNlIi4KEU9wZW5XYWxsZXRSZXF1ZXN0EhkKEXB1YmxpY19wYXNzcGhy",
+            "YXNlGAEgASgMIhQKEk9wZW5XYWxsZXRSZXNwb25zZSIUChJDbG9zZVdhbGxl",
+            "dFJlcXVlc3QiFQoTQ2xvc2VXYWxsZXRSZXNwb25zZSIVChNXYWxsZXRFeGlz",
+            "dHNSZXF1ZXN0IiYKFFdhbGxldEV4aXN0c1Jlc3BvbnNlEg4KBmV4aXN0cxgB",
+            "IAEoCCJsChhTdGFydENvbnNlbnN1c1JwY1JlcXVlc3QSFwoPbmV0d29ya19h",
+            "ZGRyZXNzGAEgASgJEhAKCHVzZXJuYW1lGAIgASgJEhAKCHBhc3N3b3JkGAMg",
+            "ASgMEhMKC2NlcnRpZmljYXRlGAQgASgMIhsKGVN0YXJ0Q29uc2Vuc3VzUnBj",
+            "UmVzcG9uc2UyUgoOVmVyc2lvblNlcnZpY2USQAoHVmVyc2lvbhIZLndhbGxl",
+            "dHJwYy5WZXJzaW9uUmVxdWVzdBoaLndhbGxldHJwYy5WZXJzaW9uUmVzcG9u",
+            "c2Uy0wsKDVdhbGxldFNlcnZpY2USNwoEUGluZxIWLndhbGxldHJwYy5QaW5n",
+            "UmVxdWVzdBoXLndhbGxldHJwYy5QaW5nUmVzcG9uc2USQAoHTmV0d29yaxIZ",
+            "LndhbGxldHJwYy5OZXR3b3JrUmVxdWVzdBoaLndhbGxldHJwYy5OZXR3b3Jr",
+            "UmVzcG9uc2USUgoNQWNjb3VudE51bWJlchIfLndhbGxldHJwYy5BY2NvdW50",
+            "TnVtYmVyUmVxdWVzdBogLndhbGxldHJwYy5BY2NvdW50TnVtYmVyUmVzcG9u",
+            "c2USQwoIQWNjb3VudHMSGi53YWxsZXRycGMuQWNjb3VudHNSZXF1ZXN0Ghsu",
+            "d2FsbGV0cnBjLkFjY291bnRzUmVzcG9uc2USQAoHQmFsYW5jZRIZLndhbGxl",
+            "dHJwYy5CYWxhbmNlUmVxdWVzdBoaLndhbGxldHJwYy5CYWxhbmNlUmVzcG9u",
+            "c2USWAoPR2V0VHJhbnNhY3Rpb25zEiEud2FsbGV0cnBjLkdldFRyYW5zYWN0",
+            "aW9uc1JlcXVlc3QaIi53YWxsZXRycGMuR2V0VHJhbnNhY3Rpb25zUmVzcG9u",
+            "c2USdQoYVHJhbnNhY3Rpb25Ob3RpZmljYXRpb25zEioud2FsbGV0cnBjLlRy",
+            "YW5zYWN0aW9uTm90aWZpY2F0aW9uc1JlcXVlc3QaKy53YWxsZXRycGMuVHJh",
+            "bnNhY3Rpb25Ob3RpZmljYXRpb25zUmVzcG9uc2UwARJvChZTcGVudG5lc3NO",
+            "b3RpZmljYXRpb25zEigud2FsbGV0cnBjLlNwZW50bmVzc05vdGlmaWNhdGlv",
+            "bnNSZXF1ZXN0Gikud2FsbGV0cnBjLlNwZW50bmVzc05vdGlmaWNhdGlvbnNS",
+            "ZXNwb25zZTABEmkKFEFjY291bnROb3RpZmljYXRpb25zEiYud2FsbGV0cnBj",
+            "LkFjY291bnROb3RpZmljYXRpb25zUmVxdWVzdBonLndhbGxldHJwYy5BY2Nv",
+            "dW50Tm90aWZpY2F0aW9uc1Jlc3BvbnNlMAESWwoQQ2hhbmdlUGFzc3BocmFz",
+            "ZRIiLndhbGxldHJwYy5DaGFuZ2VQYXNzcGhyYXNlUmVxdWVzdBojLndhbGxl",
+            "dHJwYy5DaGFuZ2VQYXNzcGhyYXNlUmVzcG9uc2USUgoNUmVuYW1lQWNjb3Vu",
+            "dBIfLndhbGxldHJwYy5SZW5hbWVBY2NvdW50UmVxdWVzdBogLndhbGxldHJw",
+            "Yy5SZW5hbWVBY2NvdW50UmVzcG9uc2USTAoLTmV4dEFjY291bnQSHS53YWxs",
+            "ZXRycGMuTmV4dEFjY291bnRSZXF1ZXN0Gh4ud2FsbGV0cnBjLk5leHRBY2Nv",
+            "dW50UmVzcG9uc2USTAoLTmV4dEFkZHJlc3MSHS53YWxsZXRycGMuTmV4dEFk",
+            "ZHJlc3NSZXF1ZXN0Gh4ud2FsbGV0cnBjLk5leHRBZGRyZXNzUmVzcG9uc2US",
+            "WwoQSW1wb3J0UHJpdmF0ZUtleRIiLndhbGxldHJwYy5JbXBvcnRQcml2YXRl",
+            "S2V5UmVxdWVzdBojLndhbGxldHJwYy5JbXBvcnRQcml2YXRlS2V5UmVzcG9u",
+            "c2USWAoPRnVuZFRyYW5zYWN0aW9uEiEud2FsbGV0cnBjLkZ1bmRUcmFuc2Fj",
+            "dGlvblJlcXVlc3QaIi53YWxsZXRycGMuRnVuZFRyYW5zYWN0aW9uUmVzcG9u",
+            "c2USWAoPU2lnblRyYW5zYWN0aW9uEiEud2FsbGV0cnBjLlNpZ25UcmFuc2Fj",
+            "dGlvblJlcXVlc3QaIi53YWxsZXRycGMuU2lnblRyYW5zYWN0aW9uUmVzcG9u",
+            "c2USYQoSUHVibGlzaFRyYW5zYWN0aW9uEiQud2FsbGV0cnBjLlB1Ymxpc2hU",
+            "cmFuc2FjdGlvblJlcXVlc3QaJS53YWxsZXRycGMuUHVibGlzaFRyYW5zYWN0",
+            "aW9uUmVzcG9uc2UysAMKE1dhbGxldExvYWRlclNlcnZpY2USTwoMV2FsbGV0",
+            "RXhpc3RzEh4ud2FsbGV0cnBjLldhbGxldEV4aXN0c1JlcXVlc3QaHy53YWxs",
+            "ZXRycGMuV2FsbGV0RXhpc3RzUmVzcG9uc2USTwoMQ3JlYXRlV2FsbGV0Eh4u",
+            "d2FsbGV0cnBjLkNyZWF0ZVdhbGxldFJlcXVlc3QaHy53YWxsZXRycGMuQ3Jl",
+            "YXRlV2FsbGV0UmVzcG9uc2USSQoKT3BlbldhbGxldBIcLndhbGxldHJwYy5P",
+            "cGVuV2FsbGV0UmVxdWVzdBodLndhbGxldHJwYy5PcGVuV2FsbGV0UmVzcG9u",
+            "c2USTAoLQ2xvc2VXYWxsZXQSHS53YWxsZXRycGMuQ2xvc2VXYWxsZXRSZXF1",
+            "ZXN0Gh4ud2FsbGV0cnBjLkNsb3NlV2FsbGV0UmVzcG9uc2USXgoRU3RhcnRD",
+            "b25zZW5zdXNScGMSIy53YWxsZXRycGMuU3RhcnRDb25zZW5zdXNScGNSZXF1",
+            "ZXN0GiQud2FsbGV0cnBjLlN0YXJ0Q29uc2Vuc3VzUnBjUmVzcG9uc2ViBnBy",
+            "b3RvMw=="));
+      descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedCodeInfo(null, new pbr::GeneratedCodeInfo[] {
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.TransactionDetails), new[]{ "Hash", "Transaction", "Debits", "Outputs", "Fee", "Timestamp" }, null, null, new pbr::GeneratedCodeInfo[] { new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.TransactionDetails.Types.Input), new[]{ "Index", "PreviousAccount", "PreviousAmount" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.TransactionDetails.Types.Output), new[]{ "Mine", "Account", "Internal", "Addresses" }, null, null, null)}),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.BlockDetails), new[]{ "Hash", "Height", "Timestamp", "Transactions" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.AccountBalance), new[]{ "Account", "TotalBalance" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.PingRequest), null, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.PingResponse), null, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.NetworkRequest), null, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.NetworkResponse), new[]{ "ActiveNetwork" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.AccountNumberRequest), new[]{ "AccountName" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.AccountNumberResponse), new[]{ "AccountNumber" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.AccountsRequest), null, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.AccountsResponse), new[]{ "Accounts", "CurrentBlockHash", "CurrentBlockHeight" }, null, null, new pbr::GeneratedCodeInfo[] { new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.AccountsResponse.Types.Account), new[]{ "AccountNumber", "AccountName", "TotalBalance", "ExternalKeyCount", "InternalKeyCount", "ImportedKeyCount" }, null, null, null)}),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.RenameAccountRequest), new[]{ "AccountNumber", "NewName" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.RenameAccountResponse), null, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.NextAccountRequest), new[]{ "Passphrase", "AccountName" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.NextAccountResponse), new[]{ "AccountNumber" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.NextAddressRequest), new[]{ "Account" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.NextAddressResponse), new[]{ "Address" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.ImportPrivateKeyRequest), new[]{ "Passphrase", "Account", "PrivateKeyWif", "Rescan" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.ImportPrivateKeyResponse), null, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.BalanceRequest), new[]{ "AccountNumber", "RequiredConfirmations" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.BalanceResponse), new[]{ "Total", "Spendable", "ImmatureReward" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.GetTransactionsRequest), new[]{ "StartingBlockHash", "StartingBlockHeight", "EndingBlockHash", "EndingBlockHeight", "MinimumRecentTransactions" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.GetTransactionsResponse), new[]{ "MinedTransactions", "UnminedTransactions" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.ChangePassphraseRequest), new[]{ "Key", "OldPassphrase", "NewPassphrase" }, null, new[]{ typeof(global::Walletrpc.ChangePassphraseRequest.Types.Key) }, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.ChangePassphraseResponse), null, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.FundTransactionRequest), new[]{ "Account", "TargetAmount", "RequiredConfirmations", "IncludeImmatureCoinbases", "IncludeChangeScript" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.FundTransactionResponse), new[]{ "SelectedOutputs", "TotalAmount", "ChangePkScript" }, null, null, new pbr::GeneratedCodeInfo[] { new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.FundTransactionResponse.Types.PreviousOutput), new[]{ "TransactionHash", "OutputIndex", "Amount", "PkScript", "ReceiveTime", "FromCoinbase" }, null, null, null)}),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.SignTransactionRequest), new[]{ "Passphrase", "SerializedTransaction", "InputIndexes" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.SignTransactionResponse), new[]{ "Transaction", "UnsignedInputIndexes" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.PublishTransactionRequest), new[]{ "SignedTransaction" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.PublishTransactionResponse), null, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.TransactionNotificationsRequest), null, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.TransactionNotificationsResponse), new[]{ "AttachedBlocks", "DetachedBlocks", "UnminedTransactions", "UnminedTransactionHashes" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.SpentnessNotificationsRequest), new[]{ "Account", "NoNotifyUnspent", "NoNotifySpent" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.SpentnessNotificationsResponse), new[]{ "TransactionHash", "OutputIndex", "Spender" }, null, null, new pbr::GeneratedCodeInfo[] { new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.SpentnessNotificationsResponse.Types.Spender), new[]{ "TransactionHash", "InputIndex" }, null, null, null)}),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.AccountNotificationsRequest), null, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.AccountNotificationsResponse), new[]{ "AccountNumber", "AccountName", "ExternalKeyCount", "InternalKeyCount", "ImportedKeyCount" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.CreateWalletRequest), new[]{ "PublicPassphrase", "PrivatePassphrase", "Seed" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.CreateWalletResponse), null, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.OpenWalletRequest), new[]{ "PublicPassphrase" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.OpenWalletResponse), null, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.CloseWalletRequest), null, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.CloseWalletResponse), null, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.WalletExistsRequest), null, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.WalletExistsResponse), new[]{ "Exists" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.StartBtcdRpcRequest), new[]{ "NetworkAddress", "Username", "Password", "Certificate" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.StartBtcdRpcResponse), null, null, null, null)
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.VersionRequest), global::Walletrpc.VersionRequest.Parser, null, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.VersionResponse), global::Walletrpc.VersionResponse.Parser, new[]{ "VersionString", "Major", "Minor", "Patch", "Prerelease", "BuildMetadata" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.TransactionDetails), global::Walletrpc.TransactionDetails.Parser, new[]{ "Hash", "Transaction", "Debits", "Credits", "Fee", "Timestamp" }, null, null, new pbr::GeneratedCodeInfo[] { new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.TransactionDetails.Types.Input), global::Walletrpc.TransactionDetails.Types.Input.Parser, new[]{ "Index", "PreviousAccount", "PreviousAmount" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.TransactionDetails.Types.Output), global::Walletrpc.TransactionDetails.Types.Output.Parser, new[]{ "Index", "Account", "Internal" }, null, null, null)}),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.BlockDetails), global::Walletrpc.BlockDetails.Parser, new[]{ "Hash", "Height", "Timestamp", "Transactions" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.AccountBalance), global::Walletrpc.AccountBalance.Parser, new[]{ "Account", "TotalBalance" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.PingRequest), global::Walletrpc.PingRequest.Parser, null, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.PingResponse), global::Walletrpc.PingResponse.Parser, null, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.NetworkRequest), global::Walletrpc.NetworkRequest.Parser, null, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.NetworkResponse), global::Walletrpc.NetworkResponse.Parser, new[]{ "ActiveNetwork" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.AccountNumberRequest), global::Walletrpc.AccountNumberRequest.Parser, new[]{ "AccountName" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.AccountNumberResponse), global::Walletrpc.AccountNumberResponse.Parser, new[]{ "AccountNumber" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.AccountsRequest), global::Walletrpc.AccountsRequest.Parser, null, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.AccountsResponse), global::Walletrpc.AccountsResponse.Parser, new[]{ "Accounts", "CurrentBlockHash", "CurrentBlockHeight" }, null, null, new pbr::GeneratedCodeInfo[] { new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.AccountsResponse.Types.Account), global::Walletrpc.AccountsResponse.Types.Account.Parser, new[]{ "AccountNumber", "AccountName", "TotalBalance", "ExternalKeyCount", "InternalKeyCount", "ImportedKeyCount" }, null, null, null)}),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.RenameAccountRequest), global::Walletrpc.RenameAccountRequest.Parser, new[]{ "AccountNumber", "NewName" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.RenameAccountResponse), global::Walletrpc.RenameAccountResponse.Parser, null, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.NextAccountRequest), global::Walletrpc.NextAccountRequest.Parser, new[]{ "Passphrase", "AccountName" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.NextAccountResponse), global::Walletrpc.NextAccountResponse.Parser, new[]{ "AccountNumber" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.NextAddressRequest), global::Walletrpc.NextAddressRequest.Parser, new[]{ "Account", "Kind" }, null, new[]{ typeof(global::Walletrpc.NextAddressRequest.Types.Kind) }, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.NextAddressResponse), global::Walletrpc.NextAddressResponse.Parser, new[]{ "Address" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.ImportPrivateKeyRequest), global::Walletrpc.ImportPrivateKeyRequest.Parser, new[]{ "Passphrase", "Account", "PrivateKeyWif", "Rescan" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.ImportPrivateKeyResponse), global::Walletrpc.ImportPrivateKeyResponse.Parser, null, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.BalanceRequest), global::Walletrpc.BalanceRequest.Parser, new[]{ "AccountNumber", "RequiredConfirmations" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.BalanceResponse), global::Walletrpc.BalanceResponse.Parser, new[]{ "Total", "Spendable", "ImmatureReward" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.GetTransactionsRequest), global::Walletrpc.GetTransactionsRequest.Parser, new[]{ "StartingBlockHash", "StartingBlockHeight", "EndingBlockHash", "EndingBlockHeight", "MinimumRecentTransactions" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.GetTransactionsResponse), global::Walletrpc.GetTransactionsResponse.Parser, new[]{ "MinedTransactions", "UnminedTransactions" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.ChangePassphraseRequest), global::Walletrpc.ChangePassphraseRequest.Parser, new[]{ "Key", "OldPassphrase", "NewPassphrase" }, null, new[]{ typeof(global::Walletrpc.ChangePassphraseRequest.Types.Key) }, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.ChangePassphraseResponse), global::Walletrpc.ChangePassphraseResponse.Parser, null, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.FundTransactionRequest), global::Walletrpc.FundTransactionRequest.Parser, new[]{ "Account", "TargetAmount", "RequiredConfirmations", "IncludeImmatureCoinbases", "IncludeChangeScript" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.FundTransactionResponse), global::Walletrpc.FundTransactionResponse.Parser, new[]{ "SelectedOutputs", "TotalAmount", "ChangePkScript" }, null, null, new pbr::GeneratedCodeInfo[] { new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.FundTransactionResponse.Types.PreviousOutput), global::Walletrpc.FundTransactionResponse.Types.PreviousOutput.Parser, new[]{ "TransactionHash", "OutputIndex", "Amount", "PkScript", "ReceiveTime", "FromCoinbase" }, null, null, null)}),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.SignTransactionRequest), global::Walletrpc.SignTransactionRequest.Parser, new[]{ "Passphrase", "SerializedTransaction", "InputIndexes" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.SignTransactionResponse), global::Walletrpc.SignTransactionResponse.Parser, new[]{ "Transaction", "UnsignedInputIndexes" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.PublishTransactionRequest), global::Walletrpc.PublishTransactionRequest.Parser, new[]{ "SignedTransaction" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.PublishTransactionResponse), global::Walletrpc.PublishTransactionResponse.Parser, null, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.TransactionNotificationsRequest), global::Walletrpc.TransactionNotificationsRequest.Parser, null, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.TransactionNotificationsResponse), global::Walletrpc.TransactionNotificationsResponse.Parser, new[]{ "AttachedBlocks", "DetachedBlocks", "UnminedTransactions", "UnminedTransactionHashes" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.SpentnessNotificationsRequest), global::Walletrpc.SpentnessNotificationsRequest.Parser, new[]{ "Account", "NoNotifyUnspent", "NoNotifySpent" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.SpentnessNotificationsResponse), global::Walletrpc.SpentnessNotificationsResponse.Parser, new[]{ "TransactionHash", "OutputIndex", "Spender" }, null, null, new pbr::GeneratedCodeInfo[] { new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.SpentnessNotificationsResponse.Types.Spender), global::Walletrpc.SpentnessNotificationsResponse.Types.Spender.Parser, new[]{ "TransactionHash", "InputIndex" }, null, null, null)}),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.AccountNotificationsRequest), global::Walletrpc.AccountNotificationsRequest.Parser, null, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.AccountNotificationsResponse), global::Walletrpc.AccountNotificationsResponse.Parser, new[]{ "AccountNumber", "AccountName", "ExternalKeyCount", "InternalKeyCount", "ImportedKeyCount" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.CreateWalletRequest), global::Walletrpc.CreateWalletRequest.Parser, new[]{ "PublicPassphrase", "PrivatePassphrase", "Seed" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.CreateWalletResponse), global::Walletrpc.CreateWalletResponse.Parser, null, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.OpenWalletRequest), global::Walletrpc.OpenWalletRequest.Parser, new[]{ "PublicPassphrase" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.OpenWalletResponse), global::Walletrpc.OpenWalletResponse.Parser, null, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.CloseWalletRequest), global::Walletrpc.CloseWalletRequest.Parser, null, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.CloseWalletResponse), global::Walletrpc.CloseWalletResponse.Parser, null, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.WalletExistsRequest), global::Walletrpc.WalletExistsRequest.Parser, null, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.WalletExistsResponse), global::Walletrpc.WalletExistsResponse.Parser, new[]{ "Exists" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.StartConsensusRpcRequest), global::Walletrpc.StartConsensusRpcRequest.Parser, new[]{ "NetworkAddress", "Username", "Password", "Certificate" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Walletrpc.StartConsensusRpcResponse), global::Walletrpc.StartConsensusRpcResponse.Parser, null, null, null, null)
           }));
     }
     #endregion
@@ -212,12 +224,326 @@ namespace Walletrpc {
   }
   #region Messages
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class VersionRequest : pb::IMessage<VersionRequest> {
+    private static readonly pb::MessageParser<VersionRequest> _parser = new pb::MessageParser<VersionRequest>(() => new VersionRequest());
+    public static pb::MessageParser<VersionRequest> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[0]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public VersionRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public VersionRequest(VersionRequest other) : this() {
+    }
+
+    public VersionRequest Clone() {
+      return new VersionRequest(this);
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as VersionRequest);
+    }
+
+    public bool Equals(VersionRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      return size;
+    }
+
+    public void MergeFrom(VersionRequest other) {
+      if (other == null) {
+        return;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class VersionResponse : pb::IMessage<VersionResponse> {
+    private static readonly pb::MessageParser<VersionResponse> _parser = new pb::MessageParser<VersionResponse>(() => new VersionResponse());
+    public static pb::MessageParser<VersionResponse> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public VersionResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public VersionResponse(VersionResponse other) : this() {
+      versionString_ = other.versionString_;
+      major_ = other.major_;
+      minor_ = other.minor_;
+      patch_ = other.patch_;
+      prerelease_ = other.prerelease_;
+      buildMetadata_ = other.buildMetadata_;
+    }
+
+    public VersionResponse Clone() {
+      return new VersionResponse(this);
+    }
+
+    /// <summary>Field number for the "version_string" field.</summary>
+    public const int VersionStringFieldNumber = 1;
+    private string versionString_ = "";
+    public string VersionString {
+      get { return versionString_; }
+      set {
+        versionString_ = pb::Preconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "major" field.</summary>
+    public const int MajorFieldNumber = 2;
+    private uint major_;
+    public uint Major {
+      get { return major_; }
+      set {
+        major_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "minor" field.</summary>
+    public const int MinorFieldNumber = 3;
+    private uint minor_;
+    public uint Minor {
+      get { return minor_; }
+      set {
+        minor_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "patch" field.</summary>
+    public const int PatchFieldNumber = 4;
+    private uint patch_;
+    public uint Patch {
+      get { return patch_; }
+      set {
+        patch_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "prerelease" field.</summary>
+    public const int PrereleaseFieldNumber = 5;
+    private string prerelease_ = "";
+    public string Prerelease {
+      get { return prerelease_; }
+      set {
+        prerelease_ = pb::Preconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "build_metadata" field.</summary>
+    public const int BuildMetadataFieldNumber = 6;
+    private string buildMetadata_ = "";
+    public string BuildMetadata {
+      get { return buildMetadata_; }
+      set {
+        buildMetadata_ = pb::Preconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as VersionResponse);
+    }
+
+    public bool Equals(VersionResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (VersionString != other.VersionString) return false;
+      if (Major != other.Major) return false;
+      if (Minor != other.Minor) return false;
+      if (Patch != other.Patch) return false;
+      if (Prerelease != other.Prerelease) return false;
+      if (BuildMetadata != other.BuildMetadata) return false;
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      if (VersionString.Length != 0) hash ^= VersionString.GetHashCode();
+      if (Major != 0) hash ^= Major.GetHashCode();
+      if (Minor != 0) hash ^= Minor.GetHashCode();
+      if (Patch != 0) hash ^= Patch.GetHashCode();
+      if (Prerelease.Length != 0) hash ^= Prerelease.GetHashCode();
+      if (BuildMetadata.Length != 0) hash ^= BuildMetadata.GetHashCode();
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (VersionString.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(VersionString);
+      }
+      if (Major != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(Major);
+      }
+      if (Minor != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(Minor);
+      }
+      if (Patch != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Patch);
+      }
+      if (Prerelease.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Prerelease);
+      }
+      if (BuildMetadata.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(BuildMetadata);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (VersionString.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(VersionString);
+      }
+      if (Major != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Major);
+      }
+      if (Minor != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Minor);
+      }
+      if (Patch != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Patch);
+      }
+      if (Prerelease.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Prerelease);
+      }
+      if (BuildMetadata.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(BuildMetadata);
+      }
+      return size;
+    }
+
+    public void MergeFrom(VersionResponse other) {
+      if (other == null) {
+        return;
+      }
+      if (other.VersionString.Length != 0) {
+        VersionString = other.VersionString;
+      }
+      if (other.Major != 0) {
+        Major = other.Major;
+      }
+      if (other.Minor != 0) {
+        Minor = other.Minor;
+      }
+      if (other.Patch != 0) {
+        Patch = other.Patch;
+      }
+      if (other.Prerelease.Length != 0) {
+        Prerelease = other.Prerelease;
+      }
+      if (other.BuildMetadata.Length != 0) {
+        BuildMetadata = other.BuildMetadata;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            VersionString = input.ReadString();
+            break;
+          }
+          case 16: {
+            Major = input.ReadUInt32();
+            break;
+          }
+          case 24: {
+            Minor = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            Patch = input.ReadUInt32();
+            break;
+          }
+          case 42: {
+            Prerelease = input.ReadString();
+            break;
+          }
+          case 50: {
+            BuildMetadata = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
   public sealed partial class TransactionDetails : pb::IMessage<TransactionDetails> {
     private static readonly pb::MessageParser<TransactionDetails> _parser = new pb::MessageParser<TransactionDetails>(() => new TransactionDetails());
     public static pb::MessageParser<TransactionDetails> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[0]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[2]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -234,7 +560,7 @@ namespace Walletrpc {
       hash_ = other.hash_;
       transaction_ = other.transaction_;
       debits_ = other.debits_.Clone();
-      outputs_ = other.outputs_.Clone();
+      credits_ = other.credits_.Clone();
       fee_ = other.fee_;
       timestamp_ = other.timestamp_;
     }
@@ -243,6 +569,7 @@ namespace Walletrpc {
       return new TransactionDetails(this);
     }
 
+    /// <summary>Field number for the "hash" field.</summary>
     public const int HashFieldNumber = 1;
     private pb::ByteString hash_ = pb::ByteString.Empty;
     public pb::ByteString Hash {
@@ -252,6 +579,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "transaction" field.</summary>
     public const int TransactionFieldNumber = 2;
     private pb::ByteString transaction_ = pb::ByteString.Empty;
     public pb::ByteString Transaction {
@@ -261,6 +589,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "debits" field.</summary>
     public const int DebitsFieldNumber = 3;
     private static readonly pb::FieldCodec<global::Walletrpc.TransactionDetails.Types.Input> _repeated_debits_codec
         = pb::FieldCodec.ForMessage(26, global::Walletrpc.TransactionDetails.Types.Input.Parser);
@@ -269,14 +598,16 @@ namespace Walletrpc {
       get { return debits_; }
     }
 
-    public const int OutputsFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::Walletrpc.TransactionDetails.Types.Output> _repeated_outputs_codec
+    /// <summary>Field number for the "credits" field.</summary>
+    public const int CreditsFieldNumber = 4;
+    private static readonly pb::FieldCodec<global::Walletrpc.TransactionDetails.Types.Output> _repeated_credits_codec
         = pb::FieldCodec.ForMessage(34, global::Walletrpc.TransactionDetails.Types.Output.Parser);
-    private readonly pbc::RepeatedField<global::Walletrpc.TransactionDetails.Types.Output> outputs_ = new pbc::RepeatedField<global::Walletrpc.TransactionDetails.Types.Output>();
-    public pbc::RepeatedField<global::Walletrpc.TransactionDetails.Types.Output> Outputs {
-      get { return outputs_; }
+    private readonly pbc::RepeatedField<global::Walletrpc.TransactionDetails.Types.Output> credits_ = new pbc::RepeatedField<global::Walletrpc.TransactionDetails.Types.Output>();
+    public pbc::RepeatedField<global::Walletrpc.TransactionDetails.Types.Output> Credits {
+      get { return credits_; }
     }
 
+    /// <summary>Field number for the "fee" field.</summary>
     public const int FeeFieldNumber = 5;
     private long fee_;
     public long Fee {
@@ -286,8 +617,12 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "timestamp" field.</summary>
     public const int TimestampFieldNumber = 6;
     private long timestamp_;
+    /// <summary>
+    ///  May be earlier than a block timestamp, but never later.
+    /// </summary>
     public long Timestamp {
       get { return timestamp_; }
       set {
@@ -309,7 +644,7 @@ namespace Walletrpc {
       if (Hash != other.Hash) return false;
       if (Transaction != other.Transaction) return false;
       if(!debits_.Equals(other.debits_)) return false;
-      if(!outputs_.Equals(other.outputs_)) return false;
+      if(!credits_.Equals(other.credits_)) return false;
       if (Fee != other.Fee) return false;
       if (Timestamp != other.Timestamp) return false;
       return true;
@@ -320,14 +655,14 @@ namespace Walletrpc {
       if (Hash.Length != 0) hash ^= Hash.GetHashCode();
       if (Transaction.Length != 0) hash ^= Transaction.GetHashCode();
       hash ^= debits_.GetHashCode();
-      hash ^= outputs_.GetHashCode();
+      hash ^= credits_.GetHashCode();
       if (Fee != 0L) hash ^= Fee.GetHashCode();
       if (Timestamp != 0L) hash ^= Timestamp.GetHashCode();
       return hash;
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -340,7 +675,7 @@ namespace Walletrpc {
         output.WriteBytes(Transaction);
       }
       debits_.WriteTo(output, _repeated_debits_codec);
-      outputs_.WriteTo(output, _repeated_outputs_codec);
+      credits_.WriteTo(output, _repeated_credits_codec);
       if (Fee != 0L) {
         output.WriteRawTag(40);
         output.WriteInt64(Fee);
@@ -360,7 +695,7 @@ namespace Walletrpc {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(Transaction);
       }
       size += debits_.CalculateSize(_repeated_debits_codec);
-      size += outputs_.CalculateSize(_repeated_outputs_codec);
+      size += credits_.CalculateSize(_repeated_credits_codec);
       if (Fee != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Fee);
       }
@@ -381,7 +716,7 @@ namespace Walletrpc {
         Transaction = other.Transaction;
       }
       debits_.Add(other.debits_);
-      outputs_.Add(other.outputs_);
+      credits_.Add(other.credits_);
       if (other.Fee != 0L) {
         Fee = other.Fee;
       }
@@ -410,7 +745,7 @@ namespace Walletrpc {
             break;
           }
           case 34: {
-            outputs_.AddEntriesFrom(input, _repeated_outputs_codec);
+            credits_.AddEntriesFrom(input, _repeated_credits_codec);
             break;
           }
           case 40: {
@@ -426,6 +761,7 @@ namespace Walletrpc {
     }
 
     #region Nested types
+    /// <summary>Container for nested types declared in the TransactionDetails message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     public static partial class Types {
       [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -457,6 +793,7 @@ namespace Walletrpc {
           return new Input(this);
         }
 
+        /// <summary>Field number for the "index" field.</summary>
         public const int IndexFieldNumber = 1;
         private uint index_;
         public uint Index {
@@ -466,6 +803,7 @@ namespace Walletrpc {
           }
         }
 
+        /// <summary>Field number for the "previous_account" field.</summary>
         public const int PreviousAccountFieldNumber = 2;
         private uint previousAccount_;
         public uint PreviousAccount {
@@ -475,6 +813,7 @@ namespace Walletrpc {
           }
         }
 
+        /// <summary>Field number for the "previous_amount" field.</summary>
         public const int PreviousAmountFieldNumber = 3;
         private long previousAmount_;
         public long PreviousAmount {
@@ -510,7 +849,7 @@ namespace Walletrpc {
         }
 
         public override string ToString() {
-          return pb::JsonFormatter.Default.Format(this);
+          return pb::JsonFormatter.ToDiagnosticString(this);
         }
 
         public void WriteTo(pb::CodedOutputStream output) {
@@ -602,26 +941,27 @@ namespace Walletrpc {
         partial void OnConstruction();
 
         public Output(Output other) : this() {
-          mine_ = other.mine_;
+          index_ = other.index_;
           account_ = other.account_;
           internal_ = other.internal_;
-          addresses_ = other.addresses_.Clone();
         }
 
         public Output Clone() {
           return new Output(this);
         }
 
-        public const int MineFieldNumber = 3;
-        private bool mine_;
-        public bool Mine {
-          get { return mine_; }
+        /// <summary>Field number for the "index" field.</summary>
+        public const int IndexFieldNumber = 1;
+        private uint index_;
+        public uint Index {
+          get { return index_; }
           set {
-            mine_ = value;
+            index_ = value;
           }
         }
 
-        public const int AccountFieldNumber = 4;
+        /// <summary>Field number for the "account" field.</summary>
+        public const int AccountFieldNumber = 2;
         private uint account_;
         public uint Account {
           get { return account_; }
@@ -630,21 +970,14 @@ namespace Walletrpc {
           }
         }
 
-        public const int InternalFieldNumber = 5;
+        /// <summary>Field number for the "internal" field.</summary>
+        public const int InternalFieldNumber = 3;
         private bool internal_;
         public bool Internal {
           get { return internal_; }
           set {
             internal_ = value;
           }
-        }
-
-        public const int AddressesFieldNumber = 6;
-        private static readonly pb::FieldCodec<string> _repeated_addresses_codec
-            = pb::FieldCodec.ForString(50);
-        private readonly pbc::RepeatedField<string> addresses_ = new pbc::RepeatedField<string>();
-        public pbc::RepeatedField<string> Addresses {
-          get { return addresses_; }
         }
 
         public override bool Equals(object other) {
@@ -658,46 +991,43 @@ namespace Walletrpc {
           if (ReferenceEquals(other, this)) {
             return true;
           }
-          if (Mine != other.Mine) return false;
+          if (Index != other.Index) return false;
           if (Account != other.Account) return false;
           if (Internal != other.Internal) return false;
-          if(!addresses_.Equals(other.addresses_)) return false;
           return true;
         }
 
         public override int GetHashCode() {
           int hash = 1;
-          if (Mine != false) hash ^= Mine.GetHashCode();
+          if (Index != 0) hash ^= Index.GetHashCode();
           if (Account != 0) hash ^= Account.GetHashCode();
           if (Internal != false) hash ^= Internal.GetHashCode();
-          hash ^= addresses_.GetHashCode();
           return hash;
         }
 
         public override string ToString() {
-          return pb::JsonFormatter.Default.Format(this);
+          return pb::JsonFormatter.ToDiagnosticString(this);
         }
 
         public void WriteTo(pb::CodedOutputStream output) {
-          if (Mine != false) {
-            output.WriteRawTag(24);
-            output.WriteBool(Mine);
+          if (Index != 0) {
+            output.WriteRawTag(8);
+            output.WriteUInt32(Index);
           }
           if (Account != 0) {
-            output.WriteRawTag(32);
+            output.WriteRawTag(16);
             output.WriteUInt32(Account);
           }
           if (Internal != false) {
-            output.WriteRawTag(40);
+            output.WriteRawTag(24);
             output.WriteBool(Internal);
           }
-          addresses_.WriteTo(output, _repeated_addresses_codec);
         }
 
         public int CalculateSize() {
           int size = 0;
-          if (Mine != false) {
-            size += 1 + 1;
+          if (Index != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Index);
           }
           if (Account != 0) {
             size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Account);
@@ -705,7 +1035,6 @@ namespace Walletrpc {
           if (Internal != false) {
             size += 1 + 1;
           }
-          size += addresses_.CalculateSize(_repeated_addresses_codec);
           return size;
         }
 
@@ -713,8 +1042,8 @@ namespace Walletrpc {
           if (other == null) {
             return;
           }
-          if (other.Mine != false) {
-            Mine = other.Mine;
+          if (other.Index != 0) {
+            Index = other.Index;
           }
           if (other.Account != 0) {
             Account = other.Account;
@@ -722,7 +1051,6 @@ namespace Walletrpc {
           if (other.Internal != false) {
             Internal = other.Internal;
           }
-          addresses_.Add(other.addresses_);
         }
 
         public void MergeFrom(pb::CodedInputStream input) {
@@ -732,20 +1060,16 @@ namespace Walletrpc {
               default:
                 input.SkipLastField();
                 break;
-              case 24: {
-                Mine = input.ReadBool();
+              case 8: {
+                Index = input.ReadUInt32();
                 break;
               }
-              case 32: {
+              case 16: {
                 Account = input.ReadUInt32();
                 break;
               }
-              case 40: {
+              case 24: {
                 Internal = input.ReadBool();
-                break;
-              }
-              case 50: {
-                addresses_.AddEntriesFrom(input, _repeated_addresses_codec);
                 break;
               }
             }
@@ -765,7 +1089,7 @@ namespace Walletrpc {
     public static pb::MessageParser<BlockDetails> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[1]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[3]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -789,6 +1113,7 @@ namespace Walletrpc {
       return new BlockDetails(this);
     }
 
+    /// <summary>Field number for the "hash" field.</summary>
     public const int HashFieldNumber = 1;
     private pb::ByteString hash_ = pb::ByteString.Empty;
     public pb::ByteString Hash {
@@ -798,6 +1123,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "height" field.</summary>
     public const int HeightFieldNumber = 2;
     private int height_;
     public int Height {
@@ -807,6 +1133,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "timestamp" field.</summary>
     public const int TimestampFieldNumber = 3;
     private long timestamp_;
     public long Timestamp {
@@ -816,6 +1143,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "transactions" field.</summary>
     public const int TransactionsFieldNumber = 4;
     private static readonly pb::FieldCodec<global::Walletrpc.TransactionDetails> _repeated_transactions_codec
         = pb::FieldCodec.ForMessage(34, global::Walletrpc.TransactionDetails.Parser);
@@ -852,7 +1180,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -937,7 +1265,7 @@ namespace Walletrpc {
     public static pb::MessageParser<AccountBalance> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[2]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[4]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -959,6 +1287,7 @@ namespace Walletrpc {
       return new AccountBalance(this);
     }
 
+    /// <summary>Field number for the "account" field.</summary>
     public const int AccountFieldNumber = 1;
     private uint account_;
     public uint Account {
@@ -968,6 +1297,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "total_balance" field.</summary>
     public const int TotalBalanceFieldNumber = 2;
     private long totalBalance_;
     public long TotalBalance {
@@ -1001,7 +1331,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -1065,7 +1395,7 @@ namespace Walletrpc {
     public static pb::MessageParser<PingRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[3]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[5]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -1105,7 +1435,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -1141,7 +1471,7 @@ namespace Walletrpc {
     public static pb::MessageParser<PingResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[4]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[6]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -1181,7 +1511,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -1217,7 +1547,7 @@ namespace Walletrpc {
     public static pb::MessageParser<NetworkRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[5]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[7]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -1257,7 +1587,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -1293,7 +1623,7 @@ namespace Walletrpc {
     public static pb::MessageParser<NetworkResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[6]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[8]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -1314,6 +1644,7 @@ namespace Walletrpc {
       return new NetworkResponse(this);
     }
 
+    /// <summary>Field number for the "active_network" field.</summary>
     public const int ActiveNetworkFieldNumber = 1;
     private uint activeNetwork_;
     public uint ActiveNetwork {
@@ -1345,7 +1676,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -1395,7 +1726,7 @@ namespace Walletrpc {
     public static pb::MessageParser<AccountNumberRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[7]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[9]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -1416,6 +1747,7 @@ namespace Walletrpc {
       return new AccountNumberRequest(this);
     }
 
+    /// <summary>Field number for the "account_name" field.</summary>
     public const int AccountNameFieldNumber = 1;
     private string accountName_ = "";
     public string AccountName {
@@ -1447,7 +1779,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -1497,7 +1829,7 @@ namespace Walletrpc {
     public static pb::MessageParser<AccountNumberResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[8]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[10]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -1518,6 +1850,7 @@ namespace Walletrpc {
       return new AccountNumberResponse(this);
     }
 
+    /// <summary>Field number for the "account_number" field.</summary>
     public const int AccountNumberFieldNumber = 1;
     private uint accountNumber_;
     public uint AccountNumber {
@@ -1549,7 +1882,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -1599,7 +1932,7 @@ namespace Walletrpc {
     public static pb::MessageParser<AccountsRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[9]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[11]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -1639,7 +1972,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -1675,7 +2008,7 @@ namespace Walletrpc {
     public static pb::MessageParser<AccountsResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[10]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[12]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -1698,6 +2031,7 @@ namespace Walletrpc {
       return new AccountsResponse(this);
     }
 
+    /// <summary>Field number for the "accounts" field.</summary>
     public const int AccountsFieldNumber = 1;
     private static readonly pb::FieldCodec<global::Walletrpc.AccountsResponse.Types.Account> _repeated_accounts_codec
         = pb::FieldCodec.ForMessage(10, global::Walletrpc.AccountsResponse.Types.Account.Parser);
@@ -1706,6 +2040,7 @@ namespace Walletrpc {
       get { return accounts_; }
     }
 
+    /// <summary>Field number for the "current_block_hash" field.</summary>
     public const int CurrentBlockHashFieldNumber = 2;
     private pb::ByteString currentBlockHash_ = pb::ByteString.Empty;
     public pb::ByteString CurrentBlockHash {
@@ -1715,6 +2050,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "current_block_height" field.</summary>
     public const int CurrentBlockHeightFieldNumber = 3;
     private int currentBlockHeight_;
     public int CurrentBlockHeight {
@@ -1750,7 +2086,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -1814,6 +2150,7 @@ namespace Walletrpc {
     }
 
     #region Nested types
+    /// <summary>Container for nested types declared in the AccountsResponse message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     public static partial class Types {
       [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1848,6 +2185,7 @@ namespace Walletrpc {
           return new Account(this);
         }
 
+        /// <summary>Field number for the "account_number" field.</summary>
         public const int AccountNumberFieldNumber = 1;
         private uint accountNumber_;
         public uint AccountNumber {
@@ -1857,6 +2195,7 @@ namespace Walletrpc {
           }
         }
 
+        /// <summary>Field number for the "account_name" field.</summary>
         public const int AccountNameFieldNumber = 2;
         private string accountName_ = "";
         public string AccountName {
@@ -1866,6 +2205,7 @@ namespace Walletrpc {
           }
         }
 
+        /// <summary>Field number for the "total_balance" field.</summary>
         public const int TotalBalanceFieldNumber = 3;
         private long totalBalance_;
         public long TotalBalance {
@@ -1875,6 +2215,7 @@ namespace Walletrpc {
           }
         }
 
+        /// <summary>Field number for the "external_key_count" field.</summary>
         public const int ExternalKeyCountFieldNumber = 4;
         private uint externalKeyCount_;
         public uint ExternalKeyCount {
@@ -1884,6 +2225,7 @@ namespace Walletrpc {
           }
         }
 
+        /// <summary>Field number for the "internal_key_count" field.</summary>
         public const int InternalKeyCountFieldNumber = 5;
         private uint internalKeyCount_;
         public uint InternalKeyCount {
@@ -1893,6 +2235,7 @@ namespace Walletrpc {
           }
         }
 
+        /// <summary>Field number for the "imported_key_count" field.</summary>
         public const int ImportedKeyCountFieldNumber = 6;
         private uint importedKeyCount_;
         public uint ImportedKeyCount {
@@ -1934,7 +2277,7 @@ namespace Walletrpc {
         }
 
         public override string ToString() {
-          return pb::JsonFormatter.Default.Format(this);
+          return pb::JsonFormatter.ToDiagnosticString(this);
         }
 
         public void WriteTo(pb::CodedOutputStream output) {
@@ -2059,7 +2402,7 @@ namespace Walletrpc {
     public static pb::MessageParser<RenameAccountRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[11]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[13]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -2081,6 +2424,7 @@ namespace Walletrpc {
       return new RenameAccountRequest(this);
     }
 
+    /// <summary>Field number for the "account_number" field.</summary>
     public const int AccountNumberFieldNumber = 1;
     private uint accountNumber_;
     public uint AccountNumber {
@@ -2090,6 +2434,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "new_name" field.</summary>
     public const int NewNameFieldNumber = 2;
     private string newName_ = "";
     public string NewName {
@@ -2123,7 +2468,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -2187,7 +2532,7 @@ namespace Walletrpc {
     public static pb::MessageParser<RenameAccountResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[12]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[14]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -2227,7 +2572,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -2263,7 +2608,7 @@ namespace Walletrpc {
     public static pb::MessageParser<NextAccountRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[13]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[15]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -2285,6 +2630,7 @@ namespace Walletrpc {
       return new NextAccountRequest(this);
     }
 
+    /// <summary>Field number for the "passphrase" field.</summary>
     public const int PassphraseFieldNumber = 1;
     private pb::ByteString passphrase_ = pb::ByteString.Empty;
     public pb::ByteString Passphrase {
@@ -2294,6 +2640,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "account_name" field.</summary>
     public const int AccountNameFieldNumber = 2;
     private string accountName_ = "";
     public string AccountName {
@@ -2327,7 +2674,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -2391,7 +2738,7 @@ namespace Walletrpc {
     public static pb::MessageParser<NextAccountResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[14]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[16]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -2412,6 +2759,7 @@ namespace Walletrpc {
       return new NextAccountResponse(this);
     }
 
+    /// <summary>Field number for the "account_number" field.</summary>
     public const int AccountNumberFieldNumber = 1;
     private uint accountNumber_;
     public uint AccountNumber {
@@ -2443,7 +2791,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -2493,7 +2841,7 @@ namespace Walletrpc {
     public static pb::MessageParser<NextAddressRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[15]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[17]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -2508,18 +2856,30 @@ namespace Walletrpc {
 
     public NextAddressRequest(NextAddressRequest other) : this() {
       account_ = other.account_;
+      kind_ = other.kind_;
     }
 
     public NextAddressRequest Clone() {
       return new NextAddressRequest(this);
     }
 
+    /// <summary>Field number for the "account" field.</summary>
     public const int AccountFieldNumber = 1;
     private uint account_;
     public uint Account {
       get { return account_; }
       set {
         account_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "kind" field.</summary>
+    public const int KindFieldNumber = 2;
+    private global::Walletrpc.NextAddressRequest.Types.Kind kind_ = global::Walletrpc.NextAddressRequest.Types.Kind.BIP0044_EXTERNAL;
+    public global::Walletrpc.NextAddressRequest.Types.Kind Kind {
+      get { return kind_; }
+      set {
+        kind_ = value;
       }
     }
 
@@ -2535,17 +2895,19 @@ namespace Walletrpc {
         return true;
       }
       if (Account != other.Account) return false;
+      if (Kind != other.Kind) return false;
       return true;
     }
 
     public override int GetHashCode() {
       int hash = 1;
       if (Account != 0) hash ^= Account.GetHashCode();
+      if (Kind != global::Walletrpc.NextAddressRequest.Types.Kind.BIP0044_EXTERNAL) hash ^= Kind.GetHashCode();
       return hash;
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -2553,12 +2915,19 @@ namespace Walletrpc {
         output.WriteRawTag(8);
         output.WriteUInt32(Account);
       }
+      if (Kind != global::Walletrpc.NextAddressRequest.Types.Kind.BIP0044_EXTERNAL) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) Kind);
+      }
     }
 
     public int CalculateSize() {
       int size = 0;
       if (Account != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Account);
+      }
+      if (Kind != global::Walletrpc.NextAddressRequest.Types.Kind.BIP0044_EXTERNAL) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Kind);
       }
       return size;
     }
@@ -2569,6 +2938,9 @@ namespace Walletrpc {
       }
       if (other.Account != 0) {
         Account = other.Account;
+      }
+      if (other.Kind != global::Walletrpc.NextAddressRequest.Types.Kind.BIP0044_EXTERNAL) {
+        Kind = other.Kind;
       }
     }
 
@@ -2583,9 +2955,25 @@ namespace Walletrpc {
             Account = input.ReadUInt32();
             break;
           }
+          case 16: {
+            kind_ = (global::Walletrpc.NextAddressRequest.Types.Kind) input.ReadEnum();
+            break;
+          }
         }
       }
     }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the NextAddressRequest message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public static partial class Types {
+      public enum Kind {
+        BIP0044_EXTERNAL = 0,
+        BIP0044_INTERNAL = 1,
+      }
+
+    }
+    #endregion
 
   }
 
@@ -2595,7 +2983,7 @@ namespace Walletrpc {
     public static pb::MessageParser<NextAddressResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[16]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[18]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -2616,6 +3004,7 @@ namespace Walletrpc {
       return new NextAddressResponse(this);
     }
 
+    /// <summary>Field number for the "address" field.</summary>
     public const int AddressFieldNumber = 1;
     private string address_ = "";
     public string Address {
@@ -2647,7 +3036,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -2697,7 +3086,7 @@ namespace Walletrpc {
     public static pb::MessageParser<ImportPrivateKeyRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[17]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[19]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -2721,6 +3110,7 @@ namespace Walletrpc {
       return new ImportPrivateKeyRequest(this);
     }
 
+    /// <summary>Field number for the "passphrase" field.</summary>
     public const int PassphraseFieldNumber = 1;
     private pb::ByteString passphrase_ = pb::ByteString.Empty;
     public pb::ByteString Passphrase {
@@ -2730,6 +3120,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "account" field.</summary>
     public const int AccountFieldNumber = 2;
     private uint account_;
     public uint Account {
@@ -2739,6 +3130,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "private_key_wif" field.</summary>
     public const int PrivateKeyWifFieldNumber = 3;
     private string privateKeyWif_ = "";
     public string PrivateKeyWif {
@@ -2748,6 +3140,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "rescan" field.</summary>
     public const int RescanFieldNumber = 4;
     private bool rescan_;
     public bool Rescan {
@@ -2785,7 +3178,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -2877,7 +3270,7 @@ namespace Walletrpc {
     public static pb::MessageParser<ImportPrivateKeyResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[18]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[20]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -2917,7 +3310,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -2953,7 +3346,7 @@ namespace Walletrpc {
     public static pb::MessageParser<BalanceRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[19]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[21]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -2975,6 +3368,7 @@ namespace Walletrpc {
       return new BalanceRequest(this);
     }
 
+    /// <summary>Field number for the "account_number" field.</summary>
     public const int AccountNumberFieldNumber = 1;
     private uint accountNumber_;
     public uint AccountNumber {
@@ -2984,6 +3378,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "required_confirmations" field.</summary>
     public const int RequiredConfirmationsFieldNumber = 2;
     private int requiredConfirmations_;
     public int RequiredConfirmations {
@@ -3017,7 +3412,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -3081,7 +3476,7 @@ namespace Walletrpc {
     public static pb::MessageParser<BalanceResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[20]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[22]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -3104,6 +3499,7 @@ namespace Walletrpc {
       return new BalanceResponse(this);
     }
 
+    /// <summary>Field number for the "total" field.</summary>
     public const int TotalFieldNumber = 1;
     private long total_;
     public long Total {
@@ -3113,6 +3509,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "spendable" field.</summary>
     public const int SpendableFieldNumber = 2;
     private long spendable_;
     public long Spendable {
@@ -3122,6 +3519,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "immature_reward" field.</summary>
     public const int ImmatureRewardFieldNumber = 3;
     private long immatureReward_;
     public long ImmatureReward {
@@ -3157,7 +3555,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -3235,7 +3633,7 @@ namespace Walletrpc {
     public static pb::MessageParser<GetTransactionsRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[21]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[23]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -3260,8 +3658,18 @@ namespace Walletrpc {
       return new GetTransactionsRequest(this);
     }
 
+    /// <summary>Field number for the "starting_block_hash" field.</summary>
     public const int StartingBlockHashFieldNumber = 1;
     private pb::ByteString startingBlockHash_ = pb::ByteString.Empty;
+    /// <summary>
+    ///  Optionally specify the starting block from which to begin including all transactions.
+    ///  Either the starting block hash or height may be specified, but not both.
+    ///  If a block height is specified and is negative, the absolute value becomes the number of
+    ///  last blocks to include.  That is, given a current chain height of 1000 and a starting block
+    ///  height of -3, transaction notifications will be created for blocks 998, 999, and 1000.
+    ///  If both options are excluded, transaction results are created for transactions since the
+    ///  genesis block.
+    /// </summary>
     public pb::ByteString StartingBlockHash {
       get { return startingBlockHash_; }
       set {
@@ -3269,6 +3677,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "starting_block_height" field.</summary>
     public const int StartingBlockHeightFieldNumber = 2;
     private int startingBlockHeight_;
     public int StartingBlockHeight {
@@ -3278,8 +3687,15 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "ending_block_hash" field.</summary>
     public const int EndingBlockHashFieldNumber = 3;
     private pb::ByteString endingBlockHash_ = pb::ByteString.Empty;
+    /// <summary>
+    ///  Optionally specify the last block that transaction results may appear in.
+    ///  Either the ending block hash or height may be specified, but not both.
+    ///  If both are excluded, transaction results are created for all transactions
+    ///  through the best block, and include all unmined transactions.
+    /// </summary>
     public pb::ByteString EndingBlockHash {
       get { return endingBlockHash_; }
       set {
@@ -3287,6 +3703,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "ending_block_height" field.</summary>
     public const int EndingBlockHeightFieldNumber = 4;
     private int endingBlockHeight_;
     public int EndingBlockHeight {
@@ -3296,8 +3713,15 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "minimum_recent_transactions" field.</summary>
     public const int MinimumRecentTransactionsFieldNumber = 5;
     private int minimumRecentTransactions_;
+    /// <summary>
+    ///  Include at least this many of the newest transactions if they exist.
+    ///  Cannot be used when the ending block hash is specified.
+    ///
+    ///  TODO: remove until spec adds it back in some way.
+    /// </summary>
     public int MinimumRecentTransactions {
       get { return minimumRecentTransactions_; }
       set {
@@ -3335,7 +3759,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -3441,7 +3865,7 @@ namespace Walletrpc {
     public static pb::MessageParser<GetTransactionsResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[22]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[24]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -3463,6 +3887,7 @@ namespace Walletrpc {
       return new GetTransactionsResponse(this);
     }
 
+    /// <summary>Field number for the "mined_transactions" field.</summary>
     public const int MinedTransactionsFieldNumber = 1;
     private static readonly pb::FieldCodec<global::Walletrpc.BlockDetails> _repeated_minedTransactions_codec
         = pb::FieldCodec.ForMessage(10, global::Walletrpc.BlockDetails.Parser);
@@ -3471,6 +3896,7 @@ namespace Walletrpc {
       get { return minedTransactions_; }
     }
 
+    /// <summary>Field number for the "unmined_transactions" field.</summary>
     public const int UnminedTransactionsFieldNumber = 2;
     private static readonly pb::FieldCodec<global::Walletrpc.TransactionDetails> _repeated_unminedTransactions_codec
         = pb::FieldCodec.ForMessage(18, global::Walletrpc.TransactionDetails.Parser);
@@ -3503,7 +3929,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -3553,7 +3979,7 @@ namespace Walletrpc {
     public static pb::MessageParser<ChangePassphraseRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[23]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[25]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -3576,6 +4002,7 @@ namespace Walletrpc {
       return new ChangePassphraseRequest(this);
     }
 
+    /// <summary>Field number for the "key" field.</summary>
     public const int KeyFieldNumber = 1;
     private global::Walletrpc.ChangePassphraseRequest.Types.Key key_ = global::Walletrpc.ChangePassphraseRequest.Types.Key.PRIVATE;
     public global::Walletrpc.ChangePassphraseRequest.Types.Key Key {
@@ -3585,6 +4012,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "old_passphrase" field.</summary>
     public const int OldPassphraseFieldNumber = 2;
     private pb::ByteString oldPassphrase_ = pb::ByteString.Empty;
     public pb::ByteString OldPassphrase {
@@ -3594,6 +4022,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "new_passphrase" field.</summary>
     public const int NewPassphraseFieldNumber = 3;
     private pb::ByteString newPassphrase_ = pb::ByteString.Empty;
     public pb::ByteString NewPassphrase {
@@ -3629,7 +4058,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -3700,6 +4129,7 @@ namespace Walletrpc {
     }
 
     #region Nested types
+    /// <summary>Container for nested types declared in the ChangePassphraseRequest message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     public static partial class Types {
       public enum Key {
@@ -3718,7 +4148,7 @@ namespace Walletrpc {
     public static pb::MessageParser<ChangePassphraseResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[24]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[26]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -3758,7 +4188,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -3794,7 +4224,7 @@ namespace Walletrpc {
     public static pb::MessageParser<FundTransactionRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[25]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[27]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -3819,6 +4249,7 @@ namespace Walletrpc {
       return new FundTransactionRequest(this);
     }
 
+    /// <summary>Field number for the "account" field.</summary>
     public const int AccountFieldNumber = 1;
     private uint account_;
     public uint Account {
@@ -3828,6 +4259,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "target_amount" field.</summary>
     public const int TargetAmountFieldNumber = 2;
     private long targetAmount_;
     public long TargetAmount {
@@ -3837,6 +4269,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "required_confirmations" field.</summary>
     public const int RequiredConfirmationsFieldNumber = 3;
     private int requiredConfirmations_;
     public int RequiredConfirmations {
@@ -3846,6 +4279,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "include_immature_coinbases" field.</summary>
     public const int IncludeImmatureCoinbasesFieldNumber = 4;
     private bool includeImmatureCoinbases_;
     public bool IncludeImmatureCoinbases {
@@ -3855,6 +4289,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "include_change_script" field.</summary>
     public const int IncludeChangeScriptFieldNumber = 5;
     private bool includeChangeScript_;
     public bool IncludeChangeScript {
@@ -3894,7 +4329,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -4000,7 +4435,7 @@ namespace Walletrpc {
     public static pb::MessageParser<FundTransactionResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[26]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[28]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -4023,6 +4458,7 @@ namespace Walletrpc {
       return new FundTransactionResponse(this);
     }
 
+    /// <summary>Field number for the "selected_outputs" field.</summary>
     public const int SelectedOutputsFieldNumber = 1;
     private static readonly pb::FieldCodec<global::Walletrpc.FundTransactionResponse.Types.PreviousOutput> _repeated_selectedOutputs_codec
         = pb::FieldCodec.ForMessage(10, global::Walletrpc.FundTransactionResponse.Types.PreviousOutput.Parser);
@@ -4031,6 +4467,7 @@ namespace Walletrpc {
       get { return selectedOutputs_; }
     }
 
+    /// <summary>Field number for the "total_amount" field.</summary>
     public const int TotalAmountFieldNumber = 2;
     private long totalAmount_;
     public long TotalAmount {
@@ -4040,6 +4477,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "change_pk_script" field.</summary>
     public const int ChangePkScriptFieldNumber = 3;
     private pb::ByteString changePkScript_ = pb::ByteString.Empty;
     public pb::ByteString ChangePkScript {
@@ -4075,7 +4513,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -4139,6 +4577,7 @@ namespace Walletrpc {
     }
 
     #region Nested types
+    /// <summary>Container for nested types declared in the FundTransactionResponse message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     public static partial class Types {
       [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4173,6 +4612,7 @@ namespace Walletrpc {
           return new PreviousOutput(this);
         }
 
+        /// <summary>Field number for the "transaction_hash" field.</summary>
         public const int TransactionHashFieldNumber = 1;
         private pb::ByteString transactionHash_ = pb::ByteString.Empty;
         public pb::ByteString TransactionHash {
@@ -4182,6 +4622,7 @@ namespace Walletrpc {
           }
         }
 
+        /// <summary>Field number for the "output_index" field.</summary>
         public const int OutputIndexFieldNumber = 2;
         private uint outputIndex_;
         public uint OutputIndex {
@@ -4191,6 +4632,7 @@ namespace Walletrpc {
           }
         }
 
+        /// <summary>Field number for the "amount" field.</summary>
         public const int AmountFieldNumber = 3;
         private long amount_;
         public long Amount {
@@ -4200,6 +4642,7 @@ namespace Walletrpc {
           }
         }
 
+        /// <summary>Field number for the "pk_script" field.</summary>
         public const int PkScriptFieldNumber = 4;
         private pb::ByteString pkScript_ = pb::ByteString.Empty;
         public pb::ByteString PkScript {
@@ -4209,6 +4652,7 @@ namespace Walletrpc {
           }
         }
 
+        /// <summary>Field number for the "receive_time" field.</summary>
         public const int ReceiveTimeFieldNumber = 5;
         private long receiveTime_;
         public long ReceiveTime {
@@ -4218,6 +4662,7 @@ namespace Walletrpc {
           }
         }
 
+        /// <summary>Field number for the "from_coinbase" field.</summary>
         public const int FromCoinbaseFieldNumber = 6;
         private bool fromCoinbase_;
         public bool FromCoinbase {
@@ -4259,7 +4704,7 @@ namespace Walletrpc {
         }
 
         public override string ToString() {
-          return pb::JsonFormatter.Default.Format(this);
+          return pb::JsonFormatter.ToDiagnosticString(this);
         }
 
         public void WriteTo(pb::CodedOutputStream output) {
@@ -4384,7 +4829,7 @@ namespace Walletrpc {
     public static pb::MessageParser<SignTransactionRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[27]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[29]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -4407,6 +4852,7 @@ namespace Walletrpc {
       return new SignTransactionRequest(this);
     }
 
+    /// <summary>Field number for the "passphrase" field.</summary>
     public const int PassphraseFieldNumber = 1;
     private pb::ByteString passphrase_ = pb::ByteString.Empty;
     public pb::ByteString Passphrase {
@@ -4416,6 +4862,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "serialized_transaction" field.</summary>
     public const int SerializedTransactionFieldNumber = 2;
     private pb::ByteString serializedTransaction_ = pb::ByteString.Empty;
     public pb::ByteString SerializedTransaction {
@@ -4425,10 +4872,18 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "input_indexes" field.</summary>
     public const int InputIndexesFieldNumber = 3;
     private static readonly pb::FieldCodec<uint> _repeated_inputIndexes_codec
         = pb::FieldCodec.ForUInt32(26);
     private readonly pbc::RepeatedField<uint> inputIndexes_ = new pbc::RepeatedField<uint>();
+    /// <summary>
+    ///  If no indexes are specified, signatures scripts will be added for
+    ///  every input. If any input indexes are specified, only those inputs
+    ///  will be signed.  Rather than returning an incompletely signed
+    ///  transaction if any of the inputs to be signed can not be, the RPC
+    ///  immediately errors.
+    /// </summary>
     public pbc::RepeatedField<uint> InputIndexes {
       get { return inputIndexes_; }
     }
@@ -4459,7 +4914,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -4531,7 +4986,7 @@ namespace Walletrpc {
     public static pb::MessageParser<SignTransactionResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[28]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[30]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -4553,6 +5008,7 @@ namespace Walletrpc {
       return new SignTransactionResponse(this);
     }
 
+    /// <summary>Field number for the "transaction" field.</summary>
     public const int TransactionFieldNumber = 1;
     private pb::ByteString transaction_ = pb::ByteString.Empty;
     public pb::ByteString Transaction {
@@ -4562,6 +5018,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "unsigned_input_indexes" field.</summary>
     public const int UnsignedInputIndexesFieldNumber = 2;
     private static readonly pb::FieldCodec<uint> _repeated_unsignedInputIndexes_codec
         = pb::FieldCodec.ForUInt32(18);
@@ -4594,7 +5051,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -4652,7 +5109,7 @@ namespace Walletrpc {
     public static pb::MessageParser<PublishTransactionRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[29]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[31]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -4673,6 +5130,7 @@ namespace Walletrpc {
       return new PublishTransactionRequest(this);
     }
 
+    /// <summary>Field number for the "signed_transaction" field.</summary>
     public const int SignedTransactionFieldNumber = 1;
     private pb::ByteString signedTransaction_ = pb::ByteString.Empty;
     public pb::ByteString SignedTransaction {
@@ -4704,7 +5162,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -4754,7 +5212,7 @@ namespace Walletrpc {
     public static pb::MessageParser<PublishTransactionResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[30]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[32]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -4794,7 +5252,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -4830,7 +5288,7 @@ namespace Walletrpc {
     public static pb::MessageParser<TransactionNotificationsRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[31]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[33]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -4870,7 +5328,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -4906,7 +5364,7 @@ namespace Walletrpc {
     public static pb::MessageParser<TransactionNotificationsResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[32]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[34]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -4930,34 +5388,58 @@ namespace Walletrpc {
       return new TransactionNotificationsResponse(this);
     }
 
+    /// <summary>Field number for the "attached_blocks" field.</summary>
     public const int AttachedBlocksFieldNumber = 1;
     private static readonly pb::FieldCodec<global::Walletrpc.BlockDetails> _repeated_attachedBlocks_codec
         = pb::FieldCodec.ForMessage(10, global::Walletrpc.BlockDetails.Parser);
     private readonly pbc::RepeatedField<global::Walletrpc.BlockDetails> attachedBlocks_ = new pbc::RepeatedField<global::Walletrpc.BlockDetails>();
+    /// <summary>
+    ///  Sorted by increasing height.  This is a repeated field so many new blocks
+    ///  in a new best chain can be notified at once during a reorganize.
+    /// </summary>
     public pbc::RepeatedField<global::Walletrpc.BlockDetails> AttachedBlocks {
       get { return attachedBlocks_; }
     }
 
+    /// <summary>Field number for the "detached_blocks" field.</summary>
     public const int DetachedBlocksFieldNumber = 2;
     private static readonly pb::FieldCodec<pb::ByteString> _repeated_detachedBlocks_codec
         = pb::FieldCodec.ForBytes(18);
     private readonly pbc::RepeatedField<pb::ByteString> detachedBlocks_ = new pbc::RepeatedField<pb::ByteString>();
+    /// <summary>
+    ///  If there was a chain reorganize, there may have been blocks with wallet
+    ///  transactions that are no longer in the best chain.  These are those
+    ///  block's hashes.
+    /// </summary>
     public pbc::RepeatedField<pb::ByteString> DetachedBlocks {
       get { return detachedBlocks_; }
     }
 
+    /// <summary>Field number for the "unmined_transactions" field.</summary>
     public const int UnminedTransactionsFieldNumber = 3;
     private static readonly pb::FieldCodec<global::Walletrpc.TransactionDetails> _repeated_unminedTransactions_codec
         = pb::FieldCodec.ForMessage(26, global::Walletrpc.TransactionDetails.Parser);
     private readonly pbc::RepeatedField<global::Walletrpc.TransactionDetails> unminedTransactions_ = new pbc::RepeatedField<global::Walletrpc.TransactionDetails>();
+    /// <summary>
+    ///  Any new unmined transactions are included here.  These unmined transactions
+    ///  refer to the current best chain, so transactions from detached blocks may
+    ///  be moved to mempool and included here if they are not mined or double spent
+    ///  in the new chain.  Additonally, if no new blocks were attached but a relevant
+    ///  unmined transaction is seen by the wallet, it will be reported here.
+    /// </summary>
     public pbc::RepeatedField<global::Walletrpc.TransactionDetails> UnminedTransactions {
       get { return unminedTransactions_; }
     }
 
+    /// <summary>Field number for the "unmined_transaction_hashes" field.</summary>
     public const int UnminedTransactionHashesFieldNumber = 4;
     private static readonly pb::FieldCodec<pb::ByteString> _repeated_unminedTransactionHashes_codec
         = pb::FieldCodec.ForBytes(34);
     private readonly pbc::RepeatedField<pb::ByteString> unminedTransactionHashes_ = new pbc::RepeatedField<pb::ByteString>();
+    /// <summary>
+    ///  Instead of notifying all of the removed unmined transactions,
+    ///  just send all of the current hashes.
+    /// </summary>
     public pbc::RepeatedField<pb::ByteString> UnminedTransactionHashes {
       get { return unminedTransactionHashes_; }
     }
@@ -4990,7 +5472,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -5054,7 +5536,7 @@ namespace Walletrpc {
     public static pb::MessageParser<SpentnessNotificationsRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[33]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[35]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -5077,6 +5559,7 @@ namespace Walletrpc {
       return new SpentnessNotificationsRequest(this);
     }
 
+    /// <summary>Field number for the "account" field.</summary>
     public const int AccountFieldNumber = 1;
     private uint account_;
     public uint Account {
@@ -5086,6 +5569,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "no_notify_unspent" field.</summary>
     public const int NoNotifyUnspentFieldNumber = 2;
     private bool noNotifyUnspent_;
     public bool NoNotifyUnspent {
@@ -5095,6 +5579,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "no_notify_spent" field.</summary>
     public const int NoNotifySpentFieldNumber = 3;
     private bool noNotifySpent_;
     public bool NoNotifySpent {
@@ -5130,7 +5615,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -5208,7 +5693,7 @@ namespace Walletrpc {
     public static pb::MessageParser<SpentnessNotificationsResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[34]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[36]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -5231,6 +5716,7 @@ namespace Walletrpc {
       return new SpentnessNotificationsResponse(this);
     }
 
+    /// <summary>Field number for the "transaction_hash" field.</summary>
     public const int TransactionHashFieldNumber = 1;
     private pb::ByteString transactionHash_ = pb::ByteString.Empty;
     public pb::ByteString TransactionHash {
@@ -5240,6 +5726,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "output_index" field.</summary>
     public const int OutputIndexFieldNumber = 2;
     private uint outputIndex_;
     public uint OutputIndex {
@@ -5249,6 +5736,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "spender" field.</summary>
     public const int SpenderFieldNumber = 3;
     private global::Walletrpc.SpentnessNotificationsResponse.Types.Spender spender_;
     public global::Walletrpc.SpentnessNotificationsResponse.Types.Spender Spender {
@@ -5284,7 +5772,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -5361,6 +5849,7 @@ namespace Walletrpc {
     }
 
     #region Nested types
+    /// <summary>Container for nested types declared in the SpentnessNotificationsResponse message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     public static partial class Types {
       [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5391,6 +5880,7 @@ namespace Walletrpc {
           return new Spender(this);
         }
 
+        /// <summary>Field number for the "transaction_hash" field.</summary>
         public const int TransactionHashFieldNumber = 1;
         private pb::ByteString transactionHash_ = pb::ByteString.Empty;
         public pb::ByteString TransactionHash {
@@ -5400,6 +5890,7 @@ namespace Walletrpc {
           }
         }
 
+        /// <summary>Field number for the "input_index" field.</summary>
         public const int InputIndexFieldNumber = 2;
         private uint inputIndex_;
         public uint InputIndex {
@@ -5433,7 +5924,7 @@ namespace Walletrpc {
         }
 
         public override string ToString() {
-          return pb::JsonFormatter.Default.Format(this);
+          return pb::JsonFormatter.ToDiagnosticString(this);
         }
 
         public void WriteTo(pb::CodedOutputStream output) {
@@ -5502,7 +5993,7 @@ namespace Walletrpc {
     public static pb::MessageParser<AccountNotificationsRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[35]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[37]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -5542,7 +6033,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -5578,7 +6069,7 @@ namespace Walletrpc {
     public static pb::MessageParser<AccountNotificationsResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[36]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[38]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -5603,6 +6094,7 @@ namespace Walletrpc {
       return new AccountNotificationsResponse(this);
     }
 
+    /// <summary>Field number for the "account_number" field.</summary>
     public const int AccountNumberFieldNumber = 1;
     private uint accountNumber_;
     public uint AccountNumber {
@@ -5612,6 +6104,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "account_name" field.</summary>
     public const int AccountNameFieldNumber = 2;
     private string accountName_ = "";
     public string AccountName {
@@ -5621,6 +6114,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "external_key_count" field.</summary>
     public const int ExternalKeyCountFieldNumber = 3;
     private uint externalKeyCount_;
     public uint ExternalKeyCount {
@@ -5630,6 +6124,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "internal_key_count" field.</summary>
     public const int InternalKeyCountFieldNumber = 4;
     private uint internalKeyCount_;
     public uint InternalKeyCount {
@@ -5639,6 +6134,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "imported_key_count" field.</summary>
     public const int ImportedKeyCountFieldNumber = 5;
     private uint importedKeyCount_;
     public uint ImportedKeyCount {
@@ -5678,7 +6174,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -5784,7 +6280,7 @@ namespace Walletrpc {
     public static pb::MessageParser<CreateWalletRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[37]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[39]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -5807,6 +6303,7 @@ namespace Walletrpc {
       return new CreateWalletRequest(this);
     }
 
+    /// <summary>Field number for the "public_passphrase" field.</summary>
     public const int PublicPassphraseFieldNumber = 1;
     private pb::ByteString publicPassphrase_ = pb::ByteString.Empty;
     public pb::ByteString PublicPassphrase {
@@ -5816,6 +6313,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "private_passphrase" field.</summary>
     public const int PrivatePassphraseFieldNumber = 2;
     private pb::ByteString privatePassphrase_ = pb::ByteString.Empty;
     public pb::ByteString PrivatePassphrase {
@@ -5825,6 +6323,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "seed" field.</summary>
     public const int SeedFieldNumber = 3;
     private pb::ByteString seed_ = pb::ByteString.Empty;
     public pb::ByteString Seed {
@@ -5860,7 +6359,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -5938,7 +6437,7 @@ namespace Walletrpc {
     public static pb::MessageParser<CreateWalletResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[38]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[40]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -5978,7 +6477,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -6014,7 +6513,7 @@ namespace Walletrpc {
     public static pb::MessageParser<OpenWalletRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[39]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[41]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -6035,6 +6534,7 @@ namespace Walletrpc {
       return new OpenWalletRequest(this);
     }
 
+    /// <summary>Field number for the "public_passphrase" field.</summary>
     public const int PublicPassphraseFieldNumber = 1;
     private pb::ByteString publicPassphrase_ = pb::ByteString.Empty;
     public pb::ByteString PublicPassphrase {
@@ -6066,7 +6566,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -6116,7 +6616,7 @@ namespace Walletrpc {
     public static pb::MessageParser<OpenWalletResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[40]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[42]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -6156,7 +6656,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -6192,7 +6692,7 @@ namespace Walletrpc {
     public static pb::MessageParser<CloseWalletRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[41]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[43]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -6232,7 +6732,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -6268,7 +6768,7 @@ namespace Walletrpc {
     public static pb::MessageParser<CloseWalletResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[42]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[44]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -6308,7 +6808,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -6344,7 +6844,7 @@ namespace Walletrpc {
     public static pb::MessageParser<WalletExistsRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[43]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[45]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -6384,7 +6884,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -6420,7 +6920,7 @@ namespace Walletrpc {
     public static pb::MessageParser<WalletExistsResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[44]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[46]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
@@ -6441,6 +6941,7 @@ namespace Walletrpc {
       return new WalletExistsResponse(this);
     }
 
+    /// <summary>Field number for the "exists" field.</summary>
     public const int ExistsFieldNumber = 1;
     private bool exists_;
     public bool Exists {
@@ -6472,7 +6973,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -6517,35 +7018,36 @@ namespace Walletrpc {
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-  public sealed partial class StartBtcdRpcRequest : pb::IMessage<StartBtcdRpcRequest> {
-    private static readonly pb::MessageParser<StartBtcdRpcRequest> _parser = new pb::MessageParser<StartBtcdRpcRequest>(() => new StartBtcdRpcRequest());
-    public static pb::MessageParser<StartBtcdRpcRequest> Parser { get { return _parser; } }
+  public sealed partial class StartConsensusRpcRequest : pb::IMessage<StartConsensusRpcRequest> {
+    private static readonly pb::MessageParser<StartConsensusRpcRequest> _parser = new pb::MessageParser<StartConsensusRpcRequest>(() => new StartConsensusRpcRequest());
+    public static pb::MessageParser<StartConsensusRpcRequest> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[45]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[47]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
-    public StartBtcdRpcRequest() {
+    public StartConsensusRpcRequest() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
-    public StartBtcdRpcRequest(StartBtcdRpcRequest other) : this() {
+    public StartConsensusRpcRequest(StartConsensusRpcRequest other) : this() {
       networkAddress_ = other.networkAddress_;
       username_ = other.username_;
       password_ = other.password_;
       certificate_ = other.certificate_;
     }
 
-    public StartBtcdRpcRequest Clone() {
-      return new StartBtcdRpcRequest(this);
+    public StartConsensusRpcRequest Clone() {
+      return new StartConsensusRpcRequest(this);
     }
 
+    /// <summary>Field number for the "network_address" field.</summary>
     public const int NetworkAddressFieldNumber = 1;
     private string networkAddress_ = "";
     public string NetworkAddress {
@@ -6555,6 +7057,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "username" field.</summary>
     public const int UsernameFieldNumber = 2;
     private string username_ = "";
     public string Username {
@@ -6564,6 +7067,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "password" field.</summary>
     public const int PasswordFieldNumber = 3;
     private pb::ByteString password_ = pb::ByteString.Empty;
     public pb::ByteString Password {
@@ -6573,6 +7077,7 @@ namespace Walletrpc {
       }
     }
 
+    /// <summary>Field number for the "certificate" field.</summary>
     public const int CertificateFieldNumber = 4;
     private pb::ByteString certificate_ = pb::ByteString.Empty;
     public pb::ByteString Certificate {
@@ -6583,10 +7088,10 @@ namespace Walletrpc {
     }
 
     public override bool Equals(object other) {
-      return Equals(other as StartBtcdRpcRequest);
+      return Equals(other as StartConsensusRpcRequest);
     }
 
-    public bool Equals(StartBtcdRpcRequest other) {
+    public bool Equals(StartConsensusRpcRequest other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -6610,7 +7115,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -6649,7 +7154,7 @@ namespace Walletrpc {
       return size;
     }
 
-    public void MergeFrom(StartBtcdRpcRequest other) {
+    public void MergeFrom(StartConsensusRpcRequest other) {
       if (other == null) {
         return;
       }
@@ -6697,36 +7202,36 @@ namespace Walletrpc {
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-  public sealed partial class StartBtcdRpcResponse : pb::IMessage<StartBtcdRpcResponse> {
-    private static readonly pb::MessageParser<StartBtcdRpcResponse> _parser = new pb::MessageParser<StartBtcdRpcResponse>(() => new StartBtcdRpcResponse());
-    public static pb::MessageParser<StartBtcdRpcResponse> Parser { get { return _parser; } }
+  public sealed partial class StartConsensusRpcResponse : pb::IMessage<StartConsensusRpcResponse> {
+    private static readonly pb::MessageParser<StartConsensusRpcResponse> _parser = new pb::MessageParser<StartConsensusRpcResponse>(() => new StartConsensusRpcResponse());
+    public static pb::MessageParser<StartConsensusRpcResponse> Parser { get { return _parser; } }
 
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Walletrpc.Api.Descriptor.MessageTypes[46]; }
+      get { return global::Walletrpc.ApiReflection.Descriptor.MessageTypes[48]; }
     }
 
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
-    public StartBtcdRpcResponse() {
+    public StartConsensusRpcResponse() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
-    public StartBtcdRpcResponse(StartBtcdRpcResponse other) : this() {
+    public StartConsensusRpcResponse(StartConsensusRpcResponse other) : this() {
     }
 
-    public StartBtcdRpcResponse Clone() {
-      return new StartBtcdRpcResponse(this);
+    public StartConsensusRpcResponse Clone() {
+      return new StartConsensusRpcResponse(this);
     }
 
     public override bool Equals(object other) {
-      return Equals(other as StartBtcdRpcResponse);
+      return Equals(other as StartConsensusRpcResponse);
     }
 
-    public bool Equals(StartBtcdRpcResponse other) {
+    public bool Equals(StartConsensusRpcResponse other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -6742,7 +7247,7 @@ namespace Walletrpc {
     }
 
     public override string ToString() {
-      return pb::JsonFormatter.Default.Format(this);
+      return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
@@ -6753,7 +7258,7 @@ namespace Walletrpc {
       return size;
     }
 
-    public void MergeFrom(StartBtcdRpcResponse other) {
+    public void MergeFrom(StartConsensusRpcResponse other) {
       if (other == null) {
         return;
       }

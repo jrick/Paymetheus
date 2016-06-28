@@ -1,11 +1,12 @@
 ﻿// Copyright (c) 2016 The btcsuite developers
+// Copyright (c) 2016 The Decred developers
 // Licensed under the ISC license.  See LICENSE file in the project root for full license information.
 
 using Google.Protobuf;
 using Grpc.Core;
-using Paymetheus.Bitcoin;
-using Paymetheus.Bitcoin.Script;
-using Paymetheus.Bitcoin.Wallet;
+using Paymetheus.Decred;
+using Paymetheus.Decred.Script;
+using Paymetheus.Decred.Wallet;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,7 +21,7 @@ namespace Paymetheus.Rpc
 {
     public sealed class WalletClient : IDisposable
     {
-        public const string LocalNetworkAddress = "localhost:18332";
+        private static readonly SemanticVersion RequiredRpcServerVersion = new SemanticVersion(2, 0, 0);
 
         public static void Initialize()
         {
@@ -51,14 +52,15 @@ namespace Paymetheus.Rpc
             await _channel.ShutdownAsync();
         }
 
-        public static async Task<WalletClient> ConnectAsync(string networkAddress)
+        public static async Task<WalletClient> ConnectAsync(string networkAddress, string rootCertificate)
         {
             if (networkAddress == null)
                 throw new ArgumentNullException(nameof(networkAddress));
+            if (rootCertificate == null)
+                throw new ArgumentNullException(nameof(rootCertificate));
 
-            var rootCertificate = await TransportSecurity.ReadCertificate();
             var channel = new Channel(networkAddress, new SslCredentials(rootCertificate));
-            var deadline = DateTime.UtcNow.AddSeconds(1);
+            var deadline = DateTime.UtcNow.AddSeconds(3);
             try
             {
                 await channel.ConnectAsync(deadline);
@@ -68,6 +70,13 @@ namespace Paymetheus.Rpc
                 await channel.ShutdownAsync();
                 throw new ConnectTimeoutException();
             }
+
+            // Ensure the server is running a compatible version.
+            var versionClient = VersionService.NewClient(channel);
+            var response = await versionClient.VersionAsync(new VersionRequest(), deadline: deadline);
+            var serverVersion = new SemanticVersion(response.Major, response.Minor, response.Patch);
+            SemanticVersion.AssertCompatible(RequiredRpcServerVersion, serverVersion);
+
             return new WalletClient(channel);
         }
 
@@ -78,18 +87,18 @@ namespace Paymetheus.Rpc
             return resp.Exists;
         }
 
-        public async Task StartBtcdRpc(BtcdRpcOptions options)
+        public async Task StartConsensusRpc(ConsensusServerRpcOptions options)
         {
             var certificateTask = ReadFileAsync(options.CertificatePath);
             var client = WalletLoaderService.NewClient(_channel);
-            var request = new StartBtcdRpcRequest
+            var request = new StartConsensusRpcRequest
             {
                 NetworkAddress = options.NetworkAddress,
                 Username = options.RpcUser,
                 Password = ByteString.CopyFromUtf8(options.RpcPassword),
                 Certificate = ByteString.CopyFrom(await certificateTask),
             };
-            await client.StartBtcdRpcAsync(request, cancellationToken: _tokenSource.Token);
+            await client.StartConsensusRpcAsync(request, cancellationToken: _tokenSource.Token);
         }
 
         private async Task<byte[]> ReadFileAsync(string filePath)
@@ -139,7 +148,6 @@ namespace Paymetheus.Rpc
             {
                 Console.WriteLine(ex);
             }
-
         }
 
         public async Task<NetworkResponse> NetworkAsync()
@@ -172,7 +180,23 @@ namespace Paymetheus.Rpc
         public async Task<string> NextExternalAddressAsync(Account account)
         {
             var client = WalletService.NewClient(_channel);
-            var request = new NextAddressRequest { Account = account.AccountNumber };
+            var request = new NextAddressRequest
+            {
+                Account = account.AccountNumber,
+                Kind = NextAddressRequest.Types.Kind.BIP0044_EXTERNAL,
+            };
+            var resp = await client.NextAddressAsync(request, cancellationToken: _tokenSource.Token);
+            return resp.Address;
+        }
+
+        public async Task<string> NextInternalAddressAsync(Account account)
+        {
+            var client = WalletService.NewClient(_channel);
+            var request = new NextAddressRequest
+            {
+                Account = account.AccountNumber,
+                Kind = NextAddressRequest.Types.Kind.BIP0044_INTERNAL,
+            };
             var resp = await client.NextAddressAsync(request, cancellationToken: _tokenSource.Token);
             return resp.Address;
         }
@@ -273,7 +297,7 @@ namespace Paymetheus.Rpc
             var outputs = response.SelectedOutputs.Select(MarshalUnspentOutput).ToList();
             var total = (Amount)response.TotalAmount;
             var changeScript = (OutputScript)null;
-            if (response.ChangePkScript != null)
+            if (response.ChangePkScript?.Length != 0)
             {
                 changeScript = OutputScript.ParseScript(response.ChangePkScript.ToByteArray());
             }
@@ -323,19 +347,18 @@ namespace Paymetheus.Rpc
                 notificationsTask = notifications.ListenAndBuffer();
 
                 var networkTask = NetworkAsync();
-
-                // Concurrently download transaction history and account properties.
-                var txSetTask = GetTransactionsAsync(Wallet.MinRecentTransactions, Wallet.NumRecentBlocks);
                 var accountsTask = AccountsAsync();
 
                 var networkResp = await networkTask;
                 var activeBlockChain = BlockChainIdentity.FromNetworkBits(networkResp.ActiveNetwork);
 
+                var txSetTask = GetTransactionsAsync(Wallet.MinRecentTransactions, Wallet.NumRecentBlocks(activeBlockChain));
+
                 var txSet = await txSetTask;
                 var rpcAccounts = await accountsTask;
 
                 var lastAccountBlockHeight = rpcAccounts.CurrentBlockHeight;
-                var lastAccountBlockHash = new Sha256Hash(rpcAccounts.CurrentBlockHash.ToByteArray());
+                var lastAccountBlockHash = new Blake256Hash(rpcAccounts.CurrentBlockHash.ToByteArray());
                 var lastTxBlock = txSet.MinedTransactions.LastOrDefault();
                 if (lastTxBlock != null)
                 {
@@ -390,18 +413,32 @@ namespace Paymetheus.Rpc
 
                 var accounts = rpcAccounts.Accounts.ToDictionary(
                     a => new Account(a.AccountNumber),
-                    a => new AccountState
+                    a => new AccountProperties
                     {
                         AccountName = a.AccountName,
                         TotalBalance = a.TotalBalance,
-                        // TODO: uncomment these when added to protospec and wallet implements them.
+                        // TODO: uncomment when added to protospec and implemented by wallet.
                         //ImmatureCoinbaseReward = a.ImmatureBalance,
-                        //ExternalKeyCount = (int)a.ExternalKeyCount,
-                        //InternalKeyCount = (int)a.InternalKeyCount,
-                        //ImportedKeyCount = (int)a.ImportedKeyCount,
+                        ExternalKeyCount = a.ExternalKeyCount,
+                        InternalKeyCount = a.InternalKeyCount,
+                        ImportedKeyCount = a.ImportedKeyCount,
                     });
+                Func<AccountsResponse.Types.Account, AccountProperties> createProperties = a => new AccountProperties
+                {
+                    AccountName = a.AccountName,
+                    TotalBalance = a.TotalBalance,
+                    // TODO: uncomment when added to protospec and implemented by wallet.
+                    //ImmatureCoinbaseReward = a.ImmatureBalance,
+                    ExternalKeyCount = a.ExternalKeyCount,
+                    InternalKeyCount = a.InternalKeyCount,
+                    ImportedKeyCount = a.ImportedKeyCount,
+                };
+                // This assumes that all but the last account listed in the RPC response are
+                // BIP0032 accounts, with the same account number as their List index.
+                var bip0032Accounts = rpcAccounts.Accounts.Take(rpcAccounts.Accounts.Count - 1).Select(createProperties).ToList();
+                var importedAccount = createProperties(rpcAccounts.Accounts.Last());
                 var chainTip = new BlockIdentity(lastAccountBlockHash, lastAccountBlockHeight);
-                var wallet = new Wallet(activeBlockChain, txSet, accounts, chainTip);
+                var wallet = new Wallet(activeBlockChain, txSet, bip0032Accounts, importedAccount, chainTip);
                 wallet.ChangesProcessed += walletEventHandler;
 
                 var syncTask = Task.Run(async () =>

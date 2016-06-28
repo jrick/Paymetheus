@@ -1,4 +1,5 @@
 ﻿// Copyright (c) 2016 The btcsuite developers
+// Copyright (c) 2016 The Decred developers
 // Licensed under the ISC license.  See LICENSE file in the project root for full license information.
 
 using System;
@@ -26,18 +27,6 @@ namespace Paymetheus
         public CreateAccountDialogView()
         {
             InitializeComponent();
-        }
-
-        private void textBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                var textBox = (TextBox)sender;
-                var prop = TextBox.TextProperty;
-
-                var binding = BindingOperations.GetBindingExpression(textBox, prop);
-                binding?.UpdateSource();
-            }
         }
 
         private void passphraseTextBox_PasswordChanged(object sender, RoutedEventArgs e)

@@ -1,7 +1,4 @@
-﻿// Copyright (c) 2016 The btcsuite developers
-// Licensed under the ISC license.  See LICENSE file in the project root for full license information.
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,18 +23,6 @@ namespace Paymetheus
         public RenameAccountDialogView()
         {
             InitializeComponent();
-        }
-
-        private void textBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                var textBox = (TextBox)sender;
-                var prop = TextBox.TextProperty;
-
-                var binding = BindingOperations.GetBindingExpression(textBox, prop);
-                binding?.UpdateSource();
-            }
         }
     }
 }
