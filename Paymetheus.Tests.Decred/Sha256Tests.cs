@@ -5,6 +5,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using Xunit;
+using Paymetheus.Decred.Wallet;
 
 namespace Paymetheus.Tests.Decred
 {
@@ -35,7 +36,7 @@ namespace Paymetheus.Tests.Decred
 
             Assert.Equal(outerDigest, outerExpected);
 
-            Assert.Equal(outerDigest, DoubleSha256(vector));
+            Assert.Equal(outerDigest, WalletSeed.DoubleSha256(vector));
         }
     }
 }
