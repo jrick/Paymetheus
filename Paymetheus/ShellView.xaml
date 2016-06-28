@@ -145,14 +145,10 @@
                             <Setter Property="FontSize" Value="12"/>
                         </Style>
                     </Grid.Resources>
-                    <TextBlock Grid.Column="0">
-                        <Run Text="Latest block:" Foreground="#FF69D5F7" />
-                        <Run Text="{Binding Path=SynchronizerViewModel.SyncedBlockHeight, StringFormat='{}{0:#,0}', FallbackValue='0', Source={StaticResource ViewModelLocator}}" Foreground="#FF2ED8A3"/>
-                    </TextBlock>
-                    <TextBlock Grid.Column="1" HorizontalAlignment="Right" Foreground="#FF69D5F7">
-                        <Run Text="{Binding BlockMinuteAge, FallbackValue=?}"/>
-                        <Run Text="min ago"/>
-                    </TextBlock>
+                    <TextBlock Grid.Column="0" Foreground="#FF69D5F7" Text="Latest block:"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Right"
+                               Text="{Binding Path=SynchronizerViewModel.SyncedBlockHeight, StringFormat='{}{0:#,0}', FallbackValue='0', Source={StaticResource ViewModelLocator}}"
+                               Foreground="#FF2ED8A3"/>
                 </Grid>
             </Border>
         </Grid>
