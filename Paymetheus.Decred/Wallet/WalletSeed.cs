@@ -29,7 +29,16 @@ namespace Paymetheus.Decred.Wallet
                 throw new ArgumentNullException(nameof(pgpWordList));
 
             var decodedInput = DecodeUserInput(userInput, pgpWordList);
-            if (decodedInput.Length != SeedLength)
+            if (decodedInput.Length == (SeedLength + 1))
+            {
+                // deal with "checksum"
+                var digest = Checksum.DoubleSha256(decodedInput);
+                if (decodedInput[SeedLength] != digest[0])
+                {
+                    throw new Exception($"Invalid checksum");
+                }
+            }
+                else if (decodedInput.Length != SeedLength)
             {
                 throw new Exception($"Decoded seed must have byte length {SeedLength}");
             }
