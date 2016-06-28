@@ -74,7 +74,19 @@ namespace Paymetheus.Decred.Wallet
 
             return hash;
         }
+
+        // Returned array contains the double BLAKE256 hash.
+        public static byte[] DoubleBlake256(byte[] value)
+        {
+            using (var hasher = new Blake256())
+            {
+                var intermediateHash = hasher.ComputeHash(value);
+                return hasher.ComputeHash(intermediateHash);
+            }
+        }
     }
+
+
 
     public class ChecksumException : Exception
     {
