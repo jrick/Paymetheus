@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="AmountTests.cs" />
     <Compile Include="Sha256HashTests.cs" />
+    <Compile Include="Sha256Tests.cs" />
     <Compile Include="TransactionTests.cs" />
     <Compile Include="Util\Base58Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
