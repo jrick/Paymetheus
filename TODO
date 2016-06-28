@@ -15,7 +15,6 @@ RPC/dcrwallet:
 Model/ViewModel:
 
 - [required] Add viewmodel for history
-- [required] Add viewmodel for unspent outputs
 - [required] Fee estimation needs to be ported (partially completed in a
   btcsuite Paymetheus PR: https://github.com/btcsuite/Paymetheus/pull/44) or
   added to the RPC API.  Right now all estimated fees when constructing
@@ -37,6 +36,7 @@ Model/ViewModel:
   first release or not (how soon can it be fixed in dcrwallet?).  Importing
   to other (BIP0044) accounts is currently unsupported so without the
   imported account, all key imports are impossible.
+- [post-release] Add viewmodel for unspent outputs
 - Validation of user input in the startup dialogs would be nice (instead
   of opening a message box with parse errors when trying to continue).
 - Don't save every transaction in memory (can fix post-release)
@@ -56,10 +56,10 @@ View:
 - [required] Request view doesn't hide UI elements depending on whether a
   generated address is shown yet or not
 - [required] Bindings for history
-- [required] Bindings for unspent outputs
 - [required] None of the (post-startup) dialogs are working correctly.
   Most are missing their views, while others are just being displayed with
   many layout issues are are unusable.
+- [post-release] Bindings for unspent outputs
 - Offer to start dcrd for the user at beginning of startup dialog (if found
   in the PATH), to avoid the need to run the process separately.  No RPC
   credentials will need to be manually entered by the user since everything
@@ -76,7 +76,7 @@ View:
 - Still lots of hardcoded positions with margins in the new views.  These
   need to be repositioned relative to other objects (using Grid, StackPanel,
   DockPanel, Border, etc.).  Most of these are probably in the transaction
-  history and utxo views since i haven't gotten around to binding those yet.
+  history view since i haven't gotten around to binding it yet.
 - Way too much duplicated xaml all over the place.  All common styles should
   be put in <Application.Resources>.
 - Block hash of current block is no where to be found.  For desktop (mouse)
