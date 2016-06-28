@@ -287,9 +287,9 @@ namespace Paymetheus.Decred
                 outputCount++;
             }
             return
-                8 + CompactInt.SerializeSize((ulong)inputCount) + CompactInt.SerializeSize((ulong)outputCount) +
+                12 + (2 * CompactInt.SerializeSize((ulong)inputCount)) + CompactInt.SerializeSize((ulong)outputCount) +
                 inputCount * RedeemPayToPubKeyHashInputSize +
-                outputs.Aggregate(0, (a, o) => a + o.SerializeSize) +
+                outputs.Sum(o => o.SerializeSize) +
                 changeSize;
         }
     }
