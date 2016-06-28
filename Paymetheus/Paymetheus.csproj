@@ -161,6 +161,9 @@
     <Compile Include="Framework\ValueConverters\NullToHiddenConverter.cs" />
     <Compile Include="Framework\ValueConverters\OneWayConverter.cs" />
     <Compile Include="AccountToNameConverter.cs" />
+    <Compile Include="PassphraseDialogView.xaml.cs">
+      <DependentUpon>PassphraseDialogView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RenameAccountDialogView.xaml.cs">
       <DependentUpon>RenameAccountDialogView.xaml</DependentUpon>
     </Compile>
@@ -283,6 +286,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="OverviewDeeper.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PassphraseDialogView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

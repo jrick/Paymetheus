@@ -285,7 +285,7 @@
                                     f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"
                                     Background="{x:Null}"/>
                             <TextBox Grid.Column="2" HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Width="160"
-                                     Text="{Binding OutputAmount, ValidatesOnExceptions=True}"
+                                     Text="{Binding OutputAmountString, ValidatesOnExceptions=True}"
                                      f:AttachableProperties.UpdateSourceOnEnterProperty="TextBox.Text"
                                      PreviewTextInput="OutputAmountTextBox_PreviewTextInput"
                                      FontFamily="Consolas" BorderThickness="0 0 0 1" Background="{x:Null}"/>

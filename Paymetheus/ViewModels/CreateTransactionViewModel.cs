@@ -10,6 +10,8 @@ using Paymetheus.Framework;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Paymetheus.ViewModels
@@ -104,7 +106,8 @@ namespace Paymetheus.ViewModels
             }
 
             private Amount _outputAmount;
-            public string OutputAmount
+            public Amount OutputAmount => _outputAmount;
+            public string OutputAmountString
             {
                 get { return _outputAmount.ToString(); }
                 set
@@ -243,7 +246,102 @@ namespace Paymetheus.ViewModels
 
         private void FinishCreateTransactionAction()
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (SignChecked)
+                {
+                    SignTransaction(PublishChecked);
+                }
+                else
+                {
+                    throw new NotImplementedException();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void SignTransaction(bool publish)
+        {
+            var outputs = PendingOutputs.Select(po =>
+            {
+                var script = po.BuildOutputScript().Script;
+                return new Transaction.Output(po.OutputAmount, Transaction.Output.LatestPkScriptVersion, script);
+            }).ToArray();
+            var shell = ViewModelLocator.ShellViewModel as ShellViewModel;
+            if (shell != null)
+            {
+                Func<string, Task> action = (passphrase) => SignTransactionWithPassphrase(passphrase, outputs, publish);
+                shell.VisibleDialogContent = new PassphraseDialogViewModel(shell, "Enter passphrase to sign transaction", "Sign", action);
+            }
+        }
+
+        private async Task SignTransactionWithPassphrase(string passphrase, Transaction.Output[] outputs, bool publishImmediately)
+        {
+            var walletClient = App.Current.Synchronizer.WalletRpcClient;
+            var requiredConfirmations = 1; // TODO: Don't hardcode confs.
+            var targetAmount = (Amount)outputs.Sum(o => o.Amount);
+            var targetFee = (Amount)1e6; // TODO: Don't hardcode fee/kB.
+            var funding = await walletClient.FundTransactionAsync(SelectedAccount.Account, targetAmount + targetFee, requiredConfirmations);
+            var fundingAmount = funding.Item2;
+            if (fundingAmount < targetAmount + targetFee)
+            {
+                MessageBox.Show($"Transaction requires {targetAmount + targetFee} but only {fundingAmount} is spendable.",
+                    "Insufficient funds to create transaction.");
+                return;
+            }
+
+            var selectedOutputs = funding.Item1;
+            var inputs = selectedOutputs
+                .Select(o =>
+                {
+                    var prevOutPoint = new Transaction.OutPoint(o.TransactionHash, o.OutputIndex, 0);
+                    return Transaction.Input.CreateFromPrefix(prevOutPoint, TransactionRules.MaxInputSequence);
+                })
+                .ToArray();
+
+            // TODO: Port the fee estimation logic from btcwallet.  Using a hardcoded fee is unacceptable.
+            var estimatedFee = targetFee;
+
+            var changePkScript = funding.Item3;
+            if (changePkScript != null)
+            {
+                // Change output amount is calculated by solving for changeAmount with the equation:
+                //   estimatedFee = fundingAmount - (targetAmount + changeAmount)
+                var changeOutput = new Transaction.Output(fundingAmount - targetAmount - estimatedFee,
+                    Transaction.Output.LatestPkScriptVersion, changePkScript.Script);
+                var outputsList = outputs.ToList();
+                // TODO: Randomize change output position.
+                outputsList.Add(changeOutput);
+                outputs = outputsList.ToArray();
+            }
+
+            // TODO: User may want to set the locktime.
+            var unsignedTransaction = new Transaction(Transaction.SupportedVersion, inputs, outputs, 0, 0);
+
+            var signingResponse = await walletClient.SignTransactionAsync(passphrase, unsignedTransaction);
+            var complete = signingResponse.Item2;
+            if (!complete)
+            {
+                MessageBox.Show("Failed to create transaction input signatures.");
+                return;
+            }
+            var signedTransaction = signingResponse.Item1;
+
+            MessageBox.Show($"Created tx with {estimatedFee} fee.");
+
+            if (!publishImmediately)
+            {
+                MessageBox.Show("Reviewing signed transaction before publishing is not implemented yet.");
+                return;
+            }
+
+            // TODO: The client just deserialized the transaction, so serializing it is a
+            // little silly.  This could be optimized.
+            await walletClient.PublishTransactionAsync(signedTransaction.Serialize());
+            MessageBox.Show("Published transaction.");
         }
     }
 }

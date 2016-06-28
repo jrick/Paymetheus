@@ -28,6 +28,9 @@
         <DataTemplate DataType="{x:Type viewmodels:RenameAccountDialogViewModel}">
             <local:RenameAccountDialogView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:PassphraseDialogViewModel}">
+            <local:PassphraseDialogView/>
+        </DataTemplate>
 
         <DataTemplate x:Key="buttonTemplate">
             <Button Content="{Binding ButtonLabel}" Command="{Binding}" Style="{DynamicResource ButtonBlue}"/>
