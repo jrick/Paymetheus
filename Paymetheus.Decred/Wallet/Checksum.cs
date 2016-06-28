@@ -3,7 +3,6 @@
 // Licensed under the ISC license.  See LICENSE file in the project root for full license information.
 
 using System;
-using System.Security.Cryptography;
 
 namespace Paymetheus.Decred.Wallet
 {
@@ -74,16 +73,6 @@ namespace Paymetheus.Decred.Wallet
                 throw new Exception($"Double-BLAKE256 result has improper length {hash.Length}");
 
             return hash;
-        }
-
-        // Returned array contains the double SHA256 hash.
-        public static byte[] DoubleSha256(byte[] value)
-        {
-            using (var hasher = new SHA256Managed())
-            {
-                var intermediateHash = hasher.ComputeHash(value);
-                return hasher.ComputeHash(intermediateHash);
-            }
         }
     }
 

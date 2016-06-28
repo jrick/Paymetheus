@@ -1,10 +1,9 @@
-﻿using Paymetheus.Decred.Wallet;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿// Copyright (c) 2016 The btcsuite developers
+// Copyright (c) 2016 The Decred developers
+// Licensed under the ISC license.  See LICENSE file in the project root for full license information.
+
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Paymetheus.Tests.Decred
@@ -36,7 +35,7 @@ namespace Paymetheus.Tests.Decred
 
             Assert.Equal(outerDigest, outerExpected);
 
-            Assert.Equal(outerDigest, Checksum.DoubleSha256(vector));
+            Assert.Equal(outerDigest, DoubleSha256(vector));
         }
     }
 }
