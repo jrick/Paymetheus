@@ -1,8 +1,7 @@
 RPC/dcrwallet:
 
-- New gRPC APIs to:
+- [post-release] New gRPC APIs to:
   - purchase tickets
-  - anything else?
 - Update existing messages for stake related fields (cj has full list)
 - No recovery if previous process was killed and didn't get a chance to stop
   the dcrwallet process.  Possible solutions are killing any dcrwallet
@@ -42,7 +41,6 @@ Model/ViewModel:
 
 View:
 
-- [required] Should default to opening the overview frame
 - [required] remove "sent" and "received" amounts in overview.
 - [required] Request view doesn't hide UI elements depending on whether a
   generated address is shown yet or not

@@ -157,9 +157,8 @@
                 </Border>
             </Grid>
         </Grid>
-        <!--<Frame Name="ContentHolder" Content="Frame" Grid.Column="1" Source="{Binding SelectedView, FallbackValue=/Paymetheus;component/Overview.xaml}" NavigationUIVisibility="Hidden" />-->
         <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
-            <Frame Name="ContentHolder" Content="Frame" Source="{Binding SelectedView}" NavigationUIVisibility="Hidden" Background="#FFF9FBFC"/>
+            <Frame Name="ContentHolder" Content="Frame" Source="/Paymetheus;component/Overview.xaml" NavigationUIVisibility="Hidden" Background="#FFF9FBFC"/>
         </ScrollViewer>
 
         <UserControl Grid.ColumnSpan="2" Panel.ZIndex="1000" KeyboardNavigation.TabNavigation="Cycle" KeyboardNavigation.ControlTabNavigation="Cycle">
