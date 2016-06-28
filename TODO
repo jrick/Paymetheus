@@ -15,10 +15,8 @@ RPC/dcrwallet:
 Model/ViewModel:
 
 - [required] Add viewmodel for history
-- [required] Fee estimation needs to be ported (partially completed in a
-  btcsuite Paymetheus PR: https://github.com/btcsuite/Paymetheus/pull/44) or
-  added to the RPC API.  Right now all estimated fees when constructing
-  transactions are displayed as 0.
+- [required] Fee estimation (already ported and merged) needs to be hooked
+  up into create transaction viewmodel.
 - [required] Some address/script functionality (in
   Paymetheus.Decred.Script.OutputScript and Paymetheus.Decred.Wallet.Address)
   is not yet implemented.  This can cause application crashes when trying to
@@ -31,11 +29,6 @@ Model/ViewModel:
   data added it should be some kind of timestamp or blockheight of when the
   seed was generated), but we should at least not bail out when decoding a
   seed created by other dcr tools.
-- [required] Imported account is currently hidden since it will be removed
-  in a later dcrwallet release.  Decide if this needs to be displayed in
-  first release or not (how soon can it be fixed in dcrwallet?).  Importing
-  to other (BIP0044) accounts is currently unsupported so without the
-  imported account, all key imports are impossible.
 - [post-release] Add viewmodel for unspent outputs
 - Validation of user input in the startup dialogs would be nice (instead
   of opening a message box with parse errors when trying to continue).
@@ -50,15 +43,10 @@ Model/ViewModel:
 View:
 
 - [required] Should default to opening the overview frame
-- [required] "sent" and "received" amounts in overview need to go, wallet
-  does not track them and it would be more useful to put something like
-  "locked" for those who stake
+- [required] remove "sent" and "received" amounts in overview.
 - [required] Request view doesn't hide UI elements depending on whether a
   generated address is shown yet or not
 - [required] Bindings for history
-- [required] None of the (post-startup) dialogs are working correctly.
-  Most are missing their views, while others are just being displayed with
-  many layout issues are are unusable.
 - [post-release] Bindings for unspent outputs
 - Offer to start dcrd for the user at beginning of startup dialog (if found
   in the PATH), to avoid the need to run the process separately.  No RPC

@@ -279,6 +279,7 @@ namespace Paymetheus.Decred
         {
             if (outputs == null)
                 throw new ArgumentNullException(nameof(outputs));
+
             var changeSize = 0;
             var outputCount = outputs.Length;
             if (addChangeOutput)
@@ -286,6 +287,7 @@ namespace Paymetheus.Decred
                 changeSize = PayToPubKeyHashOutputSize;
                 outputCount++;
             }
+
             return
                 12 + (2 * CompactInt.SerializeSize((ulong)inputCount)) + CompactInt.SerializeSize((ulong)outputCount) +
                 inputCount * RedeemPayToPubKeyHashInputSize +
