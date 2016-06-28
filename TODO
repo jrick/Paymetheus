@@ -41,7 +41,6 @@ Model/ViewModel:
 
 View:
 
-- [required] remove "sent" and "received" amounts in overview.
 - [required] Request view doesn't hide UI elements depending on whether a
   generated address is shown yet or not
 - [required] Bindings for history
