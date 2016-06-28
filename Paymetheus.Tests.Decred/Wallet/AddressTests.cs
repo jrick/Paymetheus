@@ -27,7 +27,7 @@ namespace Paymetheus.Tests.Decred.Wallet
         {
             // Assert TryDecode and Decode succeed on valid address.
             Address address;
-            //Assert.True(Address.TryDecode(encodedAddress, out address));
+            Assert.True(Address.TryDecode(encodedAddress, out address));
             address = Address.Decode(encodedAddress);
 
             // Assert actual instance type is PayToSecp256k1PubKeyHash
