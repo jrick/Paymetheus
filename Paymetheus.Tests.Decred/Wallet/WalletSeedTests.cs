@@ -59,6 +59,20 @@ namespace Paymetheus.Tests.Decred.Wallet
                     "deckhand hydraulic preshrunk amusement beeswax suspicious talon customer spigot therapist swelter Saturday miser microscope stairway maverick ribcage designing playhouse unify rebirth guitarist bombast consensus dwelling Waterloo printer mosquito select document stockman maritime spearhead hydraulic",
                     typeof(Exception),
                 },
+
+                // with invalid checksum
+                new object[] {
+                    "497497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd688c9",
+                    "deckhand hydraulic preshrunk amusement beeswax suspicious talon customer spigot therapist swelter Saturday miser microscope stairway maverick ribcage designing playhouse unify rebirth guitarist bombast consensus dwelling Waterloo printer mosquito select document stockman maritime stockman",
+                    typeof(Exception),
+                },
+
+                // hex with invalid checksum
+                new object[] {
+                    "497497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd688c9",
+                    "497497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd688c7",
+                    typeof(Exception),
+                },
             };
         }
 
