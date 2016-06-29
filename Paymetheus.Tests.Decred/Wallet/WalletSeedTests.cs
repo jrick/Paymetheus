@@ -17,18 +17,25 @@ namespace Paymetheus.Tests.Decred.Wallet
         {
             return new[]
             {
+                // with checksum
                 new object[] {
                     "497497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd688",
                     "deckhand hydraulic preshrunk amusement beeswax suspicious talon customer spigot therapist swelter Saturday miser microscope stairway maverick ribcage designing playhouse unify rebirth guitarist bombast consensus dwelling Waterloo printer mosquito select document stockman maritime spearhead",
                 },
+
+                // without checksum
                 new object[] {
                     "497497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd688",
                     "deckhand hydraulic preshrunk amusement beeswax suspicious talon customer spigot therapist swelter Saturday miser microscope stairway maverick ribcage designing playhouse unify rebirth guitarist bombast consensus dwelling Waterloo printer mosquito select document stockman maritime",
                 },
+
+                // identical hex
                 new object[] {
                     "497497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd688",
                     "497497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd688",
                 },
+
+                // hex with checksum
                 new object[] {
                     "497497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd688",
                     "497497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd68800",
