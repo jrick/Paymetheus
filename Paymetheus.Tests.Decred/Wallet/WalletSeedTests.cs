@@ -70,17 +70,7 @@ namespace Paymetheus.Tests.Decred.Wallet
         [MemberData(nameof(NegativeTests))]
         public static void NegativeDecodeAndValidateUserInputTest(string seed, string pgpSeed, Type exception)
         {
-            try
-            {
-                var decodedSeed = WalletSeed.DecodeAndValidateUserInput(pgpSeed, PgpWordList);
-            }
-            catch (Exception ex)
-            {
-                Assert.IsType(typeof(ex), exception);
-            }
-            finally
-            {
-            }
+            Assert.Throws(exception, () =>  WalletSeed.DecodeAndValidateUserInput(pgpSeed, PgpWordList));
         }
     }
 }
