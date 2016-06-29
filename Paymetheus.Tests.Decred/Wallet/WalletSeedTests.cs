@@ -24,6 +24,41 @@ namespace Paymetheus.Tests.Decred.Wallet
                     "deckhand hydraulic preshrunk amusement beeswax suspicious moo customer spigot therapist swelter Saturday miser microscope stairway maverick ribcage designing playhouse unify rebirth guitarist bombast consensus dwelling Waterloo printer mosquito select document stockman maritime spearhead",
                     typeof(PgpWordListInvalidEncodingException),
                 },
+
+                // invalid hex
+                new object[] {
+                    "497497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd688",
+                    "z97497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd688",
+                    typeof(HexadecimalEncodingException),
+                },
+
+                // not enough hex
+                new object[] {
+                    "497497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd688",
+                    "497497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd6",
+                    typeof(Exception),
+                },
+
+                // too much hex
+                new object[] {
+                    "497497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd688",
+                    "497497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd6888888",
+                    typeof(Exception),
+                },
+
+                // not enough words
+                new object[] {
+                    "497497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd688c9",
+                    "deckhand hydraulic preshrunk amusement beeswax suspicious talon customer spigot therapist swelter Saturday miser microscope stairway maverick ribcage designing playhouse unify rebirth guitarist bombast consensus dwelling Waterloo printer mosquito select document stockman",
+                    typeof(Exception),
+                },
+
+                // too many words
+                new object[] {
+                    "497497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd688c9",
+                    "deckhand hydraulic preshrunk amusement beeswax suspicious talon customer spigot therapist swelter Saturday miser microscope stairway maverick ribcage designing playhouse unify rebirth guitarist bombast consensus dwelling Waterloo printer mosquito select document stockman maritime spearhead hydraulic",
+                    typeof(Exception),
+                },
             };
         }
 
