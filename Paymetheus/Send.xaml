@@ -340,8 +340,10 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <ContentControl ContentTemplate="{StaticResource buttonTemplate}" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding FinishCreateTransaction}" Width="100"/>
+            <!-- Hide these since viewing raw transactions without signing is not yet implemented.
             <CheckBox Grid.Row="0" Grid.Column="1" Content="Sign" HorizontalAlignment="Left" IsChecked="{Binding SignChecked}" Style="{StaticResource CheckBoxStyle}" />
             <CheckBox Grid.Row="1" Grid.Column="1" Content="Publish" HorizontalAlignment="Left" IsChecked="{Binding PublishChecked}" IsEnabled="{Binding PublishActive}"  Style="{StaticResource CheckBoxStyle}" />
+            -->
             <TextBlock Grid.Row="0" Grid.Column="2" Text="Estimated fee:" HorizontalAlignment="Right" Style="{StaticResource TextBlockStyle}" />
             <TextBlock Grid.Row="1" Grid.Column="2" Text="Estimated remaining balance:" HorizontalAlignment="Right" Style="{StaticResource TextBlockStyle}" />
             <local:AmountLabel Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" Value="{Binding EstimatedFee}" Visibility="{Binding EstimatedFee, Converter={StaticResource NullToHiddenConverter}}"/>
