@@ -4,6 +4,7 @@
 
 using Paymetheus.Decred.Util;
 using Paymetheus.Decred.Wallet;
+using System;
 using System.Collections.Generic;
 using Xunit;
 
@@ -19,7 +20,7 @@ namespace Paymetheus.Tests.Decred.Wallet
             {
                 // with checksum
                 new object[] {
-                    "497497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd688",
+                    "497497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd688c9",
                     "deckhand hydraulic preshrunk amusement beeswax suspicious talon customer spigot therapist swelter Saturday miser microscope stairway maverick ribcage designing playhouse unify rebirth guitarist bombast consensus dwelling Waterloo printer mosquito select document stockman maritime spearhead",
                 },
 
@@ -29,7 +30,7 @@ namespace Paymetheus.Tests.Decred.Wallet
                     "deckhand hydraulic preshrunk amusement beeswax suspicious talon customer spigot therapist swelter Saturday miser microscope stairway maverick ribcage designing playhouse unify rebirth guitarist bombast consensus dwelling Waterloo printer mosquito select document stockman maritime",
                 },
 
-                // identical hex
+                // identical hex 32 bytes
                 new object[] {
                     "497497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd688",
                     "497497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd688",
@@ -37,8 +38,8 @@ namespace Paymetheus.Tests.Decred.Wallet
 
                 // hex with checksum
                 new object[] {
-                    "497497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd688",
-                    "497497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd68800",
+                    "497497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd688c9",
+                    "497497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd688c9",
                 },
             };
         }
@@ -47,9 +48,8 @@ namespace Paymetheus.Tests.Decred.Wallet
         [MemberData(nameof(PositiveTests))]
         public static void DecodeAndValidateUserInputTest(string seed, string pgpSeed)
         {
-            var decodedSeed = WalletSeed.DecodeAndValidateUserInput(seed, PgpWordList);
+            var decodedSeed = WalletSeed.DecodeAndValidateUserInput(pgpSeed, PgpWordList);
             var decodedSeedHex = Hexadecimal.Decode(seed);
-
             Assert.Equal(decodedSeedHex, decodedSeed);
         }
     }
