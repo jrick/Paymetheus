@@ -340,7 +340,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <ContentControl ContentTemplate="{StaticResource buttonTemplate}" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding FinishCreateTransaction}" Width="100"/>
-            <!-- Hide these since viewing raw transactions without signing is not yet implemented.
+            <!-- Hide these since viewing raw transactions without publishing is not yet implemented.
             <CheckBox Grid.Row="0" Grid.Column="1" Content="Sign" HorizontalAlignment="Left" IsChecked="{Binding SignChecked}" Style="{StaticResource CheckBoxStyle}" />
             <CheckBox Grid.Row="1" Grid.Column="1" Content="Publish" HorizontalAlignment="Left" IsChecked="{Binding PublishChecked}" IsEnabled="{Binding PublishActive}"  Style="{StaticResource CheckBoxStyle}" />
             -->
