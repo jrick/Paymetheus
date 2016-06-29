@@ -14,6 +14,19 @@ namespace Paymetheus.Tests.Decred.Wallet
     {
         private static PgpWordList PgpWordList = new PgpWordList();
 
+        public static IEnumerable<object[]> NegativeTests()
+        {
+            return new[]
+            {
+                // invalid word
+                new object[] {
+                    "497497071bdbdf3fccdfddcf828dd18aac4493eda269253753f99897b84fd688",
+                    "deckhand hydraulic preshrunk amusement beeswax suspicious moo customer spigot therapist swelter Saturday miser microscope stairway maverick ribcage designing playhouse unify rebirth guitarist bombast consensus dwelling Waterloo printer mosquito select document stockman maritime spearhead",
+                    PgpWordListInvalidEncodingException,
+                },
+            };
+        }
+
         public static IEnumerable<object[]> PositiveTests()
         {
             return new[]
@@ -51,6 +64,13 @@ namespace Paymetheus.Tests.Decred.Wallet
             var decodedSeed = WalletSeed.DecodeAndValidateUserInput(pgpSeed, PgpWordList);
             var decodedSeedHex = Hexadecimal.Decode(seed);
             Assert.Equal(decodedSeedHex, decodedSeed);
+        }
+
+        [Theory]
+        [MemberData(nameof(NegativeTests))]
+        public static void NegativeDecodeAndValidateUserInputTest(string seed, string pgpSeed, Exception exception)
+        {
+            Assert.Throws<exception>(() =>  WalletSeed.DecodeAndValidateUserInput(pgpSeed, PgpWordList));
         }
     }
 }
