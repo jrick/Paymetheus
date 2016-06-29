@@ -145,49 +145,46 @@
         </Style>
     </Page.Resources>
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-
-        <Grid x:Name="LayoutRoot">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="46"/>
-                <RowDefinition Height="25"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="27"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="381.293"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <TextBlock HorizontalAlignment="Left" Margin="40,18.244,0,0" TextWrapping="Wrap" Text="Request" Foreground="#FF5A6E81" FontSize="19.333" Width="159.49" Height="25.713" VerticalAlignment="Top"/>
-            <TextBlock HorizontalAlignment="Left" Margin="40,26.904,0,0.096" TextWrapping="Wrap" Foreground="#FF828C9D" FontSize="16" Grid.Row="3" Width="122.78"><Run Text="Recen"/><Run Text="t"/><Run Text=" activity"/></TextBlock>
-            <Grid Margin="0,0,0,0.096" Grid.Row="3" Width="300">
-                <ComboBox ItemsSource="{Binding Source={StaticResource ViewModelLocator}, Path=SynchronizerViewModel.Accounts}"
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="46"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="27"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="381.293"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock HorizontalAlignment="Left" Margin="40,18.244,0,0" TextWrapping="Wrap" Text="Request" Foreground="#FF5A6E81" FontSize="19.333" Width="159.49" Height="25.713" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="40,26.904,0,0.096" TextWrapping="Wrap" Foreground="#FF828C9D" FontSize="16" Grid.Row="3" Width="122.78"><Run Text="Recen"/><Run Text="t"/><Run Text=" activity"/></TextBlock>
+        <Grid Margin="0,0,0,0.096" Grid.Row="3" Width="300">
+            <ComboBox ItemsSource="{Binding Source={StaticResource ViewModelLocator}, Path=SynchronizerViewModel.Accounts}"
                           SelectedItem="{Binding Source={StaticResource ViewModelLocator}, Path=SynchronizerViewModel.SelectedAccount}"
                           ItemTemplate="{StaticResource ComboBoxAccountDataTemplate}"
                           Margin="39.5,4.244,0,0" VerticalAlignment="Top" Height="23.356" Foreground="#FF2970FF"
                           Style="{DynamicResource ComboBoxStyleWithCurrency}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle}">
-                    <ComboBox.Background>
-                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                            <GradientStop Color="#FFF0F0F0" Offset="0"/>
-                            <GradientStop Color="White" Offset="1"/>
-                        </LinearGradientBrush>
-                    </ComboBox.Background>
-                </ComboBox>
-                <Image Margin="0,0,269.334,2" Source="Images/pm - icons - accounts.png" Stretch="Fill" Width="25" Height="25.6"/>
-            </Grid>
-            <TextBlock HorizontalAlignment="Left" Height="30" Margin="40,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Each time you request a payment, create a new address to protect your privacy." VerticalAlignment="Top" Foreground="#FF0C1E3E" FontSize="10.667" Grid.RowSpan="2"/>
-            <Grid Margin="91,31,60.17,0" Grid.Row="4" Grid.RowSpan="2" VerticalAlignment="Top">
-                <Rectangle x:Name="RectangleGenerate" Visibility="{Binding HideWhenNoAddressToDisplay}" Fill="White" Height="68" Stroke="#FFD3D9DF" RadiusX="5" RadiusY="5"/>
-                <Button x:Name="ButtonGenerate" Visibility="{Binding HideIfAddressToDisplay}" Command="{Binding GenerateAddressCommand}"  Content="Generate a single-use address" Style="{DynamicResource HyperLinkButton}" FontSize="19.333" Foreground="#FF2970FF" Height="36.274" Width="299.774" />
-                <TextBlock x:Name="LblCode" Visibility="{Binding HideWhenNoAddressToDisplay}" Height="66" Margin="0,12,-0.17,0" TextWrapping="Wrap" Text="{Binding GeneratedAddress}" VerticalAlignment="Top" Foreground="#FF132F4B" FontSize="28" TextAlignment="Center"/>
-            </Grid>
-            <TextBlock Height="24" Margin="0,76.059,0,0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF586D80" TextAlignment="Center">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+            </ComboBox>
+            <Image Margin="0,0,269.334,2" Source="Images/pm - icons - accounts.png" Stretch="Fill" Width="25" Height="25.6"/>
+        </Grid>
+        <TextBlock HorizontalAlignment="Left" Height="30" Margin="40,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Each time you request a payment, create a new address to protect your privacy." VerticalAlignment="Top" Foreground="#FF0C1E3E" FontSize="10.667" Grid.RowSpan="2"/>
+        <Grid Margin="91,31,60.17,0" Grid.Row="4" Grid.RowSpan="2" VerticalAlignment="Top">
+            <Rectangle x:Name="RectangleGenerate" Visibility="{Binding HideWhenNoAddressToDisplay}" Fill="White" Height="68" Stroke="#FFD3D9DF" RadiusX="5" RadiusY="5"/>
+            <Button x:Name="ButtonGenerate" Visibility="{Binding HideIfAddressToDisplay}" Command="{Binding GenerateAddressCommand}"  Content="Generate a single-use address" Style="{DynamicResource HyperLinkButton}" FontSize="19.333" Foreground="#FF2970FF" Height="36.274" Width="299.774" />
+            <TextBlock x:Name="LblCode" Visibility="{Binding HideWhenNoAddressToDisplay}" Height="66" Margin="0,12,-0.17,0" TextWrapping="Wrap" Text="{Binding GeneratedAddress}" VerticalAlignment="Top" Foreground="#FF132F4B" FontSize="28" TextAlignment="Center"/>
+        </Grid>
+        <TextBlock Height="24" Margin="0,76.059,0,0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF586D80" TextAlignment="Center">
                 <Run Text="Single use address generated for account"/>
                 <Run FontWeight="Bold" Text="{Binding Source={StaticResource ViewModelLocator}, Path=SynchronizerViewModel.SelectedAccount.AccountProperties.AccountName, Mode=OneWay, FallbackValue=Account Name}"/>
                 <Run Text="+ copied to clipboard"/>
-            </TextBlock>
-            <Button Name="GenerateAnotherBtn"  Visibility="{Binding HideWhenNoAddressToDisplay}" Content="GENERATE ANOTHER" Command="{Binding GenerateAddressCommand}" Height="35.5" Margin="0,128,0,0" Style="{DynamicResource ButtonBlue}" Foreground="#FF132F4B" Grid.Row="5" Width="162.697" VerticalAlignment="Top"/>
-        </Grid>
-    </ScrollViewer>
+        </TextBlock>
+        <Button Name="GenerateAnotherBtn"  Visibility="{Binding HideWhenNoAddressToDisplay}" Content="GENERATE ANOTHER" Command="{Binding GenerateAddressCommand}" Height="35.5" Margin="0,128,0,0" Style="{DynamicResource ButtonBlue}" Foreground="#FF132F4B" Grid.Row="5" Width="162.697" VerticalAlignment="Top"/>
+    </Grid>
 </Page>
