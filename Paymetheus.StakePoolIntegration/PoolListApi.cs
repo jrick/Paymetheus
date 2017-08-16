@@ -12,7 +12,7 @@ namespace Paymetheus.StakePoolIntegration
 {
     public static class PoolListApi
     {
-        private static readonly Uri StakePoolInfoUri = new Uri("https://decred.org/api/?c=gsd");
+        private static readonly Uri StakePoolInfoUri = new Uri("https://api.decred.org/?c=gsd");
 
         public static async Task<Dictionary<string, StakePoolInfo>> QueryStakePoolInfoAsync(HttpClient client, JsonSerializer serializer)
         {
