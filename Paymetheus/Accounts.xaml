@@ -68,6 +68,7 @@
                                     </Path.RenderTransform>
                                 </Path>
                                 <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="12,5,0,21" TextWrapping="Wrap" Text="Last transaction:" VerticalAlignment="Stretch" Foreground="#FF919EAB" TextAlignment="Left" FontSize="8.667" Grid.Column="1" Height="Auto" Grid.ColumnSpan="1" Width="69" Grid.Row="1"/>
+                                <!-- Spendable balance is temporarily hidden until the negative balance issues are resolved.
                                 <TextBlock x:Name="textBlock5" HorizontalAlignment="Stretch" Margin="0,6,121,0" TextWrapping="Wrap" Text="Spendable" VerticalAlignment="Top" Foreground="#FF919EAB" TextAlignment="Left" FontSize="8.667" Grid.Column="3" Height="11" Grid.ColumnSpan="1" Grid.Row="1"/>
                                 <local:AmountLabel x:Name="spendableBalance"
                                                    Value="{Binding Balances.SpendableBalance}"
@@ -75,6 +76,7 @@
                                                    VerticalAlignment="Top"
                                                    HorizontalContentAlignment="Right" Margin="0,6,39,0"
                                                    ForegroundWhole="#FF919EAB" ForegroundDecimal="#FF919EAB" FontSizeWhole="8.667" FontSizeDecimal="8.667" FontWeightWhole="Bold"/>
+                                -->
                             </Grid>
                             <Grid x:Name="grid" Margin="14,0,0,0" Grid.Row="1" Height="161" Visibility="Collapsed">
                                 <Grid.ColumnDefinitions>
@@ -203,8 +205,10 @@
                                 <Setter Property="Foreground" TargetName="textBlock" Value="#FFA9B4BF"/>
                                 <Setter Property="Visibility" TargetName="totalAmount" Value="Collapsed"/>
                                 <Setter Property="Visibility" TargetName="textBlock4" Value="Collapsed"/>
+                                <!-- Spendable balance is temporarily hidden until the negative balance issues are resolved.
                                 <Setter Property="Visibility" TargetName="textBlock5" Value="Collapsed"/>
                                 <Setter Property="Visibility" TargetName="spendableBalance" Value="Collapsed"/>
+                                -->
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
